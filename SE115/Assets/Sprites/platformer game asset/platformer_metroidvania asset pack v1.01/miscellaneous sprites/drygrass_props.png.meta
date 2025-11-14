@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      drygrass_props_0: -5845955008351459161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
