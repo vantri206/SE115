@@ -6,5 +6,5 @@ public class DashState : BaseState
     public override void ExitState(StateManager stateManager) { }
     public override void OnCollisionEnter(StateManager stateManager) { }
     public override void UpdateState() { }
-    public override void FixedUpdate() { }
+    public override void FixedUpdateState() { }
 }

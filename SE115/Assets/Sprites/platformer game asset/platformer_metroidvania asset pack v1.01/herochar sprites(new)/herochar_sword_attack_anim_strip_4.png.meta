@@ -136,7 +136,7 @@ TextureImporter:
         width: 14
         height: 14
       alignment: 9
-      pivot: {x: 0.4358481, y: 0.430428}
+      pivot: {x: 0.5038273, y: 0.65216106}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,12 +175,12 @@ TextureImporter:
       name: herochar_sword_attack_anim_strip_4_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 0
         width: 16
         height: 14
       alignment: 9
-      pivot: {x: 0.5049634, y: 0.43192938}
+      pivot: {x: 0.50150084, y: 0.64742726}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -224,7 +224,7 @@ TextureImporter:
         width: 13
         height: 14
       alignment: 9
-      pivot: {x: 0.4654365, y: 0.5751434}
+      pivot: {x: 0.5385525, y: 0.70700055}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -246,7 +246,7 @@ TextureImporter:
         width: 12
         height: 14
       alignment: 9
-      pivot: {x: 0.50364685, y: 0.5701376}
+      pivot: {x: 0.59833527, y: 0.68287057}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
