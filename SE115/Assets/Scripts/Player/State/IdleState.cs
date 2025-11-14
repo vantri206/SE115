@@ -8,7 +8,6 @@ public class IdleState : BaseState
     {
         this.stateManager = stateManager;
         this.player = stateManager.player;
-
         player.animator.SetBool("isRunning", false);
     }
     public override void ExitState(StateManager stateManager) { }
@@ -17,7 +16,6 @@ public class IdleState : BaseState
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            //Debug.Log("true");
             stateManager.ChangeState(stateManager.RunState);
         }
     }

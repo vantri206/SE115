@@ -5,6 +5,7 @@ public class StateManager : MonoBehaviour
     public PlayerController player;
 
     BaseState currentState;
+
     public IdleState IdleState = new IdleState();
     public RunState RunState = new RunState();
     public JumpDownState JumpDownState = new JumpDownState();
@@ -16,7 +17,7 @@ public class StateManager : MonoBehaviour
 
     void Awake()
     {
-        player = gameObject.GetComponent<PlayerController>();
+        player = GetComponent<PlayerController>();
     }
     void Start()
     {
