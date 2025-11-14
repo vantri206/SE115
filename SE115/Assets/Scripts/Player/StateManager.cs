@@ -18,6 +18,11 @@ public class StateManager : MonoBehaviour
     void Awake()
     {
         player = GetComponent<PlayerController>();
+
+        IdleState.stateManager = this;
+        IdleState.player = this.player;
+        RunState.stateManager = this;
+        RunState.player = this.player;
     }
     void Start()
     {
