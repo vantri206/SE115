@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bigflowers_props_0: 2571589160253440119
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
