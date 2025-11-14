@@ -132,6 +132,10 @@ GameObject:
   - component: {fileID: 94910880}
   - component: {fileID: 94910881}
   - component: {fileID: 94910882}
+  - component: {fileID: 94910886}
+  - component: {fileID: 94910885}
+  - component: {fileID: 94910883}
+  - component: {fileID: 94910884}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -250,6 +254,7 @@ MonoBehaviour:
   stateManager: {fileID: 94910882}
   myRigidbody: {fileID: 0}
   animator: {fileID: 94910880}
+  sword: {fileID: 0}
   myCollider: {fileID: 94910885}
   facingDirection: {x: 0, y: 0}
   input: {fileID: 94910883}
@@ -292,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f19001064a9cc4d8f226b8936cca2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
-  speed: 1
+  speed: 2
   multipleSpeed: 1
   startDirection: {x: 1, y: 0}
   rigidbody: {fileID: 94910886}
@@ -962,6 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02463dd7654b37a4f8ed089a76fb6fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  damage: 1
 --- !u!1 &1388658623
 GameObject:
   m_ObjectHideFlags: 0

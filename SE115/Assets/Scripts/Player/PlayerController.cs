@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D myRigidbody;
 
     public Animator animator;
+
     public Sword sword;
 
 
@@ -26,9 +27,10 @@ public class PlayerController : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         myRigidbody = gameObject.GetComponent<Rigidbody2D>();
         stateManager = gameObject.GetComponent<StateManager>();
-        sword.gameObject.SetActive(false);
         myCollider = gameObject.GetComponent<BoxCollider2D>();
         movement = gameObject.GetComponent<Movement>();
+
+        sword.gameObject.SetActive(false);
     }
     private void FixedUpdate()
     {

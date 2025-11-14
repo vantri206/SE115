@@ -23,7 +23,7 @@ public class IdleState : BaseState
             player.SetFacingDirection(direction);
             stateManager.ChangeState(stateManager.RunState);
         }
-        else if (Input.GetKeyDown(KeyCode.K))
+        else if (UnityEngine.Input.GetKeyDown(KeyCode.J))
         {
             stateManager.ChangeState(stateManager.AttackState);
         }
