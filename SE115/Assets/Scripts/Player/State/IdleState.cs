@@ -18,6 +18,10 @@ public class IdleState : BaseState
         {
             stateManager.ChangeState(stateManager.RunState);
         }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            stateManager.ChangeState(stateManager.AttackState);
+        }
     }
     public override void FixedUpdateState() { }
 }
