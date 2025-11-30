@@ -119,10 +119,10 @@ TextureImporter:
       name: sword_effect_strip_4(new)_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 14
-        height: 10
+        x: 0
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: sword_effect_strip_4(new)_1
       rect:
         serializedVersion: 2
-        x: 15
-        y: 1
+        x: 16
+        y: 32
         width: 16
-        height: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,12 +163,12 @@ TextureImporter:
       name: sword_effect_strip_4(new)_2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 1
-        width: 4
-        height: 10
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -186,11 +186,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 1
-        width: 2
-        height: 10
-      alignment: 9
-      pivot: {x: 0.5935669, y: 0.42514515}
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -199,6 +199,182 @@ TextureImporter:
       bones: []
       spriteID: 7e68f96385dfa264db8f83dffaa0d92c
       internalID: 497392989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_effect_strip_4(new)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1850117e1b342e4a93822a92bd83e86
+      internalID: -883003355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_effect_strip_4(new)_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e670afc02a94fa4bbbd8d3af6836213
+      internalID: -1206410758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_effect_strip_4(new)_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a693c24b248ae074f9bc89eaac9b7ff2
+      internalID: 1947683705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_effect_strip_4(new)_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 629ca7efe740ba9418d991e423a2008d
+      internalID: 1611551023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_effect_strip_4(new)_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c6721c46f593ff4e93d2c0ff18b33c0
+      internalID: 2112656615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_effect_strip_4(new)_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b205bee59d8ff74db7d23203b726ce6
+      internalID: 1596965644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_effect_strip_4(new)_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9e15d321063ff428dc1ac96204587e
+      internalID: -230659339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_effect_strip_4(new)_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f426fd851c68f459ec93f2af0ce81b
+      internalID: -1042791652
       vertices: []
       indices: 
       edges: []
@@ -215,12 +391,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       sword_effect_strip_4(new)_0: -1900035956748308934
       sword_effect_strip_4(new)_1: -2674865830326373707
+      sword_effect_strip_4(new)_10: -230659339
+      sword_effect_strip_4(new)_11: -1042791652
       sword_effect_strip_4(new)_2: -2098304803
       sword_effect_strip_4(new)_3: 497392989
+      sword_effect_strip_4(new)_4: -883003355
+      sword_effect_strip_4(new)_5: -1206410758
+      sword_effect_strip_4(new)_6: 1947683705
+      sword_effect_strip_4(new)_7: 1611551023
+      sword_effect_strip_4(new)_8: 2112656615
+      sword_effect_strip_4(new)_9: 1596965644
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

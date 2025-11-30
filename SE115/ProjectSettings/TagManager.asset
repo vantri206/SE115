@@ -12,14 +12,14 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
+  - 
   - Enemy
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Hurtbox
+  - Hitbox
+  - Weapon
+  - Platformer
+  - Object
   - 
   - 
   - 
@@ -39,8 +39,38 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 363983287
+    locked: 0
+  - name: Foreground
+    uniqueID: 4238948947
+    locked: 0
+  - name: Platformer
+    uniqueID: 2241992437
+    locked: 0
+  - name: Object
+    uniqueID: 2355110103
+    locked: 0
+  - name: Items
+    uniqueID: 1036149379
+    locked: 0
+  - name: Enemies
+    uniqueID: 2808632227
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 3834105683
+    locked: 0
+  - name: Weapon
+    uniqueID: 3817194065
+    locked: 0
+  - name: Effect
+    uniqueID: 1995136533
+    locked: 0
+  - name: UI
+    uniqueID: 2759418527
     locked: 0
   m_RenderingLayers:
   - Default
