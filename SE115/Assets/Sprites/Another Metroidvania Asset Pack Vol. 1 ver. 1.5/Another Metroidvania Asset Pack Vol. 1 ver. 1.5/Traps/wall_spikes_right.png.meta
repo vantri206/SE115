@@ -54,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,16 +107,20 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 9
+        y: 8
         width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 8
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      physicsShape:
+      - - {x: 4, y: 4}
+        - {x: -4, y: 4}
+        - {x: -4, y: -4}
+        - {x: 4, y: -4}
+      tessellationDetail: 0
       bones: []
       spriteID: 766bc94011fcf3060800000000000000
       internalID: 6935489623172626023
@@ -131,17 +135,17 @@ TextureImporter:
         x: 0
         y: 0
         width: 8
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 8
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 71809cc3fc1b353a0800000000000000
-      internalID: -6677798318824159209
+      spriteID: d28a4a7760474a14cb250e671a42d47d
+      internalID: 1679566994
       vertices: []
       indices: 
       edges: []
@@ -150,7 +154,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d3a0cb09147a6c9459b4c1ad3d8304cb
     internalID: 0
     vertices: []
     indices: 
@@ -158,10 +162,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":1.0,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":5,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       wall_spikes_right_0: 6935489623172626023
-      wall_spikes_right_1: -6677798318824159209
+      wall_spikes_right_1: 1679566994
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

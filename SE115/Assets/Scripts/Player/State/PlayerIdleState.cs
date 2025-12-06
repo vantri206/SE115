@@ -22,7 +22,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void UpdateState()
     {
         base.UpdateState();
-        if (player.input.isAttackPressed)
+        if (player.input.isAttackPressed && player.CanAttack())
         {
             stateManager.ChangeState(stateManager.AttackState);
         }

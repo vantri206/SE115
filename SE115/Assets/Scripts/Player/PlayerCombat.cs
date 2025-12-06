@@ -36,6 +36,10 @@ public class PlayerCombat : MonoBehaviour
         player.isAttacking = true;
         comboTimer = float.NegativeInfinity;
 
+        if (!player.CheckOnGround())
+        {
+            player.onAirAttackLeft -= 1;
+        }
         EnableSword();
     }
     public void FinishAttack()

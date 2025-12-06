@@ -28,6 +28,10 @@ public class PlayerFallingState : PlayerBaseState
         {
             stateManager.ChangeState(stateManager.DashState);
         }
+        else if (player.input.isAttackPressed && player.CanAttack())
+        {
+            stateManager.ChangeState(stateManager.AttackState);
+        }
         else if (player.CheckOnGround())
         {
             stateManager.ChangeState(stateManager.IdleState);

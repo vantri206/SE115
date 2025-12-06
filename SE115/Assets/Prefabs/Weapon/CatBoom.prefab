@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8575984194745639481}
-  - component: {fileID: 7337937456755924922}
   - component: {fileID: 8217656110763258531}
+  - component: {fileID: 5612124047514746298}
   m_Layer: 11
   m_Name: BoomHitbox
   m_TagString: Untagged
@@ -27,14 +27,27 @@ Transform:
   m_GameObject: {fileID: 4675967655380064516}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8239195479431117584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &7337937456755924922
-PolygonCollider2D:
+--- !u!114 &8217656110763258531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675967655380064516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ebc874e6bf0da409032edbd39343d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hitbox
+  owner: {fileID: 7876318621861224840}
+--- !u!58 &5612124047514746298
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -63,62 +76,12 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 7.875, y: 3.5625}
-    newSize: {x: 7.875, y: 3.5625}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.8188674, y: 0.9424373}
-      - {x: 1.7366955, y: 1.739053}
-      - {x: 1.752189, y: 1.8089492}
-      - {x: 1.6293783, y: 1.8133277}
-      - {x: 0.5730295, y: 1.3202696}
-      - {x: 0.2457797, y: 1.5168808}
-      - {x: -0.00016498193, y: 1.5822097}
-      - {x: 0.008091599, y: 1.9272803}
-      - {x: -0.03833103, y: 2.2856696}
-      - {x: -0.0954013, y: 2.5625}
-      - {x: -0.31316862, y: 2.5648723}
-      - {x: -0.44212362, y: 1.5540506}
-      - {x: -0.6820638, y: 1.1979734}
-      - {x: -0.8267342, y: 1.2338427}
-      - {x: -2.448021, y: 2.0568635}
-      - {x: -2.4620488, y: 1.937959}
-      - {x: -1.0869849, y: 0.7780384}
-      - {x: -0.9401689, y: 0.5103873}
-      - {x: -2.5994544, y: 0.3451411}
-      - {x: -3.7947886, y: 0.16371489}
-      - {x: -3.9375, y: 0}
-      - {x: 2.7048047, y: -0.010637283}
-      - {x: 2.69152, y: 0.06117694}
-      - {x: 2.6799595, y: 0.061651476}
-      - {x: 1.0045207, y: 0.37653577}
-      - {x: 0.9318385, y: 0.81191933}
-  m_UseDelaunayMesh: 0
---- !u!114 &8217656110763258531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4675967655380064516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ebc874e6bf0da409032edbd39343d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hitbox
-  owner: {fileID: 7876318621861224840}
+  m_Radius: 1.1
 --- !u!1 &4814209511116948174
 GameObject:
   m_ObjectHideFlags: 0

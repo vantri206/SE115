@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -55,6 +56,7 @@ public class EnemyController : MonoBehaviour
     public Transform playerTarget = null;
     public Transform attackTarget = null;
 
+    public Action onFinishDead;
     void Awake()
     {
         #region State SO Instantiate
@@ -98,8 +100,6 @@ public class EnemyController : MonoBehaviour
         CheckAggroRange();
 
         stateManager.Update();
-
-        Debug.Log(stateManager.currentState.GetType().ToString());
     }
     void FixedUpdate()
     {
@@ -138,11 +138,12 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Dead");
         movement.StopMove();
         FinishAttack();
-        DisablePhysic();
+        DisablePhysicAndCollider();
     }
     public void Dead()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        onFinishDead?.Invoke();
     }
     private void OnDestroy()
     {
@@ -183,6 +184,25 @@ public class EnemyController : MonoBehaviour
         }
     }
     #endregion
+    public void ResetEnemyState()
+    {
+        health.currentHealth = health.maxHealth;
+
+        isAttacking = false;
+        isHurtStun = false;
+        isAggroed = false;
+        playerTarget = null;
+        attackTarget = null;
+
+        stateManager.ChangeState(stateManager.EnemyIdleState);
+        this.CheckFacingDirection(startDirection);
+
+        this.enabled = false;
+    }
+    public void ActivateEnemyAI()
+    {
+        this.enabled = true;
+    }
     public void CheckFacingDirection(Vector2 facingDirection)
     {
         if (this.facingDirection.x != facingDirection.x)
@@ -191,11 +211,17 @@ public class EnemyController : MonoBehaviour
             this.transform.localScale = new Vector3(this.facingDirection.x * Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
     }
-    private void DisablePhysic()
+    public void DisablePhysicAndCollider()
     {
         myRigidbody.bodyType = RigidbodyType2D.Kinematic;
         myRigidbody.linearVelocity = Vector2.zero;
         myCollider.enabled = false;
+    }
+    public void EnablePhysicAndCollider()
+    {
+        myRigidbody.bodyType = RigidbodyType2D.Dynamic;
+        myRigidbody.linearVelocity = Vector2.zero;
+        myCollider.enabled = true;
     }
     public void AE_Attack() { Attack(); }
     public void AE_FinishAttack() { FinishAttack(); }

@@ -16,6 +16,7 @@ public class PlayerAttackState : PlayerBaseState
         player.animator.SetBool("isAttack", true);
         player.animator.SetInteger("comboCount", player.combat.comboCount);
 
+        player.movement.StopMoving();
         player.combat.SwordAttack();
     }
     public override void ExitState(StateManager stateManager)

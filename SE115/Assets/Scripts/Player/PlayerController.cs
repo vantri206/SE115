@@ -15,8 +15,9 @@ public class PlayerController : MonoBehaviour
     public PlayerEffect effect;
 
     [Space(5)]
-    [Header("Player SO")]
+    [Header("Player Data")]
     public PlayerData data;
+    [SerializeField] private int onAirAttackCount = 1;
 
     [Space(5)]
 
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public float lastPressedDashTime { get; private set; }
     public float dashTimer { get; private set; }
     public int dashLeft { get; private set; }
+
+    public int onAirAttackLeft { get; set; }
 
     [Header("Parameters")]
     public bool isJumpCut = false;
@@ -67,16 +70,36 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        //Timer
         lastOnGroundTime -= Time.deltaTime;
         lastPressedJumpTime -= Time.deltaTime;
         lastPressedDashTime -= Time.deltaTime;
 
         dashTimer += Time.deltaTime;
 
-        //Fill dash
-        if (!isDashing && dashLeft < data.dashCountAmount && lastOnGroundTime > 0)
+        //Check 
+        if (CheckOnGround())
         {
-            dashLeft = data.dashCountAmount;
+            lastOnGroundTime = data.coyoteTime;
+        }
+        if (CanJump())
+        {
+            isJumpCut = false;
+            input.ResetJumpPressUp();
+        }
+
+        if (CheckOnGround())
+        {
+            //Fill dash
+            if (!isDashing && dashLeft < data.dashCountAmount)
+            {
+                dashLeft = data.dashCountAmount;
+            }
+            //Fill attack on air
+            if (!isAttacking && onAirAttackLeft < onAirAttackCount)
+            {
+                onAirAttackLeft = onAirAttackCount;
+            }
         }
 
         //Handle input
@@ -97,20 +120,6 @@ public class PlayerController : MonoBehaviour
             input.ResetDashPressed();
         }
 
-        #region Checks
-
-        //Check on ground
-        if (CheckOnGround())
-        {
-            lastOnGroundTime = data.coyoteTime;
-        }
-        if (CanJump())
-        {
-            isJumpCut = false;
-            input.ResetJumpPressUp();
-        }
-        #endregion
-
         animator.SetBool("isJumping", isJumping);
 
         stateManager.Update();
@@ -119,35 +128,17 @@ public class PlayerController : MonoBehaviour
     {
         stateManager.FixedUpdate();
     }
-    public bool CheckOnGround()
+
+    #region Attack
+    public bool CanAttack()
     {
-        Bounds bounds = myCollider.bounds;
-
-        float checkDistance = 0.1f;
-        float offsetX = 0.01f;
-
-        Vector2 left = new Vector2(bounds.min.x + offsetX, bounds.min.y);
-        Vector2 center = new Vector2(bounds.center.x, bounds.min.y);
-        Vector2 right = new Vector2(bounds.max.x - offsetX, bounds.min.y);
-
-        RaycastHit2D hitLeft = Physics2D.Raycast(left, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
-        RaycastHit2D hitCenter = Physics2D.Raycast(center, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
-        RaycastHit2D hitRight = Physics2D.Raycast(right, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
-
-        return hitLeft || hitCenter || hitRight;
+        if (CheckOnGround()) 
+            return true;
+        else 
+            return onAirAttackLeft > 0;
     }
-    public void CheckFacingDirection(Vector2 facingDirection)
-    {
-        if (this.facingDirection.x != facingDirection.x)
-        {
-            this.facingDirection = facingDirection;
-            this.transform.localScale = new Vector3(this.facingDirection.x * Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
-        }
-    }
-    public void SetGravityScale(float scale)
-    {
-        myRigidbody.gravityScale = scale;
-    }
+    #endregion
+
     #region Jump 
     public void OnStartJump()
     {
@@ -210,7 +201,39 @@ public class PlayerController : MonoBehaviour
         return (dashLeft > 0 && dashTimer >= data.dashCooldownTime);
     }
     #endregion
+
     #region Helper Function
+    public bool CheckOnGround()
+    {
+        Bounds bounds = myCollider.bounds;
+
+        float checkDistance = 0.1f;
+        float offsetX = 0.00f;
+
+        Vector2 left = new Vector2(bounds.min.x + offsetX, bounds.min.y);
+        Vector2 center = new Vector2(bounds.center.x, bounds.min.y);
+        Vector2 right = new Vector2(bounds.max.x - offsetX, bounds.min.y);
+
+        RaycastHit2D hitLeft = Physics2D.Raycast(left, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
+        RaycastHit2D hitCenter = Physics2D.Raycast(center, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
+        RaycastHit2D hitRight = Physics2D.Raycast(right, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
+
+        bool isHitGround = hitLeft || hitCenter || hitRight;
+
+        return isHitGround && myRigidbody.linearVelocity.y <= 0.01f;
+    }
+    public void CheckFacingDirection(Vector2 facingDirection)
+    {
+        if (this.facingDirection.x != facingDirection.x)
+        {
+            this.facingDirection = facingDirection;
+            this.transform.localScale = new Vector3(this.facingDirection.x * Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
+        }
+    }
+    public void SetGravityScale(float scale)
+    {
+        myRigidbody.gravityScale = scale;
+    }
     private void DisablePhysic()
     {
         myRigidbody.bodyType = RigidbodyType2D.Kinematic;

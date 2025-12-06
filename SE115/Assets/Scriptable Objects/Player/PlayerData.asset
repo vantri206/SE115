@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167785dbd232f07499b6da1d8d71df2d, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  gravityStrength: -59.259262
-  gravityScale: 1.9753088
+  gravityStrength: -39.506176
+  gravityScale: 1.3168725
   fallGravityScaleMulti: 2
   maxFallSpeed: 18
   runMaxSpeed: 8
@@ -23,15 +23,15 @@ MonoBehaviour:
   runDeccelAmount: 50
   accelInAir: 1
   deccelInAir: 1
-  jumpHeight: 6
+  jumpHeight: 4
   jumpTimeToApex: 0.45
-  jumpForce: 26.666668
-  jumpCutGravityMulti: 2
-  jumpHangTimeThreshold: 0
-  coyoteTime: 0.2
+  jumpForce: 17.777779
+  jumpCutGravityMulti: 1.5
+  jumpHangTimeThreshold: 0.05
+  coyoteTime: 0.3
   jumpInputBufferTime: 0.05
   dashCountAmount: 1
-  dashSpeed: 36
+  dashSpeed: 24
   dashTime: 0.2
   dashEndTime: 0.05
   dashCooldownTime: 0.5

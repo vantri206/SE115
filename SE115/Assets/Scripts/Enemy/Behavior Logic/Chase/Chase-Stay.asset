@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4928047101892fb4b8c3779fd4e406ed, type: 3}
-  m_Name: Attack-Normal
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackNormal
+  m_Script: {fileID: 11500000, guid: 2b39df9d44ffc50438e41011328f57cf, type: 3}
+  m_Name: Chase-Stay
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyChaseStay
   canInterruptByHit: 1

@@ -3,13 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Attack-Normal", menuName = "Enemy Logic Behavior/Attack Logic/AttackNormal")]
 public class EnemyAttackNormal : EnemyAttackSOBase
 {
+    [SerializeField] private bool attackFacingPlayer = true;
     public override void HandleEnterState()
     {
         base.HandleEnterState();
 
         enemy.movement.StopMove();
 
-        if (enemy.attackTarget != null)
+        if (enemy.attackTarget != null && attackFacingPlayer)
         {
             Vector2 dir = enemy.attackTarget.position.x - transform.position.x > 0 ? Vector2.right : Vector2.left;
             enemy.CheckFacingDirection(dir);

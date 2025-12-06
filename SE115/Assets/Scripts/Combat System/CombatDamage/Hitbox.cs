@@ -9,7 +9,15 @@ public class Hitbox : MonoBehaviour
             owner = GetComponent<Damage>();
         else owner = transform.parent.GetComponent<Damage>();
     }
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        HandleCollision(collider);
+    }
     private void OnTriggerEnter2D(Collider2D collider)
+    {
+        HandleCollision(collider);
+    }
+    private void HandleCollision(Collider2D collider)
     {
         if (collider.gameObject.layer != LayerMask.NameToLayer("Hurtbox")) return;
 

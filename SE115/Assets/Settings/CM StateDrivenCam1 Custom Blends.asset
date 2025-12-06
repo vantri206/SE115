@@ -27,8 +27,8 @@ MonoBehaviour:
   - From: CM Air VirtualCam
     To: CM Ground VirtualCam
     Blend:
-      Style: 1
-      Time: 1.5
+      Style: 3
+      Time: 1
       CustomCurve:
         serializedVersion: 2
         m_Curve: []

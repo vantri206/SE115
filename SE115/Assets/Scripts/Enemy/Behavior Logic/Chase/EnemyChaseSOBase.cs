@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class EnemyChaseSOBase : ScriptableObject
 {
     protected EnemyController enemy;

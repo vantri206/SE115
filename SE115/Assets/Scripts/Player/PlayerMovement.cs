@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
         if (player.isAttacking)
         {
             player.SetGravityScale(0.0f);
-            player.myRigidbody.linearVelocity = Vector2.zero;
             return;
         }
         else if(player.isDashing)
@@ -33,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
             player.SetGravityScale(0.0f);
             return;
         }
+
         if (player.isJumpCut)
         {
             player.SetGravityScale(data.gravityScale * data.jumpCutGravityMulti);

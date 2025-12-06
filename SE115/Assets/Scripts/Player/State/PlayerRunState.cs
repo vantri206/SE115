@@ -23,7 +23,7 @@ public class PlayerRunState : PlayerBaseState
     {
         base.UpdateState();
 
-        if (player.input.isAttackPressed)
+        if (player.input.isAttackPressed && player.CanAttack())
         {
             stateManager.ChangeState(stateManager.AttackState);
         }
