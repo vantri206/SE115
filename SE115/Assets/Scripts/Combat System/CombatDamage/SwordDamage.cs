@@ -21,6 +21,9 @@ public class SwordDamage : Damage
             Vector2 sourcePos = ownerTransform.position;
             targetHealth.TakeDamage(damage, sourcePos);
             hitList.Add(targetHealth);
+
+            if (isDestroyAfterDamage)
+                Destroy(gameObject);
         }
     }
     private void OnEnable()
