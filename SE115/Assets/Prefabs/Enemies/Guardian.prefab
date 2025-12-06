@@ -206,10 +206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5410b4394a8059043a8021ea41d6a266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  myRigidbody: {fileID: 3097163513372884751}
   currentHealth: 10
   maxHealth: 10
   damageTeam: 1
-  myRigidbody: {fileID: 3097163513372884751}
 --- !u!114 &3391173668920472338
 MonoBehaviour:
   m_ObjectHideFlags: 0

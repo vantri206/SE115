@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public int onAirAttackLeft { get; set; }
 
-    [Header("Parameters")]
+    [Header("State Parameters")]
     public bool isJumpCut = false;
     public bool isJumping = false;
     public bool isAttacking = false;
@@ -168,6 +168,10 @@ public class PlayerController : MonoBehaviour
         DisablePhysic();
         isDead = true;
     }
+    public void FinishHurt()
+    {
+        isHurting = false;
+    }
     #endregion
 
     #region Dash
@@ -185,6 +189,8 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("isDashing", true);
 
+        health.SetInvincible(true);
+
         effect.SpawnDashEffect();
     }
     public void FinishDash()
@@ -193,6 +199,8 @@ public class PlayerController : MonoBehaviour
         dashTimer = 0;
 
         animator.SetBool("isDashing", false);
+
+        health.SetInvincible(false);
 
         effect.FinishDashEffect();
     }

@@ -23,6 +23,8 @@ public class PlayerFallingState : PlayerBaseState
     public override void UpdateState()
     {
         base.UpdateState();
+        if (stateManager.currentState != this)
+            return;
 
         if (player.lastPressedDashTime > 0 && player.CanDash())
         {

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHurtNormal
   knockbackForce: 0
   knockbackDir: {x: 1, y: 1.5}
+  hurtEffect: {fileID: 5371214502107831917, guid: a2c09b48c83643d46af588489a06aa77, type: 3}
+  hurtEffectOffset: {x: 1, y: 1}

@@ -30,6 +30,8 @@ public class PlayerAttackState : PlayerBaseState
     public override void UpdateState()
     {
         base.UpdateState();
+        if (stateManager.currentState != this)
+            return;
 
         if (player.isAttacking == false)
             stateManager.ChangeState(stateManager.IdleState);

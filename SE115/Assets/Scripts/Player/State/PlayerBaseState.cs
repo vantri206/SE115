@@ -22,7 +22,16 @@ public abstract class PlayerBaseState : BaseState
     }
     public override void UpdateState()
     {
-
+        if (player.isHurting)
+        {
+            stateManager.ChangeState(stateManager.HurtState);
+            return;
+        }
+        else if(player.isDead)
+        {
+            stateManager.ChangeState(stateManager.DeadState);
+            return;
+        }
     }
     public override void FixedUpdateState()
     {

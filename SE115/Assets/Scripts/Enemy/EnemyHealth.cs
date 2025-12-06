@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
+    public Rigidbody2D myRigidbody;
+
     [Header("Interface setting")]
     public float currentHealth;
     public float maxHealth;
@@ -12,7 +14,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [Header("Team Setting")]
     public DamageTeam damageTeam = DamageTeam.Enemy;
 
-    public Rigidbody2D myRigidbody;
+    private bool isInvincible;
 
     public System.Action<Vector2> onTakeDamage;
     public System.Action onDead;
@@ -26,8 +28,13 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     }
     public void TakeDamage(float damage, Vector2 sourcePos)
     {
+        if (isInvincible) return;
         currentHealth -= damage;
         onTakeDamage.Invoke(sourcePos);
         if (isDead) onDead.Invoke();
+    }
+    public void SetInvincible(bool invincible)
+    {
+        isInvincible = invincible;
     }
 }
