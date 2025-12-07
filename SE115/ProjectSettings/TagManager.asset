@@ -12,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Item
   - Enemy
   - Player
   - Hurtbox
@@ -21,9 +21,9 @@ TagManager:
   - Platformer
   - Object
   - AreaBounds
-  - 
-  - 
-  - 
+  - Obstacle
+  - CollectTrigger
+  - Collector
   - 
   - 
   - 
