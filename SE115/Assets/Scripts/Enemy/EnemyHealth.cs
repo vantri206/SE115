@@ -1,4 +1,4 @@
-using System.Linq;
+using System;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
@@ -16,8 +16,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private bool isInvincible;
 
-    public System.Action<Vector2> onTakeDamage;
-    public System.Action onDead;
+    public Action<Vector2> onTakeDamage;
+    public Action onDead;
+    public Action onHealthChanged;
 
     public void Start()
     {
