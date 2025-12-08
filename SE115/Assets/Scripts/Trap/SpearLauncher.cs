@@ -33,10 +33,10 @@ public class SpearLauncher : MonoBehaviour
     {
         GameObject spear = Instantiate(spearTrapPrefab, spearShooter.position, 
                             spearShooter.localRotation, ProjectilesPool.Instance);
-        SpearTrap spearTrap = spear.GetComponent<SpearTrap>();
-        if(spearTrap)
+        LinearProjectiles spearProjectiles = spear.GetComponent<LinearProjectiles>();
+        if(spearProjectiles)
         {
-            spearTrap.SetDirection(this.shotDirection);
+            spearProjectiles.SetDirection(this.shotDirection);
         }
         shotTimer = 0.0f;
     }

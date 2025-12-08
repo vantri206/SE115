@@ -52,10 +52,6 @@ public class PlayerMovement : MonoBehaviour
             player.SetGravityScale(data.gravityScale);
         }
     }
-    private void FixedUpdate()
-    {
-  
-    }
     public void HorizonMoving(float moveLerf)
     {
         float maxSpeed = input.moveInput.x * data.runMaxSpeed;

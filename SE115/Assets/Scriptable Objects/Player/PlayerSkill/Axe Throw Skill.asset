@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed00fac82950be4ea88faa1c7ab7833, type: 3}
+  m_Name: Axe Throw Skill
+  m_EditorClassIdentifier: Assembly-CSharp::AxeThrowSkill
+  player: {fileID: 0}
+  skillName: Axe Throw
+  skillCastTime: 1
+  cooldownTime: 2
+  icon: {fileID: 7699428588861531609, guid: 302f4217bb8d3c843b6c8cf0c2c5764e, type: 3}
+  aniBoolParameterName: isThrowing
+  axePrefab: {fileID: 6217709352234151299, guid: a4a3a92905bf6d946b5ee34cc7c16a13, type: 3}
+  throwForce: {x: 1, y: 0}

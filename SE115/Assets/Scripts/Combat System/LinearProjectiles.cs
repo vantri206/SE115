@@ -1,19 +1,16 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class SpearTrap : MonoBehaviour
+public class LinearProjectiles : MonoBehaviour
 {
     [Header("Refrences")]
-    public Animator animator;
     public Rigidbody2D myRigidbody;
     [Header("Setting")]
     [SerializeField] private float flyingSpeed = 6.0f;
-    private Vector2 flyingDirection = Vector2.left;
+    [SerializeField] private Vector2 flyingDirection = Vector2.left;
 
     private void Awake()
     {
-        if (animator == null)
-            animator = GetComponent<Animator>();
         if (myRigidbody == null)
             myRigidbody = GetComponent<Rigidbody2D>();
     }
@@ -24,5 +21,9 @@ public class SpearTrap : MonoBehaviour
     public void SetDirection(Vector2 direction)
     {
         flyingDirection = direction;
+    }
+    public void SetDirectionX(Vector2 direction)
+    {
+        flyingDirection.x = direction.x;
     }
 }

@@ -24,6 +24,18 @@ public class PlayerIdleState : PlayerBaseState
         base.UpdateState();
         if (stateManager.currentState != this)
             return;
+
+        int skillIndex = player.input.CheckSkillPressed();
+        if (skillIndex != -1)
+        {
+            if(player.combat.CanUseSkill(skillIndex))
+            {
+                player.combat.SetCurrentSkill(skillIndex);
+                stateManager.ChangeState(stateManager.SkillState);
+                return;
+            }
+        }
+
         if (player.input.isAttackPressed && player.CanAttack())
         {
             stateManager.ChangeState(stateManager.AttackState);

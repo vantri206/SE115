@@ -13,6 +13,7 @@ public class PlayerStateManager : StateManager
     public PlayerDashState DashState;
     public PlayerHurtState HurtState;
     public PlayerDeadState DeadState;
+    public PlayerSkillState SkillState;
 
     public PlayerStateManager(PlayerController player)
     {
@@ -26,6 +27,7 @@ public class PlayerStateManager : StateManager
         DashState = new PlayerDashState(this);
         HurtState = new PlayerHurtState(this);
         DeadState = new PlayerDeadState(this);
+        SkillState = new PlayerSkillState(this);
     }
     public void Initialize()
     {

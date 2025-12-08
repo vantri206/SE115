@@ -26,6 +26,17 @@ public class PlayerFallingState : PlayerBaseState
         if (stateManager.currentState != this)
             return;
 
+        int skillIndex = player.input.CheckSkillPressed();
+        if (skillIndex != -1)
+        {
+            if (player.combat.CanUseSkill(skillIndex))
+            {
+                player.combat.SetCurrentSkill(skillIndex);
+                stateManager.ChangeState(stateManager.SkillState);
+                return;
+            }
+        }
+
         if (player.lastPressedDashTime > 0 && player.CanDash())
         {
             stateManager.ChangeState(stateManager.DashState);
