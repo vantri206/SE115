@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1506293558603002523}
   - component: {fileID: 7724431678193523987}
   - component: {fileID: -8767582678834047688}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpearTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,9 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafc063bac0527c47bce063a65813873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  animator: {fileID: 0}
   myRigidbody: {fileID: 0}
   flyingSpeed: 6
+  flyingDirection: {x: -1, y: 0}
 --- !u!50 &1974512548943700451
 Rigidbody2D:
   serializedVersion: 5
@@ -172,7 +172,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.061263815, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -182,7 +182,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.8774724, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &7724431678193523987
 MonoBehaviour:
@@ -211,8 +211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea056f407ca25641ae6bd9933ca0453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LifetimeDestroy
+  isDestroyed: 1
   lifetime: 5
-  destroyAfterLifetime: 1
+  destroyAfterTriggerObject:
+    serializedVersion: 2
+    m_Bits: 266240
 --- !u!1 &9034036104506098056
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +283,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.12411992, y: 0}
+  m_Offset: {x: 0.010344371, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -290,7 +293,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7517601, y: 0.5}
+  m_Size: {x: 0.74300814, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &8399242161423899841
 MonoBehaviour:

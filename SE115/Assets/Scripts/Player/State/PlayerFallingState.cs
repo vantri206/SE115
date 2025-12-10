@@ -29,9 +29,9 @@ public class PlayerFallingState : PlayerBaseState
         int skillIndex = player.input.CheckSkillPressed();
         if (skillIndex != -1)
         {
-            if (player.combat.CanUseSkill(skillIndex))
+            if (player.skill.CanUseSkill(skillIndex))
             {
-                player.combat.SetCurrentSkill(skillIndex);
+                player.skill.SetCurrentSkill(skillIndex);
                 stateManager.ChangeState(stateManager.SkillState);
                 return;
             }
@@ -44,6 +44,10 @@ public class PlayerFallingState : PlayerBaseState
         else if (player.input.isAttackPressed && player.CanAttack())
         {
             stateManager.ChangeState(stateManager.AttackState);
+        }
+        else if (player.CanWallSliding())
+        {
+            stateManager.ChangeState(stateManager.SlidingState);
         }
         else if (player.CheckOnGround())
         {

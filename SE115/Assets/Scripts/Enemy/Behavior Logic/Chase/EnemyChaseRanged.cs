@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Chase-Ranged", menuName = "Enemy Logic Behavior/Chase Logic/ChaseRanged")]
 public class EnemyChaseRanged : EnemyChaseSOBase
 {
-    private float thresholds = 1.0f;
+    private float thresholds = 0.5f;
     [SerializeField] private float startRetreatDistance = 6.0f;
     [SerializeField] private float finishRetreatDistance = 8.0f;
     [SerializeField] private float chaseDistance = 10.0f;
@@ -41,17 +41,39 @@ public class EnemyChaseRanged : EnemyChaseSOBase
         float currentRetreatDistance = isRetreating? finishRetreatDistance : startRetreatDistance;
         if (distance < currentRetreatDistance)
         {
-            if(distanceToRetreat > thresholds)
-                enemy.movement.RunToTarget(targetRetreatPos, chaseMoveSpeed);
+            if (distanceToRetreat > thresholds)
+            {
+                if (Mathf.Sign(enemy.facingDirection.x) != dir && !enemy.movement.canMoveContinuous)
+                {
+                    enemy.movement.StopMove();
+                }
+                else
+                {
+                    enemy.movement.RunToTarget(targetRetreatPos, chaseMoveSpeed);
+                }
+            }
             else
+            {
                 enemy.movement.StopMove();
+            }
         }
         else if(distance > chaseDistance)
         {
             if (distance > thresholds)
-                enemy.movement.RunToTarget(targetPos, chaseMoveSpeed);
+            {
+                if (Mathf.Sign(enemy.facingDirection.x) == dir && !enemy.movement.canMoveContinuous)
+                {
+                    enemy.movement.StopMove();
+                }
+                else
+                {
+                    enemy.movement.RunToTarget(targetPos, chaseMoveSpeed);
+                }
+            }
             else
+            {
                 enemy.movement.StopMove();
+            }
         }
         else
         {

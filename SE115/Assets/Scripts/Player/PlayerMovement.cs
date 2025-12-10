@@ -33,14 +33,14 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (player.isJumpCut)
-        {
-            player.SetGravityScale(data.gravityScale * data.jumpCutGravityMulti);
-            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, Mathf.Max(rigidbody.linearVelocity.y, -data.maxFallSpeed));
-        }
-        else if ((player.isJumping || player.IsFalling()) && Mathf.Abs(rigidbody.linearVelocity.y) < data.jumpHangTimeThreshold)
+        if ((player.isJumping || player.IsFalling()) && Mathf.Abs(rigidbody.linearVelocity.y) < data.jumpHangTimeThreshold)
         {
             player.SetGravityScale(data.gravityScale);
+        }
+        else if(player.isSliding)
+        {
+            player.SetGravityScale(data.slideGravityScaleMulti);
+            rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, Mathf.Max(rigidbody.linearVelocity.y, -data.maxSlideSpeed));
         }
         else if (rigidbody.linearVelocity.y < 0)
         {
@@ -69,14 +69,23 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump()
     {
-        player.OnStartJump();
-
         float force = data.jumpForce;
 
-        if (rigidbody.linearVelocity.y < 0)
-            force -= rigidbody.linearVelocity.y;
+        rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0.0f);
 
         rigidbody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+    }
+    public void WallJump()
+    {
+        Vector2 direction = new Vector2( (-1) * player.facingDirection.x, 1.0f);
+
+        Vector2 force = new Vector2(0.25f * data.jumpForce, data.jumpForce);
+
+        rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0.0f);
+
+        rigidbody.AddForce(direction * force, ForceMode2D.Impulse);
+
+        player.CheckFacingDirection(direction);
     }
     public void Dash()
     {

@@ -13,11 +13,12 @@ public class PlayerController : MonoBehaviour
     public PlayerCombat combat;
     public PlayerHealth health;
     public PlayerEffect effect;
+    public PlayerSkillManager skill;
 
     [Space(5)]
     [Header("Player Data")]
     public PlayerData data;
-    [SerializeField] private int onAirAttackCount = 1;
+    [SerializeField] private int onAirAttackCount = 2;
 
     [Space(5)]
 
@@ -34,12 +35,15 @@ public class PlayerController : MonoBehaviour
     public int onAirAttackLeft { get; set; }
 
     [Header("State Parameters")]
-    public bool isJumpCut = false;
     public bool isJumping = false;
     public bool isAttacking = false;
     public bool isDead = false;
     public bool isHurting = false;
     public bool isDashing = false;
+    public bool isSliding = false;
+
+    [SerializeField] private LayerMask platformerLayer;
+    [SerializeField] private LayerMask wallLayer;
 
     public Vector2 facingDirection;
 
@@ -53,6 +57,7 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<PlayerInput>();
         health = GetComponent<PlayerHealth>();
         effect = GetComponent<PlayerEffect>();
+        skill = GetComponent<PlayerSkillManager>();
         stateManager = new PlayerStateManager(this);
 
 
@@ -82,12 +87,6 @@ public class PlayerController : MonoBehaviour
         {
             lastOnGroundTime = data.coyoteTime;
         }
-        if (CanJump())
-        {
-            isJumpCut = false;
-            input.ResetJumpPressUp();
-        }
-
         if (CheckOnGround())
         {
             //Fill dash
@@ -108,19 +107,11 @@ public class PlayerController : MonoBehaviour
             lastPressedJumpTime = data.jumpInputBufferTime;
             input.ResetJumpPressed();
         }
-        if (input.isJumpPressUp)
-        {
-            if (isJumping && !IsFalling())
-                isJumpCut = true;
-            input.ResetJumpPressUp();
-        }
         if(input.isDashPressed)
         {
             lastPressedDashTime = data.dashInputBufferTime;
             input.ResetDashPressed();
         }
-
-        animator.SetBool("isJumping", isJumping);
 
         stateManager.Update();
     }
@@ -146,7 +137,12 @@ public class PlayerController : MonoBehaviour
         lastOnGroundTime = 0;
 
         isJumping = true;
-        isJumpCut = false;
+        animator.SetBool("isJumping", true);
+    }
+    public void OnEndJump()
+    {
+        isJumping = false;
+        animator.SetBool("isJumping", false);
     }
     public bool CanJump()
     {
@@ -185,7 +181,6 @@ public class PlayerController : MonoBehaviour
 
         isDashing = true;
         isJumping = false;
-        isJumpCut = false;
 
         animator.SetBool("isDashing", true);
 
@@ -210,25 +205,59 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Sliding
+    public void OnStartSliding()
+    {
+        isSliding = true;
+        animator.SetBool("isSliding", true);
+    }
+    public void OnEndSliding()
+    {
+        isSliding = false;
+        animator.SetBool("isSliding", false);
+    }
+    public bool CanWallSliding()
+    {
+        if (CheckWall() && IsFalling()) 
+            return true;
+        return 
+            false;
+    }
+    #endregion
     #region Helper Function
     public bool CheckOnGround()
     {
+        if (myRigidbody.linearVelocity.y > 0.2f)
+        {
+            return false;
+        }
+
         Bounds bounds = myCollider.bounds;
 
         float checkDistance = 0.1f;
-        float offsetX = 0.00f;
+        float offsetX = 0.02f;
 
         Vector2 left = new Vector2(bounds.min.x + offsetX, bounds.min.y);
         Vector2 center = new Vector2(bounds.center.x, bounds.min.y);
         Vector2 right = new Vector2(bounds.max.x - offsetX, bounds.min.y);
 
-        RaycastHit2D hitLeft = Physics2D.Raycast(left, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
-        RaycastHit2D hitCenter = Physics2D.Raycast(center, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
-        RaycastHit2D hitRight = Physics2D.Raycast(right, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
+        RaycastHit2D hitLeft = Physics2D.Raycast(left, Vector2.down, checkDistance, platformerLayer);
+        RaycastHit2D hitCenter = Physics2D.Raycast(center, Vector2.down, checkDistance, platformerLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(right, Vector2.down, checkDistance, platformerLayer);
 
         bool isHitGround = hitLeft || hitCenter || hitRight;
 
-        return isHitGround && myRigidbody.linearVelocity.y <= 0.01f;
+        return isHitGround;
+    }
+    public bool CheckWall()
+    {
+        Bounds bounds = myCollider.bounds;
+
+        float checkDistance = 0.5f;
+
+        RaycastHit2D hit = Physics2D.Raycast(bounds.center, facingDirection, checkDistance, wallLayer);
+
+        return hit;
     }
     public void CheckFacingDirection(Vector2 facingDirection)
     {

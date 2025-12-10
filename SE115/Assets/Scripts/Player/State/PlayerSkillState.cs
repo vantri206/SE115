@@ -13,22 +13,22 @@ public class PlayerSkillState : PlayerBaseState
     {
         base.EnterState(stateManager);
 
-        player.input.ResetSkillPressed(player.combat.currentSkillIndex);
+        player.input.ResetSkillPressed(player.skill.currentSkillIndex);
 
         player.movement.StopMoving();
-        player.combat.StartSkill();
+        player.skill.StartSkill();
     }
     public override void ExitState(StateManager stateManager)
     {
         base.ExitState(stateManager);
 
-        player.combat.FinishSkill();
+        player.skill.FinishSkill();
     }
     public override void UpdateState()
     {
         base.UpdateState();
 
-        if(player.combat.isAniSkillFinished)
+        if(player.skill.isAniSkillFinished)
         {
             stateManager.ChangeState(stateManager.IdleState);
             return;

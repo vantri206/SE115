@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8575984194745639481}
   - component: {fileID: 8217656110763258531}
   - component: {fileID: 5612124047514746298}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: BoomHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

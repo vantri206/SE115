@@ -14,7 +14,9 @@ public class PlayerData : ScriptableObject
 
     [Space(5)]
 
-    [Header("Movement")]
+    [Header("Slide")]
+    public float slideGravityScaleMulti;
+    public float maxSlideSpeed;
 
     [Header("Run")]
 
@@ -39,7 +41,6 @@ public class PlayerData : ScriptableObject
     [Space(5)]
 
     [Header("Advanced Jumps")]
-    public float jumpCutGravityMulti; //Multiplier to increase gravity if the player releases the jump button while still jumping -> fast falling
     public float jumpHangTimeThreshold; //Reduce thehe player's velocity.y closest to 0 at the jump's highest point
 
     [Space(5)]

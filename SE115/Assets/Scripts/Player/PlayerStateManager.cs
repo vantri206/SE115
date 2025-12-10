@@ -14,6 +14,8 @@ public class PlayerStateManager : StateManager
     public PlayerHurtState HurtState;
     public PlayerDeadState DeadState;
     public PlayerSkillState SkillState;
+    public PlayerSlidingState SlidingState;
+    public PlayerWallJumpState WallJumpState;
 
     public PlayerStateManager(PlayerController player)
     {
@@ -28,6 +30,8 @@ public class PlayerStateManager : StateManager
         HurtState = new PlayerHurtState(this);
         DeadState = new PlayerDeadState(this);
         SkillState = new PlayerSkillState(this);
+        SlidingState = new PlayerSlidingState(this);
+        WallJumpState = new PlayerWallJumpState(this);
     }
     public void Initialize()
     {
@@ -41,6 +45,8 @@ public class PlayerStateManager : StateManager
     public override void Update()
     {
         base.Update();
+
+        Debug.Log(currentState.GetType().ToString());
     }
     public override void FixedUpdate()
     {

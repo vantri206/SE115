@@ -264,7 +264,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0}
   platformerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 528384
   groundCheckPos: {fileID: 25177332678206873}
   canMoveContinous: 0
   canAirMoving: 0

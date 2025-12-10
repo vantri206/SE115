@@ -318,10 +318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5410b4394a8059043a8021ea41d6a266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  myRigidbody: {fileID: 9117518278842227362}
   currentHealth: 500
   maxHealth: 500
   damageTeam: 1
-  myRigidbody: {fileID: 9117518278842227362}
 --- !u!114 &1476317479635647174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,12 +374,12 @@ MonoBehaviour:
   enemy: {fileID: 1476317479635647174}
   rb: {fileID: 9117518278842227362}
   moveDirection: {x: 0, y: 0}
-  groundLayer:
+  platformerLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 528384
   groundCheckPos: {fileID: 3935314526662061259}
-  groundCheckDistance: 1
-  onlyMovingOnGround: 1
+  canMoveContinous: 0
+  canAirMoving: 0
 --- !u!212 &5177430435636217979
 SpriteRenderer:
   m_ObjectHideFlags: 0

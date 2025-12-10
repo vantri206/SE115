@@ -1,16 +1,15 @@
 using UnityEngine;
-using static PlayerSkillManager;
 
 public class SkillUnlockItem : MonoBehaviour, ICollectable
 {
-    [SerializeField] private PlayerSkill skillUnlock = PlayerSkill.None;
+    [SerializeField] private SkillBase skillUnlock;
     public void Collect(GameObject target)
     {
-        PlayerSkillManager playerSkill = target.GetComponentInChildren<PlayerSkillManager>();
+        PlayerSkillManager targetSkill = target.GetComponentInChildren<PlayerSkillManager>();
 
-        if (playerSkill != null)
+        if (targetSkill != null)
         {
-            playerSkill.UnlockSkill(skillUnlock);
+            targetSkill.UnlockSkill(skillUnlock);
             Destroy(gameObject);
         }
     }
