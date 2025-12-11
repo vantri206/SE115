@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6658009501671998235}
   - component: {fileID: 8040400349686901939}
   - component: {fileID: 5443502738662124439}
-  m_Layer: 18
+  m_Layer: 19
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000

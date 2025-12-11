@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2236561449668858919}
   - component: {fileID: 2451973174925702299}
   - component: {fileID: 6594921879228371130}
+  - component: {fileID: -4746407238262254303}
   m_Layer: 0
   m_Name: PlayerJumpEffect
   m_TagString: Untagged
@@ -113,3 +114,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4746407238262254303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935343290861114443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9c7b3846fdc8844a73bb4790206cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXController
+  animator: {fileID: 6594921879228371130}
+  destroyAfterPlay: 1

@@ -34,6 +34,8 @@ public class PlayerData : ScriptableObject
     [Space(5)]
 
     [Header("Jump")]
+    public int jumpCountAmount;
+    [Space(5)]
     public float jumpHeight; 
     public float jumpTimeToApex;    //Time to reach jump height
     [HideInInspector] public float jumpForce;

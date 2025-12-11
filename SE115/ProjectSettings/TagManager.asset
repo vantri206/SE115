@@ -18,15 +18,15 @@ TagManager:
   - Hurtbox
   - Hitbox
   - Weapon
-  - Platform
+  - Platformer
   - Object
   - AreaBounds
   - Obstacle
   - CollectTrigger
   - Collector
+  - OnewayPlatformer
   - Wall
-  - OnewayPlatform
-  - 
+  - Trap
   - 
   - 
   - 

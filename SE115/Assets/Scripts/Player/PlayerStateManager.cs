@@ -45,8 +45,6 @@ public class PlayerStateManager : StateManager
     public override void Update()
     {
         base.Update();
-
-        Debug.Log(currentState.GetType().ToString());
     }
     public override void FixedUpdate()
     {

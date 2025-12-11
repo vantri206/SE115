@@ -74,10 +74,12 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.linearVelocity = new Vector2(rigidbody.linearVelocity.x, 0.0f);
 
         rigidbody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+        player.effect.PlayJumpEffect();
     }
     public void WallJump()
     {
-        Vector2 direction = new Vector2( (-1) * player.facingDirection.x, 1.0f);
+        Vector2 direction = new Vector2((-1) * player.facingDirection.x, 1.0f);
 
         Vector2 force = new Vector2(0.25f * data.jumpForce, data.jumpForce);
 
@@ -86,10 +88,12 @@ public class PlayerMovement : MonoBehaviour
         rigidbody.AddForce(direction * force, ForceMode2D.Impulse);
 
         player.CheckFacingDirection(direction);
+
+        player.effect.PlayJumpEffect();
     }
     public void Dash()
     {
-        player.myRigidbody.linearVelocity = player.facingDirection * data.dashSpeed;
+        player.myRigidbody.linearVelocity = new Vector2(player.facingDirection.x * data.dashSpeed, 0.0f);
     }
     public void StopMovingHorzion()
     {

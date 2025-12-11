@@ -37,6 +37,13 @@ public class PlayerJumpState : PlayerBaseState
             }
         }
 
+        if (player.lastPressedJumpTime > 0 && player.CanJump())
+        {
+            player.OnStartJump();
+            player.movement.Jump();
+            return;
+        }
+
         if (player.lastPressedDashTime > 0 && player.CanDash())
         {
             stateManager.ChangeState(stateManager.DashState);

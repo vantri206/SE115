@@ -246,7 +246,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 5
   m_AngularDamping: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 7060ff2fc57561d4eb6b0b5209008bcb, type: 2}
@@ -376,7 +376,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0}
   platformerLayer:
     serializedVersion: 2
-    m_Bits: 528384
+    m_Bits: 266240
   groundCheckPos: {fileID: 3935314526662061259}
   canMoveContinous: 0
   canAirMoving: 0

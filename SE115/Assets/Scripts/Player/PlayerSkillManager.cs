@@ -16,8 +16,9 @@ public class PlayerSkillManager : MonoBehaviour
 
     private List<float> skillsCooldownTimer = new List<float>();
 
-    public event Action<int, int> onCooldownChanged;
+    public event Action<int, float> onCooldownChanged;
     public event Action<int, SkillBase> onSkillLeared;
+    public event Action<int> onSkillUse;
 
     public bool isAniSkillFinished = false;
 
@@ -32,7 +33,7 @@ public class PlayerSkillManager : MonoBehaviour
         for (int i = 0; i < skillsSlot.Count; i++)
         {
             skillsCooldownTimer[i] += Time.deltaTime;
-            onCooldownChanged?.Invoke(i, Mathf.Max(0, Mathf.CeilToInt(skillsSlot[i].cooldownTime - skillsCooldownTimer[i])));
+            onCooldownChanged?.Invoke(i, Mathf.Max(0.0f, skillsSlot[i].cooldownTime - skillsCooldownTimer[i]));
         }
     }
     public void SetCurrentSkill(int index)
@@ -53,6 +54,9 @@ public class PlayerSkillManager : MonoBehaviour
         if (currentSkill != null)
         {
             skillsCooldownTimer[currentSkillIndex] = 0.0f;
+            onSkillUse?.Invoke(currentSkillIndex);
+            onCooldownChanged(currentSkillIndex, Mathf.Max(0.0f, Mathf.CeilToInt(skillsSlot[currentSkillIndex].cooldownTime)));
+
             isAniSkillFinished = false;
             currentSkill.OnSkillStart(player);
         }

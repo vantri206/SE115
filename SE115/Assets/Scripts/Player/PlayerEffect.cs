@@ -14,6 +14,10 @@ public class PlayerEffect : MonoBehaviour
     [SerializeField] private GameObject hurtEffect;
     [SerializeField] private Vector3 hurtEffectOffset = new Vector3(1.0f, 1.0f, 0.0f);
 
+    [Header("Jump Effect")]
+    [SerializeField] private GameObject jumpEffect;
+    [SerializeField] private Vector3 jumpEffectOffset = new Vector3(0.3f, 0.0f, 0.0f);
+
     private void Awake()
     {
         if (player == null)
@@ -41,6 +45,15 @@ public class PlayerEffect : MonoBehaviour
         GameObject hurtEffectObj = Instantiate(hurtEffect, effectPos, Quaternion.identity, effectsPool);
         hurtEffectObj.transform.localScale = new Vector3(hurtEffect.transform.localScale.x * -playerDirection, 
                                                          hurtEffect.transform.localScale.y, hurtEffect.transform.localScale.z);
+    }
+    #endregion
+    #region For Jump Effect
+    public void PlayJumpEffect()
+    {
+        Bounds bounds = player.myCollider.bounds;
+        Vector3 effectPos = new Vector3(bounds.center.x + jumpEffectOffset.x, 
+                                bounds.min.y + jumpEffectOffset.y, transform.position.z);
+        Instantiate(jumpEffect, effectPos, Quaternion.identity, effectsPool);
     }
     #endregion
 }
