@@ -9,9 +9,9 @@ public class EnemyIdleHide : EnemyIdleSOBase
     {
         base.HandleEnterState();
 
-        enemy.movement.StopMove();
-
         enemy.animator.SetBool(HideAnimatorHash, true);
+
+        enemy.movement.StopMove();
     }
 
     public override void HandleExitState()
@@ -19,6 +19,8 @@ public class EnemyIdleHide : EnemyIdleSOBase
         base.HandleExitState();
 
         enemy.animator.SetBool(HideAnimatorHash, false);
+
+        enemy.movement.StopMove();
     }
 
     public override void HandleFixedUpdateState()

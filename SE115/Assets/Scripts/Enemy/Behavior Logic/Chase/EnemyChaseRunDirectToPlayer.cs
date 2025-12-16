@@ -34,14 +34,6 @@ public class EnemyChaseRunDirectToPlayer : EnemyChaseSOBase
             return;
         }
 
-        bool isFacingTarget = Mathf.Sign(enemy.facingDirection.x) == dir;
-
-        if (isFacingTarget && !enemy.movement.canMoveContinuous)
-        {
-            enemy.movement.StopMove();
-            return;
-        }
-
         enemy.movement.RunToTarget(targetPos, chaseMoveSpeed);
     }
 

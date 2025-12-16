@@ -45,9 +45,19 @@ public class EnemyMovement : MonoBehaviour
         if (moveDirection != Vector2.zero)
         {
             enemy.CheckFacingDirection(moveDirection);
+
+            if (!canMoveContinuous)
+            {
+                StopMove();
+                return; 
+            }
+
             rb.linearVelocity = new Vector2(moveDirection.x * speed, rb.linearVelocityY);
         }
-        else StopMove();
+        else
+        {
+            StopMove();
+        }
     }
     public void RunToTarget(Vector2 target, float speed)
     {

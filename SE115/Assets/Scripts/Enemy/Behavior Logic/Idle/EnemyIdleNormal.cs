@@ -16,6 +16,7 @@ public class EnemyIdleNormal : EnemyIdleSOBase
 
         freezeTimer = freezeTime;
         ResetTargetPos();
+
         enemy.movement.StopMove();
     }
 

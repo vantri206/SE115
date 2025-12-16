@@ -39,18 +39,12 @@ public class EnemyChaseRanged : EnemyChaseSOBase
         bool isRetreating = (Mathf.Sign(enemy.myRigidbody.linearVelocity.x) != dir);
 
         float currentRetreatDistance = isRetreating? finishRetreatDistance : startRetreatDistance;
+
         if (distance < currentRetreatDistance)
         {
             if (distanceToRetreat > thresholds)
             {
-                if (Mathf.Sign(enemy.facingDirection.x) != dir && !enemy.movement.canMoveContinuous)
-                {
-                    enemy.movement.StopMove();
-                }
-                else
-                {
-                    enemy.movement.RunToTarget(targetRetreatPos, chaseMoveSpeed);
-                }
+                enemy.movement.RunToTarget(targetRetreatPos, chaseMoveSpeed);
             }
             else
             {
@@ -61,14 +55,7 @@ public class EnemyChaseRanged : EnemyChaseSOBase
         {
             if (distance > thresholds)
             {
-                if (Mathf.Sign(enemy.facingDirection.x) == dir && !enemy.movement.canMoveContinuous)
-                {
-                    enemy.movement.StopMove();
-                }
-                else
-                {
-                    enemy.movement.RunToTarget(targetPos, chaseMoveSpeed);
-                }
+                enemy.movement.RunToTarget(targetPos, chaseMoveSpeed);
             }
             else
             {

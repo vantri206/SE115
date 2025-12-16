@@ -29,6 +29,10 @@ public class Boom : MonoBehaviour
         if (hitbox == null)
             hitbox = GetComponent<Hitbox>();
     }
+    private void Start()
+    {
+        hitbox.gameObject.SetActive(false);
+    }
     private void Update()
     {
         isOnGround = CheckOnGround();
