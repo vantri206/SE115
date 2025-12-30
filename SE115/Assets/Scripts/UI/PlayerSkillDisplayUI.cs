@@ -6,56 +6,62 @@ using System;
 public class PlayerSkillDisplay : MonoBehaviour
 {
     [Header("Skill Identity")]
-    public int skillIndex;
-    public SkillBase skill;
+    private int skillIndex;
+    private SkillBase skill;
 
     [Header("Player Refrences")]
-    public PlayerSkillManager playerSkill;
+    private PlayerSkillManager player;
 
     [Header("UI References")]
     public Image skillIcon;          
     public Image cooldownOverlay;     
-    public TextMeshProUGUI cooldownText; 
+    public TextMeshProUGUI cooldownText;
+    public TextMeshProUGUI keyBindText;
 
-    private void Awake()
+    public void Initialize(PlayerSkillManager playerSkill, int index, SkillBase newSkill)
     {
-        if (playerSkill == null)
-            playerSkill = FindFirstObjectByType<PlayerSkillManager>();
+        this.player = playerSkill;
+        this.skillIndex = index;
 
-        playerSkill.onSkillLeared += ActiveSkill;
-        playerSkill.onCooldownChanged += UpdateSkillCooldown;
-        playerSkill.onSkillUse += UseSkill;
-    }
-    void Start()
-    {
-        cooldownOverlay.fillAmount = 0;
-        cooldownText.text = " ";
-        skillIcon.sprite = null;
-
-        gameObject.SetActive(false);
-    }
-    public void ActiveSkill(int index, SkillBase newSkill)
-    {
-        skillIndex = index;
         skill = newSkill;
         skillIcon.sprite = newSkill.icon;
 
-        gameObject.SetActive(true);
+        cooldownOverlay.fillAmount = 0;
+        cooldownText.text = "";
+
+        keyBindText.text = PlayerInput.Instance.GetKeyForSkill(index).ToString();
+
+        player.onCooldownChanged += UpdateSkillCooldown;
+        player.onSkillUse += UseSkill;
     }
-    public void UpdateSkillCooldown(int index, float newCooldown)
+    private void OnDestroy()
     {
-        if (skillIndex == index)
+        if (player != null)
         {
-            if (newCooldown != 0.0f)
-                cooldownText.text = Mathf.CeilToInt(newCooldown).ToString();
-            else
-                cooldownText.text = " ";
-            cooldownOverlay.fillAmount = newCooldown / skill.cooldownTime;
+            player.onCooldownChanged -= UpdateSkillCooldown;
+            player.onSkillUse -= UseSkill;
+        }
+    }
+    public void UpdateSkillCooldown(int index, float timeRemaining, float cooldown)
+    {
+        if (this.skillIndex != index) return;
+
+        if (timeRemaining > 0)
+        {
+            cooldownText.text = Mathf.CeilToInt(timeRemaining).ToString();
+            cooldownOverlay.fillAmount = timeRemaining / cooldown;
+        }
+        else
+        {
+            cooldownText.text = "";
+            cooldownOverlay.fillAmount = 0;
         }
     }
     public void UseSkill(int index)
     {
-        if(skillIndex == index)
+        if (this.skillIndex == index)
+        {
             cooldownOverlay.fillAmount = 1;
+        }
     }
 }

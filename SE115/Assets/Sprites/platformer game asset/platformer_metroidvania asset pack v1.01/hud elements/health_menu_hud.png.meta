@@ -160,13 +160,13 @@ TextureImporter:
       name: health_menu_hud_2
       rect:
         serializedVersion: 2
-        x: 24
-        y: 0
-        width: 48
-        height: 16
+        x: 25
+        y: 5
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 2, y: 1, z: 1, w: 2}
       customData: 
       outline: []
       physicsShape: []

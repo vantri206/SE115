@@ -18,7 +18,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public Action<Vector2> onTakeDamage;
     public Action onDead;
-    public Action onHealthChanged;
 
     public void Start()
     {
@@ -31,8 +30,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         if (isInvincible) return;
         currentHealth -= damage;
-        onTakeDamage.Invoke(sourcePos);
-        if (isDead) onDead.Invoke();
+
+        onTakeDamage?.Invoke(sourcePos);
+        if (isDead) onDead?.Invoke();
     }
     public void SetInvincible(bool invincible)
     {

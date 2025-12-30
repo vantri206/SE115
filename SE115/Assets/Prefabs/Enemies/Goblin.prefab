@@ -233,7 +233,7 @@ MonoBehaviour:
   startDirection: {x: -1, y: 0}
   attackRange: 1.5
   attackCooldown: 1
-  aggroTriggerRange: 16
+  aggroTriggerRange: 10
   enemyIdleBase: {fileID: 11400000, guid: 2d4f02b2d642f734381d6e707eac4428, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: f3a94f48ce34aae4ca590e16d94189dc, type: 2}
   enemyAttackBase: {fileID: 11400000, guid: e8afdcb777021214e8374c81292f8895, type: 2}
@@ -266,7 +266,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 266240
   groundCheckPos: {fileID: 25177332678206873}
-  canMoveContinous: 0
   canAirMoving: 0
 --- !u!1 &1485313201968853425
 GameObject:

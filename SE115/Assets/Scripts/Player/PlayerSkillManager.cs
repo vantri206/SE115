@@ -16,7 +16,7 @@ public class PlayerSkillManager : MonoBehaviour
 
     private List<float> skillsCooldownTimer = new List<float>();
 
-    public event Action<int, float> onCooldownChanged;
+    public event Action<int, float, float> onCooldownChanged;
     public event Action<int, SkillBase> onSkillLeared;
     public event Action<int> onSkillUse;
 
@@ -32,8 +32,16 @@ public class PlayerSkillManager : MonoBehaviour
     {
         for (int i = 0; i < skillsSlot.Count; i++)
         {
-            skillsCooldownTimer[i] += Time.deltaTime;
-            onCooldownChanged?.Invoke(i, Mathf.Max(0.0f, skillsSlot[i].cooldownTime - skillsCooldownTimer[i]));
+            if (skillsCooldownTimer[i] < skillsSlot[i].cooldownTime)
+            {
+                skillsCooldownTimer[i] += Time.deltaTime;
+
+                float currentTimer = skillsCooldownTimer[i];
+                float cooldownTime = skillsSlot[i].cooldownTime;
+                float cooldownRemaining = Mathf.Max(0.0f, cooldownTime - currentTimer);
+
+                onCooldownChanged?.Invoke(i, cooldownRemaining, cooldownTime);
+            }
         }
     }
     public void SetCurrentSkill(int index)
@@ -51,11 +59,13 @@ public class PlayerSkillManager : MonoBehaviour
     }
     public void StartSkill()
     {
-        if (currentSkill != null)
+        if (currentSkill != null && CanUseSkill(currentSkillIndex))
         {
             skillsCooldownTimer[currentSkillIndex] = 0.0f;
             onSkillUse?.Invoke(currentSkillIndex);
-            onCooldownChanged(currentSkillIndex, Mathf.Max(0.0f, Mathf.CeilToInt(skillsSlot[currentSkillIndex].cooldownTime)));
+            onCooldownChanged(currentSkillIndex, Mathf.Max(0.0f, 
+                        Mathf.CeilToInt(skillsSlot[currentSkillIndex].cooldownTime)), 
+                        Mathf.Max(0.0f, Mathf.CeilToInt(skillsSlot[currentSkillIndex].cooldownTime)));
 
             isAniSkillFinished = false;
             currentSkill.OnSkillStart(player);
@@ -79,10 +89,13 @@ public class PlayerSkillManager : MonoBehaviour
     public bool CanUseSkill(int index)
     {
         if (index < 0 || index >= skillsSlot.Count) return false;
-        if (skillsCooldownTimer[index] < skillsSlot[index].cooldownTime)
+
+        if (skillsCooldownTimer[index] < skillsSlot[index].cooldownTime || 
+            !skillsSlot[index].CanUse(player))
         {
             return false;
         }
+
         return true;
     }
     public bool HasSkill(SkillBase skill)
@@ -106,8 +119,8 @@ public class PlayerSkillManager : MonoBehaviour
                 skillsCooldownTimer[index] = skill.cooldownTime;
             }
 
-            Debug.Log("Player learning " + skill.ToString());
-
+            Debug.Log("Player learning: " + skill.ToString());
+            ScrollMessenger.Instance.ShowMessage("Player Learning: " + skill.ToString());
             onSkillLeared?.Invoke(index, skill);
 
         }

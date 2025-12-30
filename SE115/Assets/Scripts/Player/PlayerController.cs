@@ -1,7 +1,5 @@
 using System;
-using System.Windows.Input;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,8 +11,10 @@ public class PlayerController : MonoBehaviour
     public PlayerMovement movement;
     public PlayerCombat combat;
     public PlayerHealth health;
+    public PlayerMana mana;
     public PlayerEffect effect;
     public PlayerSkillManager skill;
+    public SpriteRenderer spriteRenderer;
 
     [Space(5)]
     [Header("Player Data")]
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public float lastOnGroundTime { get; private set; }
     public float lastPressedJumpTime { get; private set; }
     public float lastPressedDashTime { get; private set; }
-
+    public float lastPressedInteractTime { get; private set; }
     public int onAirAttackLeft { get; set; }
 
     [Header("State Parameters")]
@@ -49,13 +49,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 0.1f;
     [SerializeField] private float wallCheckDistance = 0.2f;
     [SerializeField] private float raycastOffset = 0.05f;
+    [SerializeField] private float wallRaycastTopOffset = 0.25f;
+    [SerializeField] private float wallRaycastBotOffset = 0.25f;
 
     public Vector2 facingDirection;
 
     public Vector2 startDirection = Vector2.right;
 
-    private int dashLeft;
-    private int jumpLeft;
+    public int dashLeft { get; private set; }
+    public int jumpLeft { get; private set; }
 
     private float dashTimer;
 
@@ -65,11 +67,13 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         movement = GetComponent<PlayerMovement>();
         input = GetComponent<PlayerInput>();
         health = GetComponent<PlayerHealth>();
         effect = GetComponent<PlayerEffect>();
         skill = GetComponent<PlayerSkillManager>();
+        mana = GetComponent<PlayerMana>();
         stateManager = new PlayerStateManager(this);
 
 
@@ -84,6 +88,11 @@ public class PlayerController : MonoBehaviour
         this.CheckFacingDirection(startDirection);
 
         dashLeft = data.dashCountAmount;
+
+        if(GameplayHUDManager.Instance != null)
+        {
+            GameplayHUDManager.Instance.AssignPlayer(this);
+        }
     }
     void Update()
     {
@@ -91,6 +100,7 @@ public class PlayerController : MonoBehaviour
         lastOnGroundTime -= Time.deltaTime;
         lastPressedJumpTime -= Time.deltaTime;
         lastPressedDashTime -= Time.deltaTime;
+        lastPressedInteractTime -= Time.deltaTime;
 
         dashTimer += Time.deltaTime;
 
@@ -141,7 +151,11 @@ public class PlayerController : MonoBehaviour
             lastPressedDashTime = data.dashInputBufferTime;
             input.ResetDashPressed();
         }
-
+        if(input.isInteractPressed)
+        {
+            lastPressedInteractTime = 0.2f;
+            input.ResetInteractPressed();
+        }
         stateManager.Update();
     }
     private void FixedUpdate()
@@ -270,13 +284,11 @@ public class PlayerController : MonoBehaviour
 
     public bool CheckOnGround()
     {
-        float offset = 0.05f;
-
         Bounds bounds = myCollider.bounds;
 
-        Vector2 left = new Vector2(bounds.min.x + offset, bounds.min.y);
+        Vector2 left = new Vector2(bounds.min.x + raycastOffset, bounds.min.y);
         Vector2 mid = new Vector2(bounds.center.x, bounds.min.y);
-        Vector2 right = new Vector2(bounds.max.x - offset, bounds.min.y);
+        Vector2 right = new Vector2(bounds.max.x - raycastOffset, bounds.min.y);
 
         RaycastHit2D hitLeft = Physics2D.Raycast(left, Vector2.down, groundCheckDistance, platformerLayer | oneWayPlatformerLayer | wallLayer);
         RaycastHit2D hitMid = Physics2D.Raycast(mid, Vector2.down, groundCheckDistance, platformerLayer | oneWayPlatformerLayer | wallLayer);
@@ -293,8 +305,8 @@ public class PlayerController : MonoBehaviour
 
         float xPos = (dir.x > 0) ? bounds.max.x : bounds.min.x;
 
-        Vector2 originTop = new Vector2(xPos, bounds.max.y - raycastOffset);
-        Vector2 originBot = new Vector2(xPos, bounds.min.y + raycastOffset);
+        Vector2 originTop = new Vector2(xPos, bounds.max.y - wallRaycastTopOffset);
+        Vector2 originBot = new Vector2(xPos, bounds.min.y + wallRaycastBotOffset);
 
         RaycastHit2D hitTop = Physics2D.Raycast(originTop, dir, wallCheckDistance, platformerLayer | wallLayer);
         RaycastHit2D hitBot = Physics2D.Raycast(originBot, dir, wallCheckDistance, platformerLayer | wallLayer);
@@ -340,11 +352,78 @@ public class PlayerController : MonoBehaviour
         Vector2 dir = facingDirection;
         float x = (dir.x > 0) ? bounds.max.x : bounds.min.x;
 
-        Vector2 top = new Vector2(x, bounds.max.y - raycastOffset);
-        Vector2 bot = new Vector2(x, bounds.min.y + raycastOffset);
+        Vector2 top = new Vector2(x, bounds.max.y - wallRaycastTopOffset);
+        Vector2 bot = new Vector2(x, bounds.min.y + wallRaycastBotOffset);
 
         Gizmos.DrawLine(top, top + dir * wallCheckDistance);
         Gizmos.DrawLine(bot, bot + dir * wallCheckDistance);
+    }
+    #endregion
+
+    #region FOR LOAD AND RELOAD
+    public PlayerSaveData GetCurrentPlayerData()
+    {
+        return new PlayerSaveData
+        {
+            sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
+
+            position = transform.position,
+            rotation = transform.rotation,
+            localScale = transform.localScale,
+            gravityScale = myRigidbody.gravityScale,
+
+            sprite = spriteRenderer,
+
+            currentHealth = health.currentHealth,
+
+            jumpLeft = this.jumpLeft,
+            dashLeft = this.dashLeft,
+            onAirAttackLeft = this.onAirAttackLeft,
+            facingDirection = this.facingDirection,
+
+            lastOnGroundTime = this.lastOnGroundTime
+        };
+    }
+
+
+    public void RestorePlayerData(PlayerSaveData data)
+    {
+        if (data == null) return;
+
+        transform.position = data.position;
+        transform.rotation = data.rotation;
+
+        health.SetCurrentHeal(data.currentHealth);
+
+        spriteRenderer = data.sprite;
+
+        CheckFacingDirection(data.facingDirection); 
+        this.jumpLeft = data.jumpLeft;
+        this.dashLeft = data.dashLeft;
+        this.onAirAttackLeft = data.onAirAttackLeft;
+
+        onJumpLeftChanged?.Invoke(this.jumpLeft);
+
+        this.lastOnGroundTime = data.lastOnGroundTime;
+        myRigidbody.gravityScale = data.gravityScale;
+
+        movement.StopMoving();
+
+        isJumping = false;
+        isAttacking = false;
+        isHurting = false;
+        isDashing = false;
+        isSliding = false;
+
+        dashTimer = float.PositiveInfinity;
+
+        animator.SetBool("isJumping", false);
+        animator.SetBool("isDashing", false);
+        animator.SetBool("isSliding", false);
+        animator.SetBool("isAttack", false); 
+
+
+        stateManager.ChangeState(stateManager.IdleState);
     }
     #endregion
 }

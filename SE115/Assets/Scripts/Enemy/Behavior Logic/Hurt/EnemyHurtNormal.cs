@@ -49,7 +49,7 @@ public class EnemyHurtNormal : EnemyHurtSOBase
     private void ApplyKnockback()
     {
         Vector2 sourcePos = enemy.takenDamageSourcePos;
-        int dirX = (enemy.transform.position.x < sourcePos.x) ? -1 : 1;
+        int dirX = (enemy.transform.position.x < sourcePos.x + 1.0f) ? -1 : 1;
         enemy.myRigidbody.linearVelocity = Vector2.zero;
 
         Vector2 direction = new Vector2(knockbackDir.x * dirX, knockbackDir.y).normalized;

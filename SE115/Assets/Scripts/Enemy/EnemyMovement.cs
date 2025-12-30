@@ -16,10 +16,7 @@ public class EnemyMovement : MonoBehaviour
     private float groundCheckDistance = 1.0f;
     private float wallCheckDistance = 0.5f;
 
-    public bool canMoveContinous;
-
     public bool canAirMoving = false;
-
     public bool canMoveContinuous
     {
         get
@@ -39,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         this.enemy = GetComponent<EnemyController>();
         this.rb = enemy.myRigidbody;
     }
-    public void Move(Vector2 direction, float speed)
+    public void CheckMove(Vector2 direction, float speed)
     {
         moveDirection = direction.normalized;
         if (moveDirection != Vector2.zero)
@@ -51,8 +48,7 @@ public class EnemyMovement : MonoBehaviour
                 StopMove();
                 return; 
             }
-
-            rb.linearVelocity = new Vector2(moveDirection.x * speed, rb.linearVelocityY);
+            Move(moveDirection, speed);
         }
         else
         {
@@ -62,13 +58,17 @@ public class EnemyMovement : MonoBehaviour
     public void RunToTarget(Vector2 target, float speed)
     {
         Vector2 direction = new Vector2(target.x - enemy.transform.position.x, 0).normalized;
-        Move(direction, speed);
-        enemy.animator.SetBool("isMoving", true);
+        CheckMove(direction, speed);
     }
     public void StopMove()
     {
         rb.linearVelocity = new Vector2(0, rb.linearVelocityY);
         enemy.animator.SetBool("isMoving", false);
+    }
+    public void Move(Vector2 moveDirection, float speed)
+    {
+        rb.linearVelocity = new Vector2(moveDirection.x * speed, rb.linearVelocityY);
+        enemy.animator.SetBool("isMoving", true);
     }
     public bool CheckGroundAhead()
     {
@@ -77,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
     }
     public bool CheckWallAhead()
     {
-        RaycastHit2D hit = Physics2D.Raycast(groundCheckPos.position, transform.right * enemy.facingDirection, wallCheckDistance, platformerLayer);
+        RaycastHit2D hit = Physics2D.Raycast(groundCheckPos.position, transform.right * enemy.facingDirection.x, wallCheckDistance, platformerLayer);
         return hit.collider != null;
     }
     private void OnDrawGizmos()
@@ -85,8 +85,9 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(groundCheckPos.position, groundCheckPos.position + Vector3.down * groundCheckDistance);
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(groundCheckPos.position, groundCheckPos.position + new Vector3(transform.right.x * enemy.facingDirection.x, 
-                                                                                       transform.right.y * enemy.facingDirection.y, transform.right.z)
-                                                                                       * wallCheckDistance);
+        Gizmos.DrawLine(groundCheckPos.position, groundCheckPos.position + 
+                        new Vector3(transform.right.x * enemy.facingDirection.x, 
+                                    transform.right.y * enemy.facingDirection.y, transform.right.z)
+                                    * wallCheckDistance);
     }
 }

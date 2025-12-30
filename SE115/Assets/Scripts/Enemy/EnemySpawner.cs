@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private EnemyController enemyPrefab; 
-    [SerializeField] private EnemyController currentEnemy;
+    [SerializeField] private EnemyController enemyPrefab;
+    public EnemyController currentEnemy { get; set; }
 
     [SerializeField] private float respawnTime = 5.0f; 
     [SerializeField] private float fadeAppearDuration = 1.5f;

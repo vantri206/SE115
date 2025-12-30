@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Chase-RunDirect
   m_EditorClassIdentifier: Assembly-CSharp::EnemyChaseRunDirectToPlayer
   canInterruptByHit: 1
-  thresholds: 0.1
   chaseMoveSpeed: 4

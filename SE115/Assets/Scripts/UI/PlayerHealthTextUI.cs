@@ -4,22 +4,26 @@ using UnityEngine.UI;
 
 public class PlayerHealthTextUI : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     public TMP_Text healthText;
 
-    private void Awake()
+    public void Initialize(PlayerHealth currentPlayerHealth)
     {
-        if (playerHealth == null)
-            playerHealth = FindFirstObjectByType<PlayerHealth>();
+        this.playerHealth = currentPlayerHealth;
 
-        playerHealth.onHealthChanged += UpdateHealthUI;
-    }
-    private void UpdateHealthUI(float newHealth, float maxHealth)
-    {
-        healthText.text = newHealth.ToString() + "/" + maxHealth.ToString();
+        UpdateHealthUI(0.0f, playerHealth.currentHealth, playerHealth.maxHealth);
+
+        this.playerHealth.onHealthChanged += UpdateHealthUI;
     }
     private void OnDisable()
     {
-        playerHealth.onHealthChanged -= UpdateHealthUI;
+        if (playerHealth != null)
+        {
+            playerHealth.onHealthChanged -= UpdateHealthUI;
+        }
+    }
+    public void UpdateHealthUI(float healthBefore, float healthAfter, float maxHealth)
+    {
+        healthText.text = healthAfter.ToString() + "/" + maxHealth.ToString();
     }
 }

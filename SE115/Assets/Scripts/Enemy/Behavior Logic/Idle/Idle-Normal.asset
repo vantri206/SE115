@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Idle-Normal
   m_EditorClassIdentifier: Assembly-CSharp::EnemyIdleNormal
   canInterruptByHit: 1
-  idleMoveSpeed: 2
+  idleMoveSpeed: 4
   idleMoveRange: 5
+  freezeTime: 0.5
+  timeIgnoreChase: 2

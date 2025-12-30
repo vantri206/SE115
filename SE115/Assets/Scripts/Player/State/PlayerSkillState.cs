@@ -16,6 +16,7 @@ public class PlayerSkillState : PlayerBaseState
         player.input.ResetSkillPressed(player.skill.currentSkillIndex);
 
         player.movement.StopMoving();
+
         player.skill.StartSkill();
     }
     public override void ExitState(StateManager stateManager)

@@ -52,9 +52,11 @@ public class EnemyChaseRunDirectToPlayer : EnemyChaseSOBase
                 return;
             }
         }
-        if (enemy.isAggroed == false)
+        if (enemy.isAggroed == false || !enemy.movement.canMoveContinuous)
         {
+            enemy.movement.StopMove();
             stateManager.ChangeState(stateManager.EnemyIdleState);
+            return;
         }
     }
 
