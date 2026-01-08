@@ -22,6 +22,12 @@ public class HurtStateBehavior : StateMachineBehaviour
         {
             player.isHurting = false;
         }
+
+        EnemyController enemy = animator.GetComponent<EnemyController>();
+        if (enemy != null)
+        {
+            enemy.FinishHurt();
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

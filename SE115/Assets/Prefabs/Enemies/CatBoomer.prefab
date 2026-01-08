@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bd6fe1c66428642b987f87c317e45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  hurtboxLayerName: Hurtbox
 --- !u!1 &6850065720940537093
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,10 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4a8525af71bb34e9cd4d475160c7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBoomShooter
-  enemy: {fileID: 1476317479635647174}
+  enemy: {fileID: 2443624386035546403}
   boomPrefab: {fileID: 4814209511116948174, guid: ccec0c9d67a087641aafe92b8586807b, type: 3}
   throwForce: {x: 15, y: 20}
-  projectilesPool: {fileID: 0}
 --- !u!1 &7273557206846057812
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,9 +183,9 @@ GameObject:
   - component: {fileID: 9117518278842227362}
   - component: {fileID: 7313912871474035246}
   - component: {fileID: 4570977781263936983}
-  - component: {fileID: 1476317479635647174}
   - component: {fileID: 4740713195581306483}
   - component: {fileID: 5177430435636217979}
+  - component: {fileID: 2443624386035546403}
   m_Layer: 7
   m_Name: CatBoomer
   m_TagString: Untagged
@@ -322,43 +322,6 @@ MonoBehaviour:
   currentHealth: 500
   maxHealth: 500
   damageTeam: 1
---- !u!114 &1476317479635647174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7273557206846057812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a7afb37dab47a42babe71025206dd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  myRigidbody: {fileID: 9117518278842227362}
-  animator: {fileID: 396440442120084882}
-  myCollider: {fileID: 7313912871474035246}
-  health: {fileID: 4570977781263936983}
-  movement: {fileID: 4740713195581306483}
-  weapons:
-  - {fileID: 6670089406810483171}
-  facingDirection: {x: 0, y: 0}
-  startDirection: {x: 1, y: 0}
-  attackRange: 20
-  attackCooldown: 2
-  aggroTriggerRange: 25
-  enemyIdleBase: {fileID: 11400000, guid: 8443a38e1d8c9e44e95a8b395f4f719a, type: 2}
-  enemyChaseBase: {fileID: 11400000, guid: 62c63e780e063fe4c88f79c8006e788a, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: e8afdcb777021214e8374c81292f8895, type: 2}
-  enemyHurtBase: {fileID: 11400000, guid: 52bde3c677f0d614c9bce15ce434eea4, type: 2}
-  enemyDeadBase: {fileID: 11400000, guid: b0e02f6e63578f34b99d0506ef0841e8, type: 2}
-  isAttacking: 0
-  isHurtStun: 0
-  isAggroed: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  playerTarget: {fileID: 0}
-  attackTarget: {fileID: 0}
 --- !u!114 &4740713195581306483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,15 +334,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b2f5775c998d249b9d9c73082d0559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  enemy: {fileID: 1476317479635647174}
+  movementType: 0
+  enemy: {fileID: 2443624386035546403}
   rb: {fileID: 9117518278842227362}
   moveDirection: {x: 0, y: 0}
   platformerLayer:
     serializedVersion: 2
-    m_Bits: 266240
+    m_Bits: 790528
   groundCheckPos: {fileID: 3935314526662061259}
-  canMoveContinous: 0
-  canAirMoving: 0
 --- !u!212 &5177430435636217979
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -438,3 +400,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2443624386035546403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273557206846057812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df111e0db5718b47ae5482fba6b67a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangedEnemyController
+  myRigidbody: {fileID: 9117518278842227362}
+  animator: {fileID: 396440442120084882}
+  myCollider: {fileID: 7313912871474035246}
+  health: {fileID: 4570977781263936983}
+  movement: {fileID: 4740713195581306483}
+  weapons:
+  - {fileID: 6670089406810483171}
+  facingDirection: {x: 0, y: 0}
+  startDirection: {x: 1, y: 0}
+  attackRange: 12
+  aggroTriggerRange: 15
+  detectionHeightRange: 10
+  attackHeightRange: 10
+  attackCooldown: 2
+  enemyIdleBase: {fileID: 11400000, guid: 8443a38e1d8c9e44e95a8b395f4f719a, type: 2}
+  enemyChaseBase: {fileID: 11400000, guid: 62c63e780e063fe4c88f79c8006e788a, type: 2}
+  enemyAttackBase: {fileID: 11400000, guid: e8afdcb777021214e8374c81292f8895, type: 2}
+  enemyHurtBase: {fileID: 11400000, guid: 52bde3c677f0d614c9bce15ce434eea4, type: 2}
+  enemyDeadBase: {fileID: 11400000, guid: b0e02f6e63578f34b99d0506ef0841e8, type: 2}
+  isAttacking: 0
+  isHurtStun: 0
+  isAggroed: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  playerTarget: {fileID: 0}
+  attackTarget: {fileID: 0}

@@ -205,7 +205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   isOpen: 0
-  spawnItems: []
+  spawnItems:
+  - {fileID: 4814209511116948174, guid: ccec0c9d67a087641aafe92b8586807b, type: 3}
+  - {fileID: 4814209511116948174, guid: ccec0c9d67a087641aafe92b8586807b, type: 3}
   spawnPoint: {fileID: 7749687368282275586}
   spawnForce: {x: 4, y: 8}
   animator: {fileID: 8000182324614215228}
@@ -319,7 +321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1772729864168166471
 Transform:
   m_ObjectHideFlags: 0
@@ -424,7 +426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3196215373112725039
 Transform:
   m_ObjectHideFlags: 0

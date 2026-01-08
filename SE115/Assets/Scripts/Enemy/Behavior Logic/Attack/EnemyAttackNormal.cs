@@ -12,8 +12,16 @@ public class EnemyAttackNormal : EnemyAttackSOBase
 
         if (enemy.attackTarget != null && attackFacingPlayer)
         {
-            Vector2 dir = enemy.attackTarget.position.x - transform.position.x > 0 ? Vector2.right : Vector2.left;
-            enemy.CheckFacingDirection(dir);
+            float playerDistance = enemy.playerTarget.position.x - enemy.transform.position.x;
+
+            if (Mathf.Abs(playerDistance) > 0.1f)
+            {
+                float playerDirection = Mathf.Sign(playerDistance);
+                if (playerDirection != enemy.facingDirection.x)
+                {
+                    enemy.CheckFacingDirection(new Vector2(playerDirection, enemy.facingDirection.y));
+                }
+            }
         }
 
         enemy.animator.SetTrigger("Attack");
@@ -29,8 +37,6 @@ public class EnemyAttackNormal : EnemyAttackSOBase
 
         enemy.attackTarget = null;
         enemy.attackCooldownTimer = 0;
-
-        enemy.AE_FinishAttack();
     }
 
     public override void HandleFixedUpdateState()

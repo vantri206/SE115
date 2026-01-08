@@ -2,12 +2,29 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
-    [SerializeField] private Damage owner;
+    [SerializeField] private string hitboxLayerName = "Hitbox";
+
+    public Damage owner;
+
+    private int layerId;
+
     private void Awake()
     {
         if (GetComponent<Damage>() != null)
             owner = GetComponent<Damage>();
-        else owner = transform.parent.GetComponent<Damage>();
+        else 
+            owner = transform.parent.GetComponent<Damage>();
+
+        layerId = LayerMask.NameToLayer(hitboxLayerName);
+
+        if (layerId == -1)
+        {
+            Debug.LogError("Not found layer hitbox: " + hitboxLayerName);
+        }
+        else
+        {
+            gameObject.layer = layerId;
+        }
     }
     private void OnTriggerStay2D(Collider2D collider)
     {

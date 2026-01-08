@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Build;
 using UnityEngine;
 
 
@@ -8,7 +9,7 @@ public class EnemyController : MonoBehaviour
     public EnemyStateManager stateManager { get; private set; }
     public Rigidbody2D myRigidbody;
     public Animator animator;
-    public BoxCollider2D myCollider;
+    public Collider2D myCollider;
     public EnemyHealth health;
     public EnemyMovement movement;
 
@@ -24,13 +25,16 @@ public class EnemyController : MonoBehaviour
     public Vector2 startPosition { get; private set; }
     public Vector2 takenDamageSourcePos { get; set; }
 
-    /* Attack */
+    [Header("Attack And Aggro Range Settings")]
     public float attackRange = 1.0f;
+    public float aggroTriggerRange = 8.0f;
+    public float detectionHeightRange = 5.0f;       //height range for aggro check
+    public float attackHeightRange = 5.0f;
+
+    [Header("Attack Cooldown")]
     public float attackCooldown = 2.0f;
     public float attackCooldownTimer { get; set; } = 0.0f;
 
-    /* Aggro */
-    public float aggroTriggerRange = 8.0f;
 
     [Header("State SO")]
     [SerializeField] private EnemyIdleSOBase enemyIdleBase;
@@ -52,12 +56,13 @@ public class EnemyController : MonoBehaviour
     public bool isAggroed = false;
 
     [Space(5)]
+    [Header("Player Refrences")]
     public LayerMask playerLayer;
     public Transform playerTarget = null;
     public Transform attackTarget = null;
 
     public Action onFinishDead;
-    void Awake()
+    protected virtual void Awake()
     {
         #region State SO Instantiate
         enemyIdleBaseInstance = Instantiate(enemyIdleBase);
@@ -69,7 +74,7 @@ public class EnemyController : MonoBehaviour
 
         animator = gameObject.GetComponent<Animator>();
         myRigidbody = gameObject.GetComponent<Rigidbody2D>();
-        myCollider = gameObject.GetComponent<BoxCollider2D>();
+        myCollider = gameObject.GetComponent<Collider2D>();
         health = gameObject.GetComponent<EnemyHealth>();
         stateManager = new EnemyStateManager(this);
 
@@ -78,7 +83,7 @@ public class EnemyController : MonoBehaviour
 
         startPosition = transform.position;
     }
-    void Start()
+    protected virtual void Start()
     {
         #region State SO Initialize
         enemyIdleBaseInstance.Initalize(gameObject, this);
@@ -92,7 +97,7 @@ public class EnemyController : MonoBehaviour
 
         this.CheckFacingDirection(startDirection);
     }
-    void Update()
+    protected virtual void Update()
     {
         attackCooldownTimer += Time.deltaTime;
 
@@ -101,21 +106,23 @@ public class EnemyController : MonoBehaviour
 
         stateManager.Update();
     }
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         stateManager.FixedUpdate();
     }
+    protected virtual void OnCollisionEnter2D(Collision2D collision) { }
+    protected virtual void OnTriggerEnter2D(Collider2D collider) { }
     #region Attack method
-    public bool CanAttack()
+    public virtual bool CanAttack()
     {
         return attackCooldownTimer > attackCooldown;
     }
-    public void Attack()
+    public virtual void Attack()
     {
         foreach (EnemyWeapon weapon in weapons)
             weapon.PerformAttack();
     }
-    public void FinishAttack()
+    public virtual void FinishAttack()
     {
         isAttacking = false;
         foreach (EnemyWeapon weapon in weapons)
@@ -123,12 +130,12 @@ public class EnemyController : MonoBehaviour
     }
     #endregion
     #region Take Damage and Dead method
-    private void OnTakeDamage(Vector2 sourcePos)
+    protected virtual void OnTakeDamage(Vector2 sourcePos)
     {
         isHurtStun = true;
         takenDamageSourcePos = sourcePos;
     }
-    public void FinishHurt()
+    public virtual void FinishHurt()
     {
         isHurtStun = false;
         takenDamageSourcePos = Vector2.positiveInfinity;
@@ -155,10 +162,17 @@ public class EnemyController : MonoBehaviour
     }
     #endregion
     #region Find player method
-    public void CheckAggroRange()
+    public virtual void CheckAggroRange()
     {
         Bounds bounds = myCollider.bounds;
-        RaycastHit2D hit = Physics2D.BoxCast(bounds.center, new Vector2(aggroTriggerRange, bounds.size.y), 0, facingDirection, 0, playerLayer);
+
+        float bottomY = bounds.min.y;
+        float newCenterY = bottomY + (detectionHeightRange / 2);
+        Vector3 raycastCenter = new Vector3(bounds.center.x, newCenterY, bounds.center.z);
+
+        RaycastHit2D hit = Physics2D.BoxCast(raycastCenter, 
+                                             new Vector2(aggroTriggerRange, detectionHeightRange), 
+                                             0, facingDirection, 0, playerLayer);
         if (hit.collider != null)
         {
             playerTarget = hit.collider.transform;
@@ -170,10 +184,12 @@ public class EnemyController : MonoBehaviour
             this.isAggroed = false;
         }
     }
-    public void CheckAttackRange()
+    public virtual void CheckAttackRange()
     {
         Bounds bounds = myCollider.bounds;
-        RaycastHit2D hit = Physics2D.BoxCast(bounds.center, new Vector2(attackRange, bounds.size.y), 0, facingDirection, 0, playerLayer);
+
+        RaycastHit2D hit = Physics2D.BoxCast(bounds.center, new Vector2(attackRange, attackHeightRange), 0, facingDirection, 0, playerLayer);
+
         if (hit.collider != null)
         {
             attackTarget = hit.collider.transform;
@@ -205,10 +221,20 @@ public class EnemyController : MonoBehaviour
     }
     public void CheckFacingDirection(Vector2 facingDirection)
     {
-        if (this.facingDirection.x != facingDirection.x)
+        if (Mathf.Abs(facingDirection.x) > 0.0f)
         {
-            this.facingDirection = facingDirection;
-            this.transform.localScale = new Vector3(this.facingDirection.x * Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
+            float directionX = Mathf.Sign(facingDirection.x);
+            if (directionX != this.facingDirection.x)
+            {
+                this.facingDirection = new Vector2(directionX, this.facingDirection.y);
+                Vector3 currentScale = this.transform.localScale;
+                this.transform.localScale = new Vector3
+                (
+                    directionX * Mathf.Abs(currentScale.x),
+                    currentScale.y,
+                    currentScale.z
+                );
+            }
         }
     }
     public void DisablePhysicAndCollider()
@@ -225,13 +251,23 @@ public class EnemyController : MonoBehaviour
     }
     public void AE_Attack() { Attack(); }
     public void AE_FinishAttack() { FinishAttack(); }
-    private void OnDrawGizmos()
+    public void AE_FinishHurt() { FinishHurt(); }
+    public void AE_Dead() { Dead(); }
+    public virtual void OnDrawGizmos()
     {
-        Gizmos.color = Color.orange;
         Bounds bounds = myCollider.bounds;
-        Gizmos.DrawWireCube(bounds.center, new Vector3(attackRange, bounds.size.y, bounds.size.z));
+
+        float bottomY = bounds.min.y;
+        float newCenterY = bottomY + (detectionHeightRange / 2);
+        Vector3 drawCenter = new Vector3(bounds.center.x, newCenterY, bounds.center.z);
+
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(bounds.center, new Vector3(aggroTriggerRange, bounds.size.y, 0.0f));
+        Gizmos.DrawWireCube(drawCenter, new Vector3(aggroTriggerRange, detectionHeightRange, 0.0f));
+
+        Gizmos.color = Color.darkCyan;
+        Vector3 centerOffset = (Vector3)facingDirection * (attackRange / 2);
+        Gizmos.DrawWireCube(bounds.center, new Vector3(attackRange, attackHeightRange, 0.0f));
+
     }
 
 }

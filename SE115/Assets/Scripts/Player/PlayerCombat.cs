@@ -38,7 +38,6 @@ public class PlayerCombat : MonoBehaviour
     public void SwordAttack()
     {
         player.isAttacking = true;
-        EnableSword();
 
         comboTimer = float.NegativeInfinity;
 
@@ -50,6 +49,7 @@ public class PlayerCombat : MonoBehaviour
     public void FinishAttack()
     {
         player.isAttacking = false;
+
         DisableSword();
 
         comboTimer = 0;
@@ -60,5 +60,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void EnableSword() { sword.gameObject.SetActive(true); }
     public void DisableSword() { sword.gameObject.SetActive(false); }
+    public void AE_EnableSword() { EnableSword(); }
+    public void AE_DisableSword() { DisableSword(); }
     #endregion
 }

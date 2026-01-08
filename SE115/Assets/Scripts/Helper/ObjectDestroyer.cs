@@ -3,24 +3,37 @@ using UnityEngine;
 
 public class ObjectDestroyer : MonoBehaviour
 {
+    [Header("Destroy Settings")]
     public bool isDestroyed = true;
     public float lifetime = 0.0f;
-
     public LayerMask destroyAfterTriggerObject;
+
+    [Header("Effect")]
+    [SerializeField] private GameObject destroyEffect;
 
     private void OnEnable()
     {
+        CancelInvoke();
         Invoke("DestroyObject", lifetime);
     }
-    private void DestroyObject()
+    public void DestroyObject()
     {
-        if(isDestroyed)
+        SpawnEffectVFX();
+
+        if (isDestroyed)
         {
             Destroy(gameObject);
         }
         else
         {
             gameObject.SetActive(false);
+        }
+    }
+    private void SpawnEffectVFX()
+    {
+        if (destroyEffect != null)
+        {
+            Instantiate(destroyEffect, transform.position, Quaternion.identity);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

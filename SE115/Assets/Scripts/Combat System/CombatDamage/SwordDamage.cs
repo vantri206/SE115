@@ -5,6 +5,13 @@ using UnityEngine;
 public class SwordDamage : Damage
 {
     private List<IDamageable> hitList = new List<IDamageable>();
+
+    public ObjectDestroyer destroyer;
+    private void Awake()
+    {
+        if(destroyer == null)
+            destroyer = GetComponent<ObjectDestroyer>();
+    }
     public void ResetHitList()
     {
         hitList.Clear();
@@ -23,7 +30,16 @@ public class SwordDamage : Damage
             hitList.Add(targetHealth);
 
             if (isDestroyAfterDamage)
-                Destroy(gameObject);
+            {
+                if(destroyer != null)
+                {
+                    destroyer.DestroyObject();
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
     }
     private void OnEnable()

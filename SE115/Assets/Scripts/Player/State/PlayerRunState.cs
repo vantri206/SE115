@@ -18,6 +18,7 @@ public class PlayerRunState : PlayerBaseState
         base.ExitState(stateManager);
 
         player.animator.SetBool("isRunning", false);
+        player.movement.StopMoving();
     }
     public override void UpdateState()
     {

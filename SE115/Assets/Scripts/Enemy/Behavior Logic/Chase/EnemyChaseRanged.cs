@@ -26,6 +26,8 @@ public class EnemyChaseRanged : EnemyChaseSOBase
 
         if (enemy.playerTarget == null) return;
 
+        float playerDirection = Mathf.Sign(enemy.playerTarget.position.x - enemy.transform.position.x);
+
         float dir = Mathf.Sign(enemy.playerTarget.position.x - enemy.transform.position.x);
         float targetX = enemy.playerTarget.position.x;
 
@@ -48,7 +50,7 @@ public class EnemyChaseRanged : EnemyChaseSOBase
             }
             else
             {
-                enemy.movement.StopMove();
+                StopMovingFacePlayer(playerDirection);
             }
         }
         else if(distance > chaseDistance)
@@ -59,12 +61,12 @@ public class EnemyChaseRanged : EnemyChaseSOBase
             }
             else
             {
-                enemy.movement.StopMove();
+                StopMovingFacePlayer(playerDirection);
             }
         }
         else
         {
-            enemy.movement.StopMove();
+            StopMovingFacePlayer(playerDirection);
         }
     }
 
@@ -87,6 +89,12 @@ public class EnemyChaseRanged : EnemyChaseSOBase
         {
             stateManager.ChangeState(stateManager.EnemyIdleState);
         }
+    }
+    private void StopMovingFacePlayer(float playerDirection)
+    {
+        enemy.movement.StopMove();
+
+        enemy.CheckFacingDirection(new Vector2(playerDirection, enemy.facingDirection.y));
     }
     public override void Initalize(GameObject gameObject, EnemyController enemy)
     {
