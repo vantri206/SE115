@@ -26,17 +26,13 @@ public class EnemyChaseStay : EnemyChaseSOBase
     {
         base.HandleUpdateState();
 
-        Debug.Log("Enemy chase stay update start");
-
         if (stateManager.currentState != stateManager.EnemyChaseState)
             return;
 
         if (enemy.attackTarget != null)
         {
-            Debug.Log("Has attack target");
             if (enemy.CanAttack())
             {
-                Debug.Log("Change attack state");
                 stateManager.ChangeState(stateManager.EnemeyAttackState);
                 return;
             }

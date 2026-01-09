@@ -8,9 +8,25 @@ public class RangedEnemyController : EnemyController
     {
         if (weapons == null || weapons.Length == 0) return;
 
+        int startCurrentWeaponIndex = currentWeaponIndex; 
+
+        while (!weapons[currentWeaponIndex].CanUseWeapon())
+        {
+            currentWeaponIndex++;
+
+            if (currentWeaponIndex >= weapons.Length)
+            {
+                currentWeaponIndex = 0;
+            }
+
+            if (currentWeaponIndex == startCurrentWeaponIndex)
+            {
+                return;
+            }
+        }
+
         weapons[currentWeaponIndex].PerformAttack();
 
-        currentWeaponIndex++;
         if (currentWeaponIndex >= weapons.Length)
         {
             currentWeaponIndex = 0;
@@ -23,6 +39,13 @@ public class RangedEnemyController : EnemyController
         isAttacking = false;
 
         weapons[currentWeaponIndex].FinishAttack();
+
+        currentWeaponIndex++;
+
+        if (currentWeaponIndex >= weapons.Length)
+        {
+            currentWeaponIndex = 0;
+        }
     }
 
     public override void CheckAggroRange()

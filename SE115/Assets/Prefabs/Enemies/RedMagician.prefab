@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2667088176817498966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7665179010432646910}
+  m_Layer: 7
+  m_Name: FlyingSpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7665179010432646910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2667088176817498966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.12, y: 2.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8698796211743169891}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4042022343830298524
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +191,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7430783259363219750}
+  - {fileID: 8698796211743169891}
   - {fileID: 1193935334979666396}
   - {fileID: 3935314526662061259}
   m_Father: {fileID: 0}
@@ -381,8 +413,8 @@ MonoBehaviour:
   attackCooldown: 2
   enemyIdleBase: {fileID: 11400000, guid: 326381f7d91d7df4b923144dd88db913, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: 36bf4254d5636134184e7603c3424d1a, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: e8afdcb777021214e8374c81292f8895, type: 2}
-  enemyHurtBase: {fileID: 11400000, guid: 52bde3c677f0d614c9bce15ce434eea4, type: 2}
+  enemyAttackBase: {fileID: 11400000, guid: e0ec3af03ab60504baefeae94fd376f8, type: 2}
+  enemyHurtBase: {fileID: 11400000, guid: b43f0a8c62326ea498c552964f14774e, type: 2}
   enemyDeadBase: {fileID: 11400000, guid: b0e02f6e63578f34b99d0506ef0841e8, type: 2}
   isAttacking: 0
   isHurtStun: 0
@@ -392,6 +424,56 @@ MonoBehaviour:
     m_Bits: 256
   playerTarget: {fileID: 0}
   attackTarget: {fileID: 0}
+--- !u!1 &7464104509026949345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8698796211743169891}
+  - component: {fileID: 3978878555611832480}
+  m_Layer: 7
+  m_Name: EnemySummoner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8698796211743169891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464104509026949345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7665179010432646910}
+  m_Father: {fileID: 8225937421078842391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3978878555611832480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464104509026949345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06a7ee403c53434ab85b7021130fe70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  minionPrefab: {fileID: 6387653535979667214, guid: db6bcfd0e432a904a90a3f0f5ab22b6f, type: 3}
+  spawnPoints:
+  - {fileID: 7665179010432646910}
+  maxMinionsAlive: 2
+  smokeEffectPrefab: {fileID: 3708887210829088249, guid: fcf4ce5bdc26a72448756cdc35e766b9, type: 3}
 --- !u!1 &8573930638674818592
 GameObject:
   m_ObjectHideFlags: 0

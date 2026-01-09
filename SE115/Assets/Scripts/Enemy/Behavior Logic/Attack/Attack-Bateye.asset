@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c61e53861ded754c908685278d04eba, type: 3}
   m_Name: Attack-Bateye
   m_EditorClassIdentifier: Assembly-CSharp::BateyeAttack
-  canInterruptByHit: 1
-  dashSpeed: 6
+  dashSpeed: 9
   platformerLayer:
     serializedVersion: 2
     m_Bits: 790784

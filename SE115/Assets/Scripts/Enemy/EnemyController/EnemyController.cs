@@ -1,7 +1,5 @@
 using System;
-using UnityEditor.Build;
 using UnityEngine;
-
 
 public class EnemyController : MonoBehaviour
 {
@@ -78,6 +76,14 @@ public class EnemyController : MonoBehaviour
         health = gameObject.GetComponent<EnemyHealth>();
         stateManager = new EnemyStateManager(this);
 
+        #region State SO Initialize
+        enemyIdleBaseInstance.Initalize(gameObject, this);
+        enemyChaseBaseInstance.Initalize(gameObject, this);
+        enemyAttackBaseInstance.Initalize(gameObject, this);
+        enemyHurtBaseInstance.Initalize(gameObject, this);
+        enemyDeadBaseInstance.Initalize(gameObject, this);
+        #endregion
+
         health.onTakeDamage += OnTakeDamage;
         health.onDead += StartDead;
 
@@ -85,17 +91,8 @@ public class EnemyController : MonoBehaviour
     }
     protected virtual void Start()
     {
-        #region State SO Initialize
-        enemyIdleBaseInstance.Initalize(gameObject, this);
-        enemyChaseBaseInstance.Initalize(gameObject, this);
-        enemyAttackBaseInstance.Initalize(gameObject, this);
-        enemyHurtBaseInstance.Initalize(gameObject, this);
-        enemyDeadBaseInstance.Initalize(gameObject, this);
-
         stateManager.ChangeState(stateManager.EnemyIdleState);
-        #endregion
-
-        this.CheckFacingDirection(startDirection);
+        CheckFacingDirection(startDirection);
     }
     protected virtual void Update()
     {

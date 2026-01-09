@@ -174,7 +174,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7376190454936138833, guid: e5882cf6374721348af5c541cee41084, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.15, y: 0.14}
@@ -282,15 +282,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BateyeController
   myRigidbody: {fileID: 3763220993730053085}
   animator: {fileID: 1235494807100698217}
-  myCollider: {fileID: 0}
+  myCollider: {fileID: 1616897555605182055}
   health: {fileID: 2681607815057009279}
   movement: {fileID: 8299702268293728142}
   weapons: []
   facingDirection: {x: 0, y: 0}
   startDirection: {x: 1, y: 1}
-  attackRange: 5
-  aggroTriggerRange: 8
-  detectionHeightRange: 10
+  attackRange: 7
+  aggroTriggerRange: 10
+  detectionHeightRange: 0
+  attackHeightRange: 0
   attackCooldown: 2
   enemyIdleBase: {fileID: 11400000, guid: 7004111738de415418e4a56709b6ab5f, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: ec64fde7272ff9a469f8001b31cf2fc5, type: 2}
@@ -305,7 +306,8 @@ MonoBehaviour:
     m_Bits: 256
   playerTarget: {fileID: 0}
   attackTarget: {fileID: 0}
-  recoveryDuration: 3
+  recoveryDuration: 2
+  dashAttackDuration: 1
   damage: {fileID: 8664524552306984102}
   hurtbox: {fileID: 8809511070493764145}
   isRecovering: 0
@@ -324,6 +326,7 @@ MonoBehaviour:
   attackerTeam: 1
   isDestroyAfterDamage: 0
   damage: 20
+  destroyer: {fileID: 0}
 --- !u!61 &1616897555605182055
 BoxCollider2D:
   m_ObjectHideFlags: 0
