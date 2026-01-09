@@ -5,8 +5,6 @@ public class EnemyIdleSOBase : ScriptableObject
     protected Transform transform;
     protected GameObject gameObject;
     protected EnemyStateManager stateManager;
-
-    [SerializeField] protected bool canInterruptByHit = true;
     public virtual void Initalize(GameObject gameObject, EnemyController enemy)
     {
         this.gameObject = gameObject;
@@ -23,7 +21,7 @@ public class EnemyIdleSOBase : ScriptableObject
         {
             stateManager.ChangeState(stateManager.EnemyDeadState);
         }
-        else if (enemy.isHurtStun && canInterruptByHit)
+        else if (enemy.isHurtStun)
         {
             stateManager.ChangeState(stateManager.EnemyHurtState);
         }

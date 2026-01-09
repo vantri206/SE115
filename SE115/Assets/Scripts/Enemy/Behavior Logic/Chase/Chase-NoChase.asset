@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 862acad06d839034a98d05a99feb6b9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a3471b28bd88c444b49a5d7961a9d48, type: 3}
   m_Name: Chase-NoChase
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyChaseRunDirectToPlayer
-  canInterruptByHit: 1
-  chaseMoveSpeed: 0
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyNoChase

@@ -62,8 +62,22 @@ public class BateyeIdle : EnemyIdleSOBase
 
         if (enemy is BateyeController bat && bat.isRecovering)
         {
-            enemy.movement.Move(Vector2.up, flyingUpSpeed);
-            return; 
+            RaycastHit2D hit = Physics2D.Raycast(enemy.transform.position, Vector2.down, 1000.0f, groundLayer);
+            float currentAltitude = (hit.collider != null) ? hit.distance : 1000.0f;
+
+            if (currentAltitude < hoverHeight)
+            {
+                enemy.movement.Move(Vector2.up, flyingUpSpeed);
+            }
+            else if (currentAltitude > maxHeight)
+            {
+                enemy.movement.Move(Vector2.down, flyingUpSpeed);
+            }
+            else
+            {
+                enemy.movement.StopMove();
+            }
+            return;
         }
 
         if (shouldStopMove || freezeTimer < freezeTime)
@@ -103,9 +117,6 @@ public class BateyeIdle : EnemyIdleSOBase
 
         if (enemy is BateyeController bat && bat.isRecovering)
         {
-            isAtHoverHeight = false;
-            shouldStopMove = false;
-
             return;
         }
         else
@@ -114,6 +125,7 @@ public class BateyeIdle : EnemyIdleSOBase
         }
 
         CheckAltitude();
+
         bool hasCeiling = enemy.movement.CheckCeilingAhead();
 
         if (enemy.attackTarget != null)

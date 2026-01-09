@@ -24,9 +24,9 @@ public class EnemyAttackNormal : EnemyAttackSOBase
             }
         }
 
-        enemy.animator.SetTrigger("Attack");
-
         enemy.isAttacking = true;
+
+        enemy.animator.SetBool("isAttacking", true);
 
         enemy.attackCooldownTimer = float.NegativeInfinity;
     }
@@ -37,6 +37,8 @@ public class EnemyAttackNormal : EnemyAttackSOBase
 
         enemy.attackTarget = null;
         enemy.attackCooldownTimer = 0;
+
+        enemy.animator.SetBool("isAttacking", false);
     }
 
     public override void HandleFixedUpdateState()

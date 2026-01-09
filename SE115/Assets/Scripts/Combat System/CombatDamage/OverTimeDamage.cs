@@ -11,6 +11,7 @@ public class OverTimeDamage : Damage
     public void ResetHitList()
     {
         hitList.Clear();
+        overTimer = 0.0f;
     }
     private void Update()
     {
@@ -18,7 +19,6 @@ public class OverTimeDamage : Damage
         if (overTimer >= overTime)
         {
             ResetHitList();
-            overTimer = 0.0f;
         }
     }
     public override void DealDamage(IDamageable targetHealth)

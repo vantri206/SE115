@@ -4,10 +4,12 @@ public class BateyeController : EnemyController
 {
     [Header("Bateye Settings")]
     [SerializeField] private float recoveryDuration = 2.0f;
+    [SerializeField] private float dashAttackDuration = 3.0f;
     [SerializeField] private SwordDamage damage;
     [SerializeField] private Hurtbox hurtbox;
 
 
+    private float attackTimer = float.NegativeInfinity;
     private float recoveryTimer = 0.0f;
     public bool isRecovering = false;
 
@@ -33,6 +35,7 @@ public class BateyeController : EnemyController
     }
     protected override void Update()
     {
+        attackTimer += Time.deltaTime;
         recoveryTimer -= Time.deltaTime;
 
         if (recoveryTimer <= 0.0f)
@@ -42,6 +45,9 @@ public class BateyeController : EnemyController
 
         if (isAttacking)
         {
+            attackCooldownTimer += Time.deltaTime;
+            stateManager.Update();
+
             return;
         }
 
@@ -51,7 +57,7 @@ public class BateyeController : EnemyController
     {
         if (isAttacking)
         {
-            if (myCollider.IsTouchingLayers(obstacleLayer))
+            if (myCollider.IsTouchingLayers(obstacleLayer) || attackTimer >= dashAttackDuration)
             {
                 FinishAttack();
             }
@@ -76,6 +82,8 @@ public class BateyeController : EnemyController
     {
         if (!isAttacking) return;
 
+        attackTimer = 0.0f;
+
         damage.ResetHitList();
 
         animator.SetBool("isAttacking", true);
@@ -83,6 +91,7 @@ public class BateyeController : EnemyController
         hurtbox.gameObject.SetActive(false);        //Bat cant be attacked when attack
 
         dashDirection = facingDirection;
+
         if (target != null)
         {
             Vector3 targetPos = target.position;
@@ -98,6 +107,8 @@ public class BateyeController : EnemyController
     public override void FinishAttack()
     {
         isAttacking = false;
+
+        attackTimer = float.NegativeInfinity;
 
         animator.SetBool("isAttacking", false);
 
@@ -128,7 +139,7 @@ public class BateyeController : EnemyController
     #endregion
     public override void CheckAggroRange()
     {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, detectionHeightRange, playerLayer);
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, aggroTriggerRange, playerLayer);
 
         if (hit != null)
         {
@@ -159,7 +170,7 @@ public class BateyeController : EnemyController
     public override void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionHeightRange);
+        Gizmos.DrawWireSphere(transform.position, aggroTriggerRange);
 
         Gizmos.color = Color.orange;
         Gizmos.DrawWireSphere(transform.position, attackRange);

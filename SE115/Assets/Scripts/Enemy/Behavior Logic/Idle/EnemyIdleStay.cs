@@ -28,10 +28,18 @@ public class EnemyIdleStay : EnemyIdleSOBase
         if (stateManager.currentState != stateManager.EnemyIdleState)
             return;
 
-        if (enemy.CanAttack())
-            stateManager.ChangeState(stateManager.EnemeyAttackState);
-        else
+        if (enemy.attackTarget != null)
+        {
+            if (enemy.CanAttack())
+            {
+                stateManager.ChangeState(stateManager.EnemeyAttackState);
+                return;
+            }
+        }
+        else if(enemy.isAggroed)
+        {
             stateManager.ChangeState(stateManager.EnemyChaseState);
+        }
     }
 
     public override void Initalize(GameObject gameObject, EnemyController enemy)

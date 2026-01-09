@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb7d64d7f6aa3c4798a48efc7bcb830, type: 3}
   m_Name: Idle-BateyeIdle
   m_EditorClassIdentifier: Assembly-CSharp::EnemyIdleBatPatrol
-  canInterruptByHit: 1
-  hoverHeight: 2
-  maxHeight: 5
-  flyingUpSpeed: 1
+  hoverHeight: 5
+  maxHeight: 6
+  flyingUpSpeed: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 790528

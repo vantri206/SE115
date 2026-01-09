@@ -19,6 +19,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public Action<Vector2> onTakeDamage;
     public Action onDead;
 
+    public Func<bool> checkBlock;
+    public Func<Vector2, bool> checkBlockDirection;
+
     public void Start()
     {
         if (myRigidbody == null)
@@ -29,6 +32,17 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float damage, Vector2 sourcePos)
     {
         if (isInvincible) return;
+
+        if (checkBlock != null && checkBlock.Invoke())
+        {
+            return;
+        }
+
+        if (checkBlockDirection != null && checkBlockDirection.Invoke(sourcePos))
+        {
+            return;
+        }
+
         currentHealth -= damage;
 
         onTakeDamage?.Invoke(sourcePos);
