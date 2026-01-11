@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
 
     [Header("Respawn Settings")]
-    public float respawnDelay = 1.0f;
     private Vector2 currentRespawnPoint;
 
     private void Awake()
@@ -47,13 +46,6 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        StartCoroutine(RespawnCoroutine());
-    }
-
-    private IEnumerator RespawnCoroutine()
-    {
-        yield return new WaitForSeconds(respawnDelay);
-
         if (player != null)
         {
             player.Respawn(currentRespawnPoint);
@@ -66,7 +58,6 @@ public class GameManager : MonoBehaviour
 
         RestorePlayerStats();
     }
-
     private void RestorePlayerStats()
     {
         if (player.health != null)

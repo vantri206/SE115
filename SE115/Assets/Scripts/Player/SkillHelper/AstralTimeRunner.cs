@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using Unity.Cinemachine;
+using UnityEngine;
 
 public class AstralTimeRunner : MonoBehaviour
 {
+    public CameraTargetController cameraController;
+
     private AstralTimeSkill astralSkill;
     private PlayerController player;
     private GameObject currentAstral;
@@ -9,6 +12,11 @@ public class AstralTimeRunner : MonoBehaviour
 
     private PlayerSaveData saveData = new PlayerSaveData();
 
+    private void Awake()
+    {
+        if (cameraController == null)
+            cameraController = FindFirstObjectByType<CameraTargetController>();
+    }
     public void Initialize(AstralTimeSkill astralSkill, PlayerController player, float duration, GameObject astral, Color astralColor, float astralHP)
     {
         this.astralSkill = astralSkill;
@@ -51,6 +59,8 @@ public class AstralTimeRunner : MonoBehaviour
         astralSkill.OnSkillEnd(player);
 
         Destroy(this);
+
+        cameraController.ReturnFocusToPlayer();
     }
     private void SavePlayerData()
     {

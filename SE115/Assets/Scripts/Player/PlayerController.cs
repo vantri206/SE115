@@ -216,7 +216,11 @@ public class PlayerController : MonoBehaviour
     }
     public void StartDead()
     {
-        DisablePhysic();
+        myRigidbody.bodyType = RigidbodyType2D.Kinematic;
+        myRigidbody.linearVelocity = Vector2.zero;
+        myCollider.enabled = false;
+        spriteRenderer.enabled = true;
+
         isDead = true;
     }
     public void Dead()
@@ -244,8 +248,7 @@ public class PlayerController : MonoBehaviour
         myRigidbody.bodyType = RigidbodyType2D.Dynamic;
         myRigidbody.linearVelocity = Vector2.zero;
         myCollider.enabled = true;
-
-        animator.Play("Idle");
+        spriteRenderer.enabled = true;
 
         if (stateManager != null)
         {
@@ -353,12 +356,6 @@ public class PlayerController : MonoBehaviour
     public void SetGravityScale(float scale)
     {
         myRigidbody.gravityScale = scale;
-    }
-    private void DisablePhysic()
-    {
-        myRigidbody.bodyType = RigidbodyType2D.Kinematic;
-        myRigidbody.linearVelocity = Vector2.zero;
-        myCollider.enabled = false;
     }
     private void OnDrawGizmos()
     {

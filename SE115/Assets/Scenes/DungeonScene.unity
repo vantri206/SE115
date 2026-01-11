@@ -533,6 +533,63 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1476317479635647174, guid: 34a98c60c7de414489a3554a9c0cb572, type: 3}
   respawnTime: 2
   fadeAppearDuration: 1.5
+--- !u!1001 &140251652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749455549947708909, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468120341711622535, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
+      propertyPath: m_Name
+      value: AstralTimeCollectable
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2aba8cc0f6902649b997387fadc62ff, type: 3}
 --- !u!1 &316536594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,6 +2093,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2130,7 +2188,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2155,7 +2213,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.3, y: 4.58, z: -10}
+  m_LocalPosition: {x: 3.5555558, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2178,7 +2236,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
+  UpdateMethod: 1
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -2193,6 +2251,30 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.PixelPerfectCamera
+  m_ComponentVersion: 1
+  m_AssetsPPU: 16
+  m_RefResolutionX: 120
+  m_RefResolutionY: 156
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &520745803
 GameObject:
   m_ObjectHideFlags: 0
@@ -2332,8 +2414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4600bd4bfa766c644b443d446a44c8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  areaBounds: {fileID: 529828994}
-  cam: {fileID: 0}
 --- !u!60 &529828994
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4862,7 +4942,7 @@ Transform:
   m_GameObject: {fileID: 1149270986}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.3, y: 4.58, z: -10}
+  m_LocalPosition: {x: 3.5555558, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4883,20 +4963,20 @@ MonoBehaviour:
   CameraDistance: 10
   DeadZoneDepth: 0
   Composition:
-    ScreenPosition: {x: 0, y: 0}
+    ScreenPosition: {x: -0.2, y: 0.1}
     DeadZone:
-      Enabled: 0
-      Size: {x: 0.2, y: 0.2}
+      Enabled: 1
+      Size: {x: 0.1, y: 0.15}
     HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
+      Enabled: 1
+      Size: {x: 0.8, y: 0.6}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 2, z: 0}
-  Damping: {x: 0.2, y: 1, z: 0.2}
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 0.3, y: 0.3, z: 0}
   Lookahead:
-    Enabled: 0
-    Time: 0.5
+    Enabled: 1
+    Time: 0.2
     Smoothing: 10
     IgnoreY: 1
 --- !u!114 &1149270989
@@ -4919,7 +4999,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 94910877}
+    TrackingTarget: {fileID: 1776122735}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -14642,6 +14722,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1776122735}
   - {fileID: 519420032}
   - {fileID: 1149270987}
   m_Father: {fileID: 0}
@@ -14658,12 +14739,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594ddfd8d7f6ad049bbb3d00107a1e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  vcam: {fileID: 1149270989}
-  player: {fileID: 94910881}
-  groundY: 2
-  airY: 0.5
-  shiftSpeed: 0.5
-  transitionDuration: 1
+  playerTransform: {fileID: 0}
+  followSpeed: 10
+  snapBackSpeed: 5
+--- !u!1 &1776122734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776122735}
+  - component: {fileID: 1776122736}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1776122735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776122734}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1745075074}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1776122736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776122734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594ddfd8d7f6ad049bbb3d00107a1e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  playerTransform: {fileID: 94910877}
+  followSpeed: 10
+  snapBackSpeed: 5
 --- !u!1 &1788814854
 GameObject:
   m_ObjectHideFlags: 0
@@ -15237,7 +15362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
-  respawnDelay: 1
 --- !u!1 &2036453649
 GameObject:
   m_ObjectHideFlags: 0
@@ -15629,3 +15753,4 @@ SceneRoots:
   - {fileID: 812360544}
   - {fileID: 1856843785}
   - {fileID: 2099401968}
+  - {fileID: 140251652}

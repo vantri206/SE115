@@ -20,7 +20,7 @@ public class DeadStateBehavior : StateMachineBehaviour
         PlayerController player = animator.GetComponent<PlayerController>();
         if (player != null)
         {
-            player.Dead();
+            player.AE_Dead();
         }
 
         EnemyController enemy = animator.GetComponent<EnemyController>();
