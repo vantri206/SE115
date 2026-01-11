@@ -67,8 +67,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.033}
-  m_Radius: 0.31
+  m_Offset: {x: 0.05, y: -0.05}
+  m_Radius: 0.4
 --- !u!114 &578682400423427643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +99,8 @@ GameObject:
   - component: {fileID: 8299702268293728142}
   - component: {fileID: 7778764091718747473}
   - component: {fileID: 8664524552306984102}
-  - component: {fileID: 1616897555605182055}
-  m_Layer: 7
+  - component: {fileID: 4953101418301355717}
+  m_Layer: 21
   m_Name: Bateye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 7060ff2fc57561d4eb6b0b5209008bcb, type: 2}
+  m_Material: {fileID: 6200000, guid: 0eaa36c05a643854e870f70c25d5f47b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BateyeController
   myRigidbody: {fileID: 3763220993730053085}
   animator: {fileID: 1235494807100698217}
-  myCollider: {fileID: 1616897555605182055}
+  myCollider: {fileID: 4953101418301355717}
   health: {fileID: 2681607815057009279}
   movement: {fileID: 8299702268293728142}
   weapons: []
@@ -327,8 +327,8 @@ MonoBehaviour:
   isDestroyAfterDamage: 0
   damage: 20
   destroyer: {fileID: 0}
---- !u!61 &1616897555605182055
-BoxCollider2D:
+--- !u!58 &4953101418301355717
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -361,18 +361,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.022964, y: -0.055576563}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.15, y: 0.14}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.96524525, y: 0.8070264}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.05, y: -0.05}
+  m_Radius: 0.35
 --- !u!1 &7956068432059321611
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,8 +430,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.033}
-  m_Radius: 0.6
+  m_Offset: {x: 0.05, y: -0.05}
+  m_Radius: 0.5
 --- !u!114 &8809511070493764145
 MonoBehaviour:
   m_ObjectHideFlags: 0

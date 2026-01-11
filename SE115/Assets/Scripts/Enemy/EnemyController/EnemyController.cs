@@ -212,16 +212,14 @@ public class EnemyController : MonoBehaviour
 
         this.enabled = false;
     }
-    public void ActivateEnemyAI()
-    {
-        this.enabled = true;
-    }
     public void CheckFacingDirection(Vector2 facingDirection)
     {
         if (Mathf.Abs(facingDirection.x) > 0.0f)
         {
             float directionX = Mathf.Sign(facingDirection.x);
+
             if (directionX != this.facingDirection.x)
+
             {
                 this.facingDirection = new Vector2(directionX, this.facingDirection.y);
                 Vector3 currentScale = this.transform.localScale;
@@ -230,9 +228,14 @@ public class EnemyController : MonoBehaviour
                     directionX * Mathf.Abs(currentScale.x),
                     currentScale.y,
                     currentScale.z
+
                 );
             }
         }
+    }
+    public void ActivateEnemyAI()
+    {
+        this.enabled = true;
     }
     public void DisablePhysicAndCollider()
     {

@@ -5,7 +5,7 @@ public static class CombatManager
 {
     private static readonly Dictionary<DamageTeam, DamageTeam[]> canDealDamageMap = new Dictionary<DamageTeam, DamageTeam[]>()
     {
-        { DamageTeam.Player, new DamageTeam[]{ DamageTeam.Enemy } },
+        { DamageTeam.Player, new DamageTeam[]{ DamageTeam.Enemy, DamageTeam.Neutral } },
         { DamageTeam.Enemy,  new DamageTeam[]{ DamageTeam.Player } },
         { DamageTeam.Trap,   new DamageTeam[]{ DamageTeam.Player } },
     };

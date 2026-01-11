@@ -27,8 +27,8 @@ TagManager:
   - OnewayPlatformer
   - Wall
   - Trap
-  - 
-  - 
+  - FlyingEnemy
+  - BossEnemy
   - 
   - 
   - 

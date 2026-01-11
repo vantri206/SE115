@@ -23,6 +23,7 @@ public class PlayerJumpState : PlayerBaseState
     public override void UpdateState()
     {
         base.UpdateState();
+
         if (stateManager.currentState != this)
             return;
 

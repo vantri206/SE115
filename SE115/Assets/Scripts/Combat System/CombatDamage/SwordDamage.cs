@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class SwordDamage : Damage
 {
     private List<IDamageable> hitList = new List<IDamageable>();
 
+    public Action<IDamageable> onHitTarget;
     public ObjectDestroyer destroyer;
     private void Awake()
     {
@@ -28,6 +30,8 @@ public class SwordDamage : Damage
             Vector2 sourcePos = ownerTransform.position;
             targetHealth.TakeDamage(damage, sourcePos);
             hitList.Add(targetHealth);
+
+            onHitTarget?.Invoke(targetHealth);
 
             if (isDestroyAfterDamage)
             {

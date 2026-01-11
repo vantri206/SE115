@@ -403,6 +403,7 @@ MonoBehaviour:
   health: {fileID: 4570977781263936983}
   movement: {fileID: 4740713195581306483}
   weapons:
+  - {fileID: 3978878555611832480}
   - {fileID: 3670418457394589608}
   facingDirection: {x: 0, y: 0}
   startDirection: {x: 1, y: 0}
@@ -413,7 +414,7 @@ MonoBehaviour:
   attackCooldown: 2
   enemyIdleBase: {fileID: 11400000, guid: 326381f7d91d7df4b923144dd88db913, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: 36bf4254d5636134184e7603c3424d1a, type: 2}
-  enemyAttackBase: {fileID: 11400000, guid: e0ec3af03ab60504baefeae94fd376f8, type: 2}
+  enemyAttackBase: {fileID: 11400000, guid: f1585011cbe1a8345b0b19ee6b66f6d5, type: 2}
   enemyHurtBase: {fileID: 11400000, guid: b43f0a8c62326ea498c552964f14774e, type: 2}
   enemyDeadBase: {fileID: 11400000, guid: b0e02f6e63578f34b99d0506ef0841e8, type: 2}
   isAttacking: 0

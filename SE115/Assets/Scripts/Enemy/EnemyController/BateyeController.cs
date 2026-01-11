@@ -25,9 +25,17 @@ public class BateyeController : EnemyController
         base.Awake();
 
         if (damage == null)
-            damage = GetComponent<SwordDamage>();
+            damage = GetComponentInChildren<SwordDamage>();
         if (hurtbox == null)
             hurtbox = GetComponentInChildren<Hurtbox>();
+    }
+    private void OnEnable()
+    {
+        if (damage != null) damage.onHitTarget += OnAttackHit;
+    }
+    private void OnDisable()
+    {
+        if (damage != null) damage.onHitTarget -= OnAttackHit;
     }
     protected override void Start()
     {
@@ -118,9 +126,12 @@ public class BateyeController : EnemyController
 
         StartRecovering();
     }
+
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isAttacking) return;
+
+        if (attackTimer < 0.25f) return;
 
         if ((obstacleLayer & (1 << collision.gameObject.layer)) > 0)
         {
@@ -130,6 +141,8 @@ public class BateyeController : EnemyController
     protected virtual void OnCollisionStay2D(Collision2D collision)
     {
         if (!isAttacking) return;
+
+        if (attackTimer < 0.25f) return;
 
         if ((obstacleLayer & (1 << collision.gameObject.layer)) > 0)
         {
@@ -165,6 +178,43 @@ public class BateyeController : EnemyController
         {
             attackTarget = null;
             isAggroed = false;
+        }
+    }
+    public void RotateTowardsVelocity()
+    {
+        Vector2 dir = myRigidbody.linearVelocity;
+
+        if (dir.sqrMagnitude > 0.1f)
+        {
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            if (facingDirection.x > 0)
+            {
+                angle += 45.0f;
+            }
+            else
+            {
+                angle = angle + 135.0f;
+            }
+
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
+    public void ResetRotation()
+    {
+        transform.rotation = Quaternion.identity;
+        CheckFacingDirection(facingDirection);
+    }
+    private void OnAttackHit(IDamageable hitTarget)
+    {
+        if (!isAttacking) return;
+
+        if (hitTarget is Component targetComponent)
+        {
+            if ((playerLayer.value & (1 << targetComponent.gameObject.layer)) > 0)
+            {
+                FinishAttack();
+            }
         }
     }
     public override void OnDrawGizmos()

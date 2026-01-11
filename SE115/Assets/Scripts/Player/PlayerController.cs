@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("isDashing", true);
 
-        health.SetInvincible(true);
+        //health.SetInvincible(true);
 
         effect.SpawnDashEffect();
     }
@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("isDashing", false);
 
-        health.SetInvincible(false);
+        //health.SetInvincible(false);
 
         effect.FinishDashEffect();
     }

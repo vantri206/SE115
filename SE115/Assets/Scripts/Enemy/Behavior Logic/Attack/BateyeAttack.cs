@@ -42,11 +42,25 @@ public class BateyeAttack : EnemyAttackSOBase
             stateManager.ChangeState(stateManager.EnemyIdleState);
         }
     }
+    public override void HandleFixedUpdateState()
+    {
+        base.HandleFixedUpdateState();
+
+        if (enemy is BateyeController bateye)
+        {
+            bateye.RotateTowardsVelocity();
+        }
+    }
     public override void HandleExitState()
     {
         base.HandleExitState();
 
         enemy.movement.StopMove();
+
+        if (enemy is BateyeController bateye)
+        {
+            bateye.ResetRotation();
+        }
 
         enemy.attackTarget = null;
         enemy.attackCooldownTimer = 0;

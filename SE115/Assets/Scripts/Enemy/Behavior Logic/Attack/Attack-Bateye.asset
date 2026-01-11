@@ -15,5 +15,5 @@ MonoBehaviour:
   dashSpeed: 9
   platformerLayer:
     serializedVersion: 2
-    m_Bits: 790784
+    m_Bits: 528384
   aimOffset: {x: 0, y: -0.25}

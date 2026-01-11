@@ -81,8 +81,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.05}
-  m_Radius: 0.25
+  m_Offset: {x: -0.02, y: -0.08725566}
+  m_Radius: 0.2
 --- !u!1 &6217709352234151299
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: -2499816841321519738}
   - component: {fileID: 1096366651245605657}
   m_Layer: 11
-  m_Name: LinearShuriken
+  m_Name: LinearAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: -477773231
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 9025502588141082555, guid: 08a6a8390c5810d418560f3efbaf3cf5, type: 3}
+  m_Sprite: {fileID: 2002039616, guid: 302f4217bb8d3c843b6c8cf0c2c5764e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -190,7 +190,7 @@ Animator:
   m_GameObject: {fileID: 6217709352234151299}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b683484e0ab4522439f71e0b8d127b40, type: 2}
+  m_Controller: {fileID: 9100000, guid: d21bbff527cbbfb42ab00dfd4e015791, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -263,8 +263,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.05}
-  m_Radius: 0.25
+  m_Offset: {x: -0.02, y: -0.08725566}
+  m_Radius: 0.2
 --- !u!114 &1258410795264150051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,9 +278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordDamage
   attackerTeam: 0
-  isDestroyAfterDamage: 0
+  isDestroyAfterDamage: 1
   damage: 10
-  destroyer: {fileID: 0}
+  destroyer: {fileID: 1096366651245605657}
 --- !u!114 &-2499816841321519738
 MonoBehaviour:
   m_ObjectHideFlags: 0

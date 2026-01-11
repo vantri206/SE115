@@ -120,7 +120,12 @@ public class PlayerSkillManager : MonoBehaviour
             }
 
             Debug.Log("Player learning: " + skill.ToString());
-            ScrollMessenger.Instance.ShowMessage("Player Learning: " + skill.ToString());
+
+            if (ScrollMessenger.Instance != null)
+            {
+                ScrollMessenger.Instance.ShowMessage("Player Learning: " + skill.ToString());
+            }
+
             onSkillLeared?.Invoke(index, skill);
 
         }

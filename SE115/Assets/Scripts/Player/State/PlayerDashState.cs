@@ -35,6 +35,9 @@ public class PlayerDashState : PlayerBaseState
     {
         base.UpdateState();
 
+        if (stateManager.currentState != this)
+            return;
+
         float timer = Time.time - startTime;
 
         if(timer <= player.data.dashTime)

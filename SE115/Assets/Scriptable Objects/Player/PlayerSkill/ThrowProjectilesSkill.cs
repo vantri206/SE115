@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PlayerSkills/Axe Throw")]
-public class AxeThrowSkill : SkillBase
+[CreateAssetMenu(menuName = "PlayerSkills/Throw")]
+public class ThrowProjectilesSkill : SkillBase
 {
     [Header("Skill Setting")]
-    public GameObject axePrefab;
+    public GameObject projectilesPrefab;
     public Vector2 throwForce = Vector2.right;
 
     [System.NonSerialized]
@@ -17,17 +17,17 @@ public class AxeThrowSkill : SkillBase
 
     public override void Cast(Transform castPosition, PlayerController player)
     {
-        GameObject axe = Instantiate(axePrefab, castPosition.position, Quaternion.identity, ProjectilesPool.Instance);
-        BoomerangProjectiles axeProjectiles = axe.GetComponent<BoomerangProjectiles>();
+        GameObject axe = Instantiate(projectilesPrefab, castPosition.position, Quaternion.identity, ProjectilesPool.Instance);
+        BoomerangProjectiles boomerangProjectiles = axe.GetComponent<BoomerangProjectiles>();
 
-        if (axeProjectiles != null)
+        if (boomerangProjectiles != null)
         {
             isHasAxe = false;
 
-            axeProjectiles.Initialize(player.transform, player.facingDirection, 
+            boomerangProjectiles.Initialize(player.transform, player.facingDirection, 
             () =>
             {
-                SwordDamage damage = axeProjectiles.GetComponent<SwordDamage>();
+                SwordDamage damage = boomerangProjectiles.GetComponent<SwordDamage>();
                 if(damage != null)
                 {
                     damage.ResetHitList();
