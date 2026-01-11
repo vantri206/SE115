@@ -101,12 +101,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8481658164708797523}
   - component: {fileID: 2075266791907122340}
-  - component: {fileID: 4257840203182940382}
   - component: {fileID: 8002663165563565574}
   - component: {fileID: 4937873967261715496}
-  - component: {fileID: 147510264929451340}
+  - component: {fileID: 6202124968965601630}
+  - component: {fileID: 8091310257607798142}
   m_Layer: 6
-  m_Name: HealthPotion
+  m_Name: ManaPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 1036149379
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5036196212221154364, guid: 8832b838f62c89b40bbf9736341f56a5, type: 3}
+  m_Sprite: {fileID: 468142506262419363, guid: 5efd722e36897ed4f9b5d1539444aa51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,28 +186,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4257840203182940382
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7703803869589928928}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 73e759321bb430f458e14f3af8aea938, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &8002663165563565574
 Rigidbody2D:
   serializedVersion: 5
@@ -281,7 +259,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &147510264929451340
+--- !u!114 &6202124968965601630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,7 +268,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 7703803869589928928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e768ad0d4be7c4993b2aff6f38fe41, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b890e23841a0674489faac18e811525, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  healAmount: 20
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleSpriteLoop
+  spriteRenderer: {fileID: 2075266791907122340}
+  sprites:
+  - {fileID: 468142506262419363, guid: 944f5612745473047bd25d9e27fb25df, type: 3}
+  - {fileID: 1176131230, guid: 944f5612745473047bd25d9e27fb25df, type: 3}
+  - {fileID: -1674656745, guid: 944f5612745473047bd25d9e27fb25df, type: 3}
+  - {fileID: 1260879863, guid: 944f5612745473047bd25d9e27fb25df, type: 3}
+  intervalTime: 0.25
+--- !u!114 &8091310257607798142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703803869589928928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a6cf3b43c8cf241987f436cafda50f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManaPotion
+  manaAmount: 1

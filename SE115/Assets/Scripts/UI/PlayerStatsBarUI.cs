@@ -58,9 +58,15 @@ public class PlayerStatsBarUI : MonoBehaviour
             heartFills.Add(fillImage);
         }
     }
-
     public void UpdateHealthUI(float oldHealth, float newHealth, float maxHealth)
     {
+        int requiredHearts = Mathf.CeilToInt(maxHealth / healthPerHeart);
+
+        if (heartFills.Count != requiredHearts)
+        {
+            CreateHearts(maxHealth);
+        }
+
         for (int i = 0; i < heartFills.Count; i++)
         {
             float heartCapacity = (i + 1) * healthPerHeart;
