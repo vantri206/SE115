@@ -122,9 +122,9 @@ TextureImporter:
         x: 0
         y: 0
         width: 12
-        height: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -137,33 +137,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: save_point_anim_1
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 11
-        width: 10
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c461790e6a11a1650800000000000000
-      internalID: 6204290845086520908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0fd1a2c286651184eb929e7cc6cb62cd
     internalID: 0
     vertices: []
     indices: 

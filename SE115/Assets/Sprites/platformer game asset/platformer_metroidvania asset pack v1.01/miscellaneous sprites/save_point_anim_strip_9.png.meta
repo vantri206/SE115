@@ -139,10 +139,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 108
-        height: 19
+        width: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,12 +159,12 @@ TextureImporter:
       name: save_point_anim_strip_9_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 11
-        width: 10
-        height: 9
+        x: 12
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: save_point_anim_strip_9_2
       rect:
         serializedVersion: 2
-        x: 13
-        y: 12
-        width: 10
-        height: 8
+        x: 24
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,12 +203,12 @@ TextureImporter:
       name: save_point_anim_strip_9_3
       rect:
         serializedVersion: 2
-        x: 25
-        y: 12
-        width: 10
-        height: 8
+        x: 36
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,19 +225,19 @@ TextureImporter:
       name: save_point_anim_strip_9_4
       rect:
         serializedVersion: 2
-        x: 37
-        y: 12
-        width: 10
-        height: 8
+        x: 48
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 137fb55041e1134d0800000000000000
+      spriteID: d147400e94c766b4fb868979778ba68b
       internalID: -3156708792471914703
       vertices: []
       indices: 
@@ -247,19 +247,19 @@ TextureImporter:
       name: save_point_anim_strip_9_5
       rect:
         serializedVersion: 2
-        x: 49
-        y: 11
-        width: 10
-        height: 9
+        x: 60
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bdd0b850209599dc0800000000000000
+      spriteID: 54668ca2f428ecc4198feb7fa51ff9b2
       internalID: -3631773759279788581
       vertices: []
       indices: 
@@ -269,19 +269,19 @@ TextureImporter:
       name: save_point_anim_strip_9_6
       rect:
         serializedVersion: 2
-        x: 61
-        y: 11
-        width: 10
-        height: 9
+        x: 72
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e75c3362eb0f59560800000000000000
+      spriteID: b8e05997fc09eaa47a1561c913cfafc0
       internalID: 7320021468835988862
       vertices: []
       indices: 
@@ -291,20 +291,42 @@ TextureImporter:
       name: save_point_anim_strip_9_7
       rect:
         serializedVersion: 2
-        x: 97
-        y: 11
-        width: 10
-        height: 9
+        x: 84
+        y: 0
+        width: 12
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7424a325e3cb5c1f0800000000000000
+      spriteID: 56478a30134c624438229699d7ed564b
       internalID: -1025206364303375801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: save_point_anim_strip_9_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799460fe53896c34e87549f23c4c6b60
+      internalID: 1951504043
       vertices: []
       indices: 
       edges: []
@@ -313,7 +335,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 13fdc664c63522a4db59901259baaf60
     internalID: 0
     vertices: []
     indices: 
@@ -321,7 +343,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":12.0,"y":20.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       save_point_anim_strip_9_0: 8202206559644567579
       save_point_anim_strip_9_1: -4823007766866782046
@@ -331,6 +355,7 @@ TextureImporter:
       save_point_anim_strip_9_5: -3631773759279788581
       save_point_anim_strip_9_6: 7320021468835988862
       save_point_anim_strip_9_7: -1025206364303375801
+      save_point_anim_strip_9_8: 1951504043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

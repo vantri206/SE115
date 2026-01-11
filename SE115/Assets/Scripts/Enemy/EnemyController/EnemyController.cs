@@ -139,7 +139,6 @@ public class EnemyController : MonoBehaviour
     }
     public void StartDead()
     {
-        animator.SetTrigger("Dead");
         movement.StopMove();
         FinishAttack();
         DisablePhysicAndCollider();

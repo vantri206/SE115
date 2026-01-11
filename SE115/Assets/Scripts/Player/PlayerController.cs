@@ -219,9 +219,38 @@ public class PlayerController : MonoBehaviour
         DisablePhysic();
         isDead = true;
     }
+    public void Dead()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RespawnPlayer();
+        }
+        else
+        {
+            Debug.LogError("Not found Game Manager!");
+        }
+    }
     public void FinishHurt()
     {
         isHurting = false;
+    }
+    public void Respawn(Vector2 checkpointPosition)
+    {
+        transform.position = checkpointPosition;
+
+        isDead = false;
+        isHurting = false;
+
+        myRigidbody.bodyType = RigidbodyType2D.Dynamic;
+        myRigidbody.linearVelocity = Vector2.zero;
+        myCollider.enabled = true;
+
+        animator.Play("Idle");
+
+        if (stateManager != null)
+        {
+            stateManager.ChangeState(stateManager.IdleState);
+        }
     }
     #endregion
 
@@ -426,4 +455,6 @@ public class PlayerController : MonoBehaviour
         stateManager.ChangeState(stateManager.IdleState);
     }
     #endregion
+
+    public void AE_Dead() { Dead(); }
 }

@@ -25,14 +25,14 @@ public class PlayerHurtState : PlayerBaseState
     }
     public override void UpdateState()
     {
-        if(!player.isHurting)
-        {
-            stateManager.ChangeState(stateManager.IdleState);
-            return;
-        }
-        else if(player.isDead)
+        if (player.isDead)
         {
             stateManager.ChangeState(stateManager.DeadState);
+            return;
+        }
+        else if (!player.isHurting)
+        {
+            stateManager.ChangeState(stateManager.IdleState);
             return;
         }
     }
