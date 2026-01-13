@@ -7,7 +7,10 @@ public class CameraTargetController : MonoBehaviour
 
     [Header("Settings")]
     public float followSpeed = 10f; 
-    public float snapBackSpeed = 5f; 
+    public float snapBackSpeed = 5f;
+
+    [Header("Bounds (Optional)")]
+    public Collider2D mapBounds;
 
     private Transform currentFocus; 
     private bool isSnappingBack = false;
@@ -24,12 +27,12 @@ public class CameraTargetController : MonoBehaviour
         currentFocus = playerTransform;
         transform.position = playerTransform.position;
     }
-
     private void LateUpdate()
     {
         if (currentFocus == null) return;
 
         float speed = isSnappingBack ? snapBackSpeed : followSpeed;
+
         Vector3 targetPos = currentFocus.position;
         targetPos.z = transform.position.z;
 

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemyController : MonoBehaviour
 {
@@ -140,8 +141,12 @@ public class EnemyController : MonoBehaviour
     public void StartDead()
     {
         movement.StopMove();
+
         FinishAttack();
+
         DisablePhysicAndCollider();
+
+        animator.SetTrigger("Dead");
     }
     public void Dead()
     {

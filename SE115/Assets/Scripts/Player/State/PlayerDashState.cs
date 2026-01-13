@@ -5,6 +5,8 @@ public class PlayerDashState : PlayerBaseState
     private Vector2 dashDirection;
     private float startTime;
     private bool inDash = false;
+
+    private Vector2 startPos;
     public PlayerDashState(PlayerStateManager stateManager) : base(stateManager)
     {
         this.stateManager = stateManager;
@@ -16,6 +18,13 @@ public class PlayerDashState : PlayerBaseState
 
         player.OnStartDash();
         player.movement.StopGravity();
+
+        startPos = player.transform.position;
+
+        if (player.unlockSlashDash)
+        {
+            player.health.SetInvincible(true); 
+        }
 
         dashDirection = player.input.moveInput;
         if (dashDirection == Vector2.zero) dashDirection = player.facingDirection;
@@ -30,6 +39,15 @@ public class PlayerDashState : PlayerBaseState
         base.ExitState(stateManager);
 
         player.FinishDash();
+
+        if (player.unlockSlashDash)
+        {
+            player.health.SetInvincible(false);
+
+            Vector2 endPos = player.transform.position;
+
+            player.ExecuteSlash(startPos, endPos);
+        }
     }
     public override void UpdateState()
     {

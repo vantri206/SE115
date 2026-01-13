@@ -231,7 +231,7 @@ MonoBehaviour:
   - {fileID: 5420402328195234996}
   facingDirection: {x: 0, y: 0}
   startDirection: {x: -1, y: 0}
-  attackRange: 2
+  attackRange: 1.5
   aggroTriggerRange: 10
   detectionHeightRange: 5
   attackHeightRange: 1

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BossEnemyHealth : MonoBehaviour, IDamageable
 {
-    public Rigidbody2D myRigidbody;
-
     [Header("Interface setting")]
 
     public float currentHealth;
@@ -25,9 +23,6 @@ public class BossEnemyHealth : MonoBehaviour, IDamageable
 
     public void Awake()
     {
-        if (myRigidbody == null)
-            myRigidbody = GetComponent<Rigidbody2D>();
-
         currentHealth = maxHealth;
         onHealthChanged?.Invoke(currentHealth, currentHealth, maxHealth);
     }

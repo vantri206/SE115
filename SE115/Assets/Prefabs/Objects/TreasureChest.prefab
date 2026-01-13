@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1869482255040405839}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.7, y: 3.23, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -211,7 +211,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 7749687368282275586}
   spawnForce: {x: 4, y: 8}
   animator: {fileID: 8000182324614215228}
-  interactHitbox: {fileID: 9184707914281236886}
+  openEffectPrefab: {fileID: 8910982273104792734, guid: 06ee0b2d6bbf26741b1c1f3f2572fbb6, type: 3}
 --- !u!1 &2128498960691653596
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44f64bb09266e144a6ce21a758ee527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  chest: {fileID: 8870630194290431194}
 --- !u!1 &2552713728172895303
 GameObject:
   m_ObjectHideFlags: 0

@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7778764091718747473}
   - component: {fileID: 8664524552306984102}
   - component: {fileID: 4953101418301355717}
-  m_Layer: 21
+  m_Layer: 7
   m_Name: Bateye
   m_TagString: Untagged
   m_Icon: {fileID: 0}

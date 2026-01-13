@@ -26,6 +26,12 @@ public class PlayerController : MonoBehaviour
     [Header("Weapon")]
     public SwordDamage sword;
 
+    [Header("Slash Dash")]
+    public bool unlockSlashDash = false;
+    public float slashDamage = 20.0f;
+    public LayerMask enemyLayer;
+    public GameObject slashDashPrefabs;
+
     private PlayerStateManager stateManager;
     public float lastOnGroundTime { get; private set; }
     public float lastPressedJumpTime { get; private set; }
@@ -225,6 +231,8 @@ public class PlayerController : MonoBehaviour
     }
     public void Dead()
     {
+        spriteRenderer.enabled = false;
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RespawnPlayer();
@@ -273,7 +281,10 @@ public class PlayerController : MonoBehaviour
 
         //health.SetInvincible(true);
 
-        effect.SpawnDashEffect();
+        if (!unlockSlashDash)
+        {
+            effect.SpawnDashEffect();
+        }
     }
     public void FinishDash()
     {
@@ -454,4 +465,42 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     public void AE_Dead() { Dead(); }
+
+    public void ExecuteSlash(Vector2 startPos, Vector2 endPos)
+    {
+        float distance = Vector2.Distance(startPos, endPos);
+        if (distance < 0.5f) return;
+
+        Vector2 direction = (endPos - startPos).normalized;
+        Vector2 centerPos = (startPos + endPos) / 2f; 
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        float height = 1f;
+        if (myCollider != null)
+        {
+            height = myCollider.bounds.size.y;
+        }
+
+        Vector2 boxSize = new Vector2(distance, height);
+
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(centerPos, boxSize, angle, Vector2.zero, 0f, enemyLayer);
+
+        foreach (var hit in hits)
+        {
+            Hurtbox targetHurtbox = hit.transform.GetComponentInChildren<Hurtbox>();
+
+            if (targetHurtbox != null)
+            {
+                targetHurtbox.health.TakeDamage(slashDamage, (Vector2)transform.position);
+
+                Debug.Log("Slashed: " + hit.collider.name);
+            }
+        }
+
+        if (slashDashPrefabs != null)
+        {
+            GameObject slashObj = Instantiate(slashDashPrefabs, centerPos, Quaternion.Euler(0, 0, angle));
+            slashObj.transform.localScale = new Vector3(distance, 2.0f, 1f);
+        }
+    }
 }

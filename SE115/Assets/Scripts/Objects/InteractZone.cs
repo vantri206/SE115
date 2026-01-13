@@ -2,24 +2,31 @@ using UnityEngine;
 
 public class InteractZone : MonoBehaviour
 {
-    [SerializeField] private TreasureChest chest; 
+    private IInteractable interactable;
+
+    private void Awake()
+    {
+        if(interactable == null)
+            interactable = GetComponentInParent<IInteractable>();
+        if (interactable == null) 
+            interactable = GetComponent<IInteractable>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         PlayerController player = other.GetComponent<PlayerController>();
-        if (player != null)
+        if (player != null && interactable != null)
         {
-            Debug.Log("SetPlayer");
-            chest.SetPlayerInRange(player);
+            interactable.SetPlayerInRange(player);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         PlayerController player = other.GetComponent<PlayerController>();
-        if (player != null)
+        if (player != null && interactable != null)
         {
-            chest.SetPlayerInRange(null);
+            interactable.SetPlayerInRange(null);
         }
     }
 }

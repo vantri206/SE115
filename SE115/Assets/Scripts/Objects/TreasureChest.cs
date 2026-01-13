@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TreasureChest : MonoBehaviour
+public class TreasureChest : MonoBehaviour, IInteractable
 {
     [Header("Settings")]
     [SerializeField] private bool isOpen = false;
@@ -12,16 +12,15 @@ public class TreasureChest : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Animator animator;
-    [SerializeField] private Collider2D interactHitbox;
+
+    [SerializeField] private GameObject openEffectPrefab;
 
     private PlayerController playerInRange;
 
     private void Start()
     {
-        if (animator == null) 
+        if (animator == null)
             animator = GetComponent<Animator>();
-        if (interactHitbox == null)
-            interactHitbox = GetComponentInChildren<Collider2D>();
     }
 
     private void Update()
@@ -30,6 +29,7 @@ public class TreasureChest : MonoBehaviour
         {
             if (playerInRange.lastPressedInteractTime > 0.0f)
             {
+                playerInRange.input.ResetInteractPressed();
                 OpenChest();
             }
         }
@@ -44,6 +44,11 @@ public class TreasureChest : MonoBehaviour
 
     public void AE_SpawnLoot()
     {
+        if (openEffectPrefab != null)
+        {
+            Instantiate(openEffectPrefab, spawnPoint.position, Quaternion.identity);
+        }
+
         if (spawnItems != null && spawnItems.Length > 0)
         {
             foreach (GameObject spawnItem in spawnItems)

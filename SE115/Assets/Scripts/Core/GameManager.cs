@@ -1,15 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance;
 
-    [Header("Player Settings")]
-    public PlayerController player;
+    [Header("Checkpoint System")]
+    public Vector3 lastCheckpointPos; 
+    public bool hasCheckpoint = false; 
 
-    [Header("Respawn Settings")]
-    private Vector2 currentRespawnPoint;
+    [Header("Scene Transition System")]
+    public string nextSpawnPointID;
+    public bool isTransitioning = false;
 
     private void Awake()
     {
@@ -17,6 +20,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -24,50 +29,79 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void UpdateCheckpoint(Vector3 position)
     {
-        if (player == null)
-            player = FindFirstObjectByType<PlayerController>();
-
-        if (player.transform != null)
-        {
-            currentRespawnPoint = player.transform.position;
-        }
-    }
-
-    public void UpdateCheckpoint(Vector2 newPosition)
-    {
-        currentRespawnPoint = newPosition;
-
+        lastCheckpointPos = position;
+        hasCheckpoint = true;
+        nextSpawnPointID = "";
         Debug.Log("Checkpoint Updated!");
-
-        RestorePlayerStats();
     }
 
     public void RespawnPlayer()
     {
-        if (player != null)
+        if (hasCheckpoint)
         {
-            player.Respawn(currentRespawnPoint);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
         {
-            player.transform.position = currentRespawnPoint;
-            Debug.Log("Cant found Player Controller in Game Manager.");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
-        RestorePlayerStats();
     }
-    private void RestorePlayerStats()
+    public void SwitchScene(string sceneName, string spawnPointID)
     {
-        if (player.health != null)
-        {
-            player.health.SetCurrentHeal(player.health.maxHealth);
-        }
+        if (isTransitioning) return;
 
-        if (player.mana != null)
+        StartCoroutine(TransitionRoutine(sceneName, spawnPointID));
+    }
+
+    private IEnumerator TransitionRoutine(string sceneName, string spawnPointID)
+    {
+        isTransitioning = true;
+        nextSpawnPointID = spawnPointID; 
+
+        // yield return UIManager.Instance.FadeOut();
+
+        yield return SceneManager.LoadSceneAsync(sceneName);
+
+        // yield return UIManager.Instance.FadeIn();
+
+        isTransitioning = false;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
+        if (!string.IsNullOrEmpty(nextSpawnPointID))
         {
-            player.mana.RestoreMana(player.mana.maxMana);
+            PositionPlayerAtID(player, nextSpawnPointID);
+
+            UpdateCheckpoint(player.transform.position);
         }
+        else if (hasCheckpoint)
+        {
+            player.transform.position = lastCheckpointPos;
+        }
+    }
+
+    void PositionPlayerAtID(GameObject player, string id)
+    {
+        SceneEntryPoint[] entries = FindObjectsByType<SceneEntryPoint>(FindObjectsSortMode.InstanceID);
+
+        foreach (SceneEntryPoint entry in entries)
+        {
+            if (entry.entryId == id)
+            {
+                player.transform.position = entry.transform.position;
+                return;
+            }
+        }
+        Debug.LogWarning("Can't find spawn point has id: " + id);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
