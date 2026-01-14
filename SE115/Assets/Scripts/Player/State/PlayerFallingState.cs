@@ -59,7 +59,7 @@ public class PlayerFallingState : PlayerBaseState
         {
             stateManager.ChangeState(stateManager.AttackState);
         }
-        else if (player.CanWallSliding())
+        else if (player.CanWallSliding() && player.input.moveInput == player.facingDirection)
         {
             stateManager.ChangeState(stateManager.SlidingState);
         }

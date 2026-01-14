@@ -31,15 +31,11 @@ public class PlayerSlidingState : PlayerBaseState
         {
             stateManager.ChangeState(stateManager.WallJumpState);
         }
-        else if (player.lastPressedDashTime > 0 && player.CanDash())
-        {
-            stateManager.ChangeState(stateManager.DashState);
-        }
         else if(player.CheckOnGround())
         {
             stateManager.ChangeState(stateManager.IdleState);
         }
-        else if (!player.CheckWall())
+        else if (!player.CheckWall() || player.input.moveInput == Vector2.zero)
         {
             stateManager.ChangeState(stateManager.FallingState);
         }
