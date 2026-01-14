@@ -121,18 +121,12 @@ TextureImporter:
       name: magician_death_0
       rect:
         serializedVersion: 2
-<<<<<<< Updated upstream
         x: 0
         y: 0
-        width: 16
-=======
-        x: 2
-        y: 0
-        width: 12
->>>>>>> Stashed changes
-        height: 16
+        width: 0
+        height: 0
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -145,238 +139,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: magician_death_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d22e01c64d815b3c0800000000000000
-      internalID: -4344538964903796179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_death_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 637b82851d04941e0800000000000000
-      internalID: -2213166474004482250
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_death_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e2d529a258c4a0520800000000000000
-      internalID: 2669029863999036718
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_death_4
-      rect:
-        serializedVersion: 2
-<<<<<<< Updated upstream
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-=======
-        x: 68
-        y: 3
-        width: 10
-        height: 10
->>>>>>> Stashed changes
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 71281ffeb10664850800000000000000
-      internalID: 6360877196813369879
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_death_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 61fe1b37041188620800000000000000
-      internalID: 2776488138790530838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_death_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-<<<<<<< Updated upstream
-        width: 16
-=======
-        width: 12
->>>>>>> Stashed changes
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7f75dbe4aa5832e10800000000000000
-      internalID: 2171726411834677239
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_death_7
-      rect:
-        serializedVersion: 2
-<<<<<<< Updated upstream
-        x: 112
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-=======
-        x: 101
-        y: 2
-        width: 10
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
->>>>>>> Stashed changes
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-<<<<<<< Updated upstream
-      spriteID: c969b67b733718b4b9ab6b386d63a69e
-      internalID: -1424698910
-=======
-      spriteID: 107e1de432f4b344c9c92fc32dfe4c71
-      internalID: 1533207824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_death_8
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 2
-        width: 9
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cb769fe5830225438484505d0f68df6
-      internalID: -1817518808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_death_9
-      rect:
-        serializedVersion: 2
-        x: 116
-        y: 2
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52e3bfc2d4a3fc148a54f551eaf568b7
-      internalID: -1252632022
->>>>>>> Stashed changes
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-<<<<<<< Updated upstream
-    spriteID: 7d01dd8083d18dd4e997dbac5ca0cfb3
-=======
-    spriteID: e2b6c9c26cc899a44a6ba815e676d722
->>>>>>> Stashed changes
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -384,24 +151,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":16.0,"y":16.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
       magician_death_0: -1998192944217034992
-      magician_death_1: -4344538964903796179
-      magician_death_2: -2213166474004482250
-      magician_death_3: 2669029863999036718
-      magician_death_4: 6360877196813369879
-      magician_death_5: 2776488138790530838
-      magician_death_6: 2171726411834677239
-<<<<<<< Updated upstream
-      magician_death_7: -1424698910
-=======
-      magician_death_7: 1533207824
-      magician_death_8: -1817518808
-      magician_death_9: -1252632022
->>>>>>> Stashed changes
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

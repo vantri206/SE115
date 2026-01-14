@@ -130,86 +130,15 @@ TextureImporter:
         width: 6
         height: 6
       alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0.5, y: 0.5}
-=======
       pivot: {x: 0, y: 0}
->>>>>>> Stashed changes
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-<<<<<<< Updated upstream
-      spriteID: 8163a825988f6cf42ac8ddaa44a89883
-      internalID: 1208400023
-=======
-      spriteID: 471d5e823ff74784182b415d5b606e8d
-      internalID: 1955521431
->>>>>>> Stashed changes
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_attack_orb_anim_2
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 0
-        width: 6
-        height: 6
-      alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0.5, y: 0.5}
-=======
-      pivot: {x: 0, y: 0}
->>>>>>> Stashed changes
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-<<<<<<< Updated upstream
-      spriteID: 25b35983781f0ce48a355e8847994a04
-      internalID: -1886563943
-=======
-      spriteID: b67263bdc1f9ada4da378e4632bcdf12
-      internalID: -838304239
->>>>>>> Stashed changes
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magician_attack_orb_anim_3
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 0
-        width: 6
-        height: 6
-      alignment: 0
-<<<<<<< Updated upstream
-      pivot: {x: 0.5, y: 0.5}
-=======
-      pivot: {x: 0, y: 0}
->>>>>>> Stashed changes
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-<<<<<<< Updated upstream
-      spriteID: cef18191600109140b236feb096b90f2
-      internalID: 960120458
-=======
-      spriteID: 49672e710145d8446af99326c8f11b47
-      internalID: -1919481802
->>>>>>> Stashed changes
+      spriteID: be4cbcc961f4fb150800000000000000
+      internalID: 5890513796162372843
       vertices: []
       indices: 
       edges: []
@@ -218,11 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-<<<<<<< Updated upstream
-    spriteID: 9010931441fc9fd43bc15cfcc00a3ce3
-=======
-    spriteID: 3ffc236908620b34a9b6b755e5cf21c9
->>>>>>> Stashed changes
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -230,20 +155,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":6.0,"y":6.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
       magician_attack_orb_anim_0: 1392357184397831407
-<<<<<<< Updated upstream
-      magician_attack_orb_anim_1: 1208400023
-      magician_attack_orb_anim_2: -1886563943
-      magician_attack_orb_anim_3: 960120458
-=======
-      magician_attack_orb_anim_1: 1955521431
-      magician_attack_orb_anim_2: -838304239
-      magician_attack_orb_anim_3: -1919481802
->>>>>>> Stashed changes
+      magician_attack_orb_anim_1: 5890513796162372843
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
