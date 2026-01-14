@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c91685e9acb504caf6f2485cf047a6, type: 3}
+  m_Name: Chase_BossBurrow
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyChaseBurrow
+  canInterruptByHit: 1
+  moveSpeed: 8
+  spawnFireInterval: 0.2
+  fireTrailPrefab: {fileID: 8239571103390839429, guid: 91d1c7ee6651b804ca08150e6fc941f3, type: 3}
+  emergeDistance: 3

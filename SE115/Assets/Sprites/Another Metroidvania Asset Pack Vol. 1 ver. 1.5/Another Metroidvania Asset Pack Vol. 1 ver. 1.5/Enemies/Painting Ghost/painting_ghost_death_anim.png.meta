@@ -125,9 +125,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 12
-        width: 31
-        height: 12
+        y: 0
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: painting_ghost_death_anim_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 16
         y: 0
-        width: 17
-        height: 11
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: painting_ghost_death_anim_2
       rect:
         serializedVersion: 2
-        x: 17
+        x: 32
         y: 0
         width: 16
-        height: 10
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,57 +187,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: painting_ghost_death_anim_3
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 2
-        width: 13
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1061b1ef2a23d6e40800000000000000
-      internalID: 5651228783049119233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: painting_ghost_death_anim_4
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 5
-        width: 11
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 25ae748cb800a2650800000000000000
-      internalID: 6208775636644260434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: painting_ghost_death_anim_5
       rect:
         serializedVersion: 2
-        x: 68
-        y: 8
-        width: 10
-        height: 11
+        x: 80
+        y: 0
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +212,10 @@ TextureImporter:
       name: painting_ghost_death_anim_6
       rect:
         serializedVersion: 2
-        x: 83
-        y: 1
-        width: 45
-        height: 23
+        x: 96
+        y: 0
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +234,10 @@ TextureImporter:
       name: painting_ghost_death_anim_7
       rect:
         serializedVersion: 2
-        x: 83
-        y: 7
-        width: 7
-        height: 7
+        x: 112
+        y: 0
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,11 +252,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: painting_ghost_death_anim_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa4152f9d93da547926b32e920d1611
+      internalID: 5651228783049119233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: painting_ghost_death_anim_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff8f0aad8e817849bbe0d5fad7e472c
+      internalID: 6208775636644260434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 310e6d9094461804fa6da837217fc7a2
     internalID: 0
     vertices: []
     indices: 
@@ -318,6 +318,8 @@ TextureImporter:
       painting_ghost_death_anim_5: -1732426187969792563
       painting_ghost_death_anim_6: -5154426587559921376
       painting_ghost_death_anim_7: -7331773791838424296
+      painting_ghost_death_anim_8: -1117353843
+      painting_ghost_death_anim_9: -846250926
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

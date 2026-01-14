@@ -44,9 +44,15 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
 
         currentHealth -= damage;
+<<<<<<< Updated upstream:SE115/Assets/Scripts/Enemy/EnemyHealth.cs
 
         onTakeDamage?.Invoke(sourcePos);
         if (isDead) onDead?.Invoke();
+=======
+        onHealthChanged?.Invoke();
+        onTakeDamage.Invoke(sourcePos);
+        if (isDead) onDead.Invoke();
+>>>>>>> Stashed changes:SE115/Assets/Scripts/Enemy/Core/EnemyHealth.cs
     }
     public void SetInvincible(bool invincible)
     {

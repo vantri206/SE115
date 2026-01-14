@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Attack-NormalFacingPlayer
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackNormal
   canInterruptByHit: 1
+  attackFacingPlayer: 1

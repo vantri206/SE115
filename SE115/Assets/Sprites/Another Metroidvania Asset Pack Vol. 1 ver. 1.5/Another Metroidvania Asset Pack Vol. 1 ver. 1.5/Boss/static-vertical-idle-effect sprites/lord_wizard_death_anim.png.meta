@@ -165,10 +165,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 289
+        width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -185,12 +185,12 @@ TextureImporter:
       name: lord_wizard_death_anim_1
       rect:
         serializedVersion: 2
-        x: 288
+        x: 145
         y: 0
-        width: 49
-        height: 24
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -207,12 +207,12 @@ TextureImporter:
       name: lord_wizard_death_anim_2
       rect:
         serializedVersion: 2
-        x: 339
+        x: 193
         y: 0
-        width: 42
-        height: 33
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -229,12 +229,12 @@ TextureImporter:
       name: lord_wizard_death_anim_3
       rect:
         serializedVersion: 2
-        x: 389
+        x: 241
         y: 0
-        width: 38
-        height: 34
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -251,12 +251,12 @@ TextureImporter:
       name: lord_wizard_death_anim_4
       rect:
         serializedVersion: 2
-        x: 436
+        x: 289
         y: 0
-        width: 40
-        height: 33
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: lord_wizard_death_anim_5
       rect:
         serializedVersion: 2
-        x: 493
-        y: 15
-        width: 7
-        height: 11
+        x: 337
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -295,12 +295,12 @@ TextureImporter:
       name: lord_wizard_death_anim_6
       rect:
         serializedVersion: 2
-        x: 494
-        y: 27
-        width: 11
-        height: 8
+        x: 385
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -317,12 +317,12 @@ TextureImporter:
       name: lord_wizard_death_anim_7
       rect:
         serializedVersion: 2
-        x: 501
-        y: 21
-        width: 6
-        height: 6
+        x: 433
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -339,12 +339,12 @@ TextureImporter:
       name: lord_wizard_death_anim_8
       rect:
         serializedVersion: 2
-        x: 507
-        y: 27
-        width: 7
-        height: 7
+        x: 481
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -361,12 +361,12 @@ TextureImporter:
       name: lord_wizard_death_anim_9
       rect:
         serializedVersion: 2
-        x: 507
-        y: 14
-        width: 7
-        height: 7
+        x: 529
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -383,12 +383,12 @@ TextureImporter:
       name: lord_wizard_death_anim_10
       rect:
         serializedVersion: 2
-        x: 508
-        y: 20
-        width: 6
-        height: 6
+        x: 577
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -405,12 +405,12 @@ TextureImporter:
       name: lord_wizard_death_anim_11
       rect:
         serializedVersion: 2
-        x: 538
-        y: 31
-        width: 8
-        height: 8
+        x: 625
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -427,12 +427,12 @@ TextureImporter:
       name: lord_wizard_death_anim_12
       rect:
         serializedVersion: 2
-        x: 542
-        y: 20
-        width: 20
-        height: 13
+        x: 672
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -446,160 +446,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lord_wizard_death_anim_13
-      rect:
-        serializedVersion: 2
-        x: 558
-        y: 30
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f9d8717a85fa795f0800000000000000
-      internalID: -749938017638576737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lord_wizard_death_anim_14
-      rect:
-        serializedVersion: 2
-        x: 585
-        y: 20
-        width: 19
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5aa975ba3a5b404f0800000000000000
-      internalID: -863365513989350747
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lord_wizard_death_anim_15
-      rect:
-        serializedVersion: 2
-        x: 609
-        y: 8
-        width: 103
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 765eac71e68c60750800000000000000
-      internalID: 6270919906331125095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lord_wizard_death_anim_16
-      rect:
-        serializedVersion: 2
-        x: 536
-        y: 10
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 954f7026a05b61cb0800000000000000
-      internalID: -4893524888892476327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lord_wizard_death_anim_17
-      rect:
-        serializedVersion: 2
-        x: 558
-        y: 10
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 48025e55060f1f990800000000000000
-      internalID: -7353832419970703228
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lord_wizard_death_anim_18
-      rect:
-        serializedVersion: 2
-        x: 583
-        y: 9
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 624765382f73dfb20800000000000000
-      internalID: 3169751227463791654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lord_wizard_death_anim_19
-      rect:
-        serializedVersion: 2
-        x: 609
-        y: 9
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bf50dab8c14ca5180800000000000000
-      internalID: -9125766068031388165
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: lord_wizard_death_anim_20
       rect:
         serializedVersion: 2
@@ -608,7 +454,7 @@ TextureImporter:
         width: 6
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -621,11 +467,77 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: lord_wizard_death_anim_21
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b38b078ae56cce4b8a1060297d14323
+      internalID: 1795614204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lord_wizard_death_anim_22
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d83968548d7dd347bbac81bbfffb66c
+      internalID: 1756220337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lord_wizard_death_anim_23
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94197bfb0256e7e46a525ece51fcc47e
+      internalID: -768804770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 34948878c1019ea4ca624ec311a1db27
     internalID: 0
     vertices: []
     indices: 
@@ -649,6 +561,9 @@ TextureImporter:
       lord_wizard_death_anim_19: -9125766068031388165
       lord_wizard_death_anim_2: 5684005331326480390
       lord_wizard_death_anim_20: 7595980130073712566
+      lord_wizard_death_anim_21: 1795614204
+      lord_wizard_death_anim_22: 1756220337
+      lord_wizard_death_anim_23: -768804770
       lord_wizard_death_anim_3: 2388415797593500455
       lord_wizard_death_anim_4: 1280222627236444941
       lord_wizard_death_anim_5: -2784947841629694864

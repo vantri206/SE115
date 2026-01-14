@@ -246,7 +246,7 @@ MonoBehaviour:
   isAggroed: 0
   playerLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1048832
   playerTarget: {fileID: 0}
   attackTarget: {fileID: 0}
 --- !u!114 &8368468692218534465
