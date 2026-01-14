@@ -212,7 +212,7 @@ Transform:
   m_GameObject: {fileID: 94910875}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 24.7, y: 7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -262,15 +262,41 @@ MonoBehaviour:
   movement: {fileID: 94910884}
   combat: {fileID: 94910888}
   health: {fileID: 94910887}
+  mana: {fileID: 0}
   effect: {fileID: 94910889}
+  skill: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   data: {fileID: 11400000, guid: 13159af1b8d3d6c4a83b304e4550cd18, type: 2}
+  onAirAttackCount: 1
   sword: {fileID: 783537352}
-  isJumpCut: 0
+  unlockSlashDash: 0
+  slashDamage: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  slashDashPrefabs: {fileID: 0}
   isJumping: 0
   isAttacking: 0
   isDead: 0
   isHurting: 0
   isDashing: 0
+  isSliding: 0
+  isShielding: 0
+  platformerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  oneWayPlatformerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 0.1
+  wallCheckDistance: 0.2
+  raycastOffset: 0.05
+  wallRaycastTopOffset: 0.25
+  wallRaycastBotOffset: 0.25
+  reflectShieldObj: {fileID: 0}
   facingDirection: {x: 0, y: 0}
   startDirection: {x: 1, y: 0}
 --- !u!114 &94910883
@@ -285,6 +311,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec72142a03b4aae4d8ca48d0a13c6145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+  keys:
+    jump: 122
+    dash: 99
+    attack: 120
+    skillsKey: 
+    interact: 102
+    close: 27
+  skillInputBufferTime: 0.2
 --- !u!114 &94910884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,10 +418,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb74838caba3344d87a8a9772e61086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  myRigidbody: {fileID: 94910886}
   currentHealth: 1000000
   maxHealth: 1000000
   damageTeam: 0
-  myRigidbody: {fileID: 94910886}
+  isInvincible: 0
 --- !u!114 &94910888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +439,7 @@ MonoBehaviour:
   sword: {fileID: 783537351}
   comboCount: 0
   comboResetTime: 1
+  isAniSkillFinished: 0
 --- !u!114 &94910889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +455,10 @@ MonoBehaviour:
   player: {fileID: 94910881}
   effectsPool: {fileID: 0}
   dashEffect: {fileID: 1297765206}
+  hurtEffect: {fileID: 0}
+  hurtEffectOffset: {x: 1, y: 1, z: 0}
+  jumpEffect: {fileID: 0}
+  jumpEffectOffset: {x: 0.3, y: 0, z: 0}
 --- !u!1001 &118006135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -608,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 2, z: -10}
+  m_LocalPosition: {x: 26.7, y: 9.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -691,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bd6fe1c66428642b987f87c317e45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hurtbox
+  hurtboxLayerName: Hurtbox
 --- !u!61 &520745806
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -991,6 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ebc874e6bf0da409032edbd39343d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
+  hitboxLayerName: Hitbox
   owner: {fileID: 783537352}
 --- !u!61 &728390620
 BoxCollider2D:
@@ -1100,6 +1142,7 @@ MonoBehaviour:
   attackerTeam: 0
   isDestroyAfterDamage: 0
   damage: 10
+  destroyer: {fileID: 0}
 --- !u!1 &1149270986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,7 +1170,7 @@ Transform:
   m_GameObject: {fileID: 1149270986}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 2, z: -10}
+  m_LocalPosition: {x: 26.7, y: 9.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1331,7 +1374,7 @@ Transform:
   m_GameObject: {fileID: 1333791966}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 24.7, y: 7.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

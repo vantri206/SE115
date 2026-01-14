@@ -32,9 +32,11 @@ public class SatyrReward : MonoBehaviour, IInteractable
         isAbsorbed = true;
         Debug.Log("Absorbing Boss Power...");
 
-        ScrollMessenger.Instance.ShowMessage("You absorbed Satyr Power. \n " +
-            "Upgrade Jump to Double Jump. \n" +
-            "Now your dash can resist damage and deal damage to enemy");
+        if(ScrollMessenger.Instance != null)
+            ScrollMessenger.Instance.ShowMessage("You absorbed Satyr Power!\n" +
+                "Upgrade Jump to Double Jump.\n" +
+                "Now your dash can resist damage and deal damage to enemy");
+
         ReceiveReward();
 
         StartCoroutine(DestroyCorpseRoutine());

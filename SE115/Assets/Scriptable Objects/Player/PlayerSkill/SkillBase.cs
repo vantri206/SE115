@@ -9,6 +9,7 @@ public abstract class SkillBase : ScriptableObject
 
     [Header("Player State Settings")]
     public bool usePlayerSkillState = true;
+    public bool showMessages = true;
 
     [Header("Animation Settings")]
     public string aniBoolParameterName;

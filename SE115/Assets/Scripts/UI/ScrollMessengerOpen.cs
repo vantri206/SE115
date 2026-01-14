@@ -15,7 +15,7 @@ public class ScrollMessenger : MonoBehaviour
     [SerializeField] private Image messageImage;
 
     [Header("Animation Settings")]
-    [SerializeField] private float openDuration = 0.5f;
+    [SerializeField] private float openDuration = 1.0f;
     [SerializeField] private float closedWidth = 100f; 
     [SerializeField] private float openedWidth = 600f;
 

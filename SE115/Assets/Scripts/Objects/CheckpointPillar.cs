@@ -60,6 +60,7 @@ public class CheckpointPillar : MonoBehaviour, IInteractable
         isSaved = true;
         savedTimer = 0.0f;
 
+        playerInRange.RestoreStats();
         animator.SetTrigger("Save");
         GameManager.Instance.UpdateCheckpoint(transform.position);
     }

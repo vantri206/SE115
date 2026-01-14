@@ -275,10 +275,17 @@ public class PlayerController : MonoBehaviour
         myCollider.enabled = true;
         spriteRenderer.enabled = true;
 
+        RestoreStats();
+        
         if (stateManager != null)
         {
             stateManager.ChangeState(stateManager.IdleState);
         }
+    }
+    public void RestoreStats()
+    {
+        health.SetCurrentHeal(health.maxHealth);
+        mana.RestoreMana(mana.maxMana);
     }
     #endregion
 
@@ -438,8 +445,6 @@ public class PlayerController : MonoBehaviour
             lastOnGroundTime = this.lastOnGroundTime
         };
     }
-
-
     public void RestorePlayerData(PlayerSaveData data)
     {
         if (data == null) return;

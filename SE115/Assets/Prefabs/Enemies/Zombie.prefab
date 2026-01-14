@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6890560696626851902}
   - component: {fileID: 603070214173923224}
   - component: {fileID: 8973721343693355115}
-  - component: {fileID: 1208437071137191626}
+  - component: {fileID: 1194803130405034434}
   m_Layer: 7
   m_Name: Zombie
   m_TagString: Untagged
@@ -259,14 +259,16 @@ MonoBehaviour:
   animator: {fileID: 986902384560221003}
   myCollider: {fileID: 6890560696626851902}
   health: {fileID: 603070214173923224}
-  movement: {fileID: 1208437071137191626}
+  movement: {fileID: 0}
   weapons:
   - {fileID: 4805165602632347647}
   facingDirection: {x: 0, y: 0}
   startDirection: {x: 1, y: 0}
   attackRange: 1
-  attackCooldown: 1
   aggroTriggerRange: 8
+  detectionHeightRange: 5
+  attackHeightRange: 5
+  attackCooldown: 1
   enemyIdleBase: {fileID: 11400000, guid: 2d4f02b2d642f734381d6e707eac4428, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: f3a94f48ce34aae4ca590e16d94189dc, type: 2}
   enemyAttackBase: {fileID: 11400000, guid: e8afdcb777021214e8374c81292f8895, type: 2}
@@ -280,7 +282,7 @@ MonoBehaviour:
     m_Bits: 256
   playerTarget: {fileID: 0}
   attackTarget: {fileID: 0}
---- !u!114 &1208437071137191626
+--- !u!114 &1194803130405034434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,19 +291,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 779396975280364480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b2f5775c998d249b9d9c73082d0559, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c267662bc04c864a8f06c09a3f14549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  movementType: 0
   enemy: {fileID: 8973721343693355115}
   rb: {fileID: 3865087243848593318}
   moveDirection: {x: 0, y: 0}
   platformerLayer:
     serializedVersion: 2
-    m_Bits: 266240
+    m_Bits: 790528
   groundCheckPos: {fileID: 7710305063207008945}
-  isCrawler: 0
-  canMoveContinous: 0
-  canAirMoving: 0
 --- !u!1 &1846560356964888894
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ebc874e6bf0da409032edbd39343d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
+  hitboxLayerName: Hitbox
   owner: {fileID: 6727099991241907969}
 --- !u!1 &2465313082151326882
 GameObject:
@@ -443,6 +444,7 @@ MonoBehaviour:
   attackerTeam: 1
   isDestroyAfterDamage: 0
   damage: 5
+  destroyer: {fileID: 0}
 --- !u!114 &4805165602632347647
 MonoBehaviour:
   m_ObjectHideFlags: 0
