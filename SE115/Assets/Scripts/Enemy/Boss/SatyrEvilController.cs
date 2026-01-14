@@ -259,7 +259,10 @@ public class SatyrEvilController : MonoBehaviour
         {
             float xDiffWait = player.position.x - transform.position.x;
             if (Mathf.Abs(xDiffWait) > 1.0f) CheckFacingDirection(Mathf.Sign(xDiffWait));
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+            if (isGrounded) rb.linearVelocity = new Vector2(0, 0);
+            else rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
             animator.SetBool("isMoving", false);
             return;
         }
@@ -268,40 +271,39 @@ public class SatyrEvilController : MonoBehaviour
         float distanceY = player.position.y - transform.position.y;
         float rand = Random.value;
 
+
+        bool isHighAir = !isGrounded || transform.position.y > 1.5f;
+
         if (distanceY > 2.0f || distanceY < -1.0f)
         {
             MoveToPlayer();
             return;
         }
 
-        if (distanceX > 4.0f)
+        if (distanceX > 4.0f) 
         {
-            if (rand < 0.20f)
-            {
-                StartCoroutine(PerformCrossUp(CrossUpAction.Shoot));
-            }
-            else if (rand < 0.60f)
+            if (isHighAir)
             {
                 StartCoroutine(PerformGroundShoot());
             }
             else
             {
-                StartCoroutine(MeleeRushRoutine());
+                if (rand < 0.20f) StartCoroutine(PerformCrossUp(CrossUpAction.Shoot));
+                else if (rand < 0.60f) StartCoroutine(PerformGroundShoot());
+                else StartCoroutine(MeleeRushRoutine());
             }
         }
-        else
+        else 
         {
-            if (rand < 0.35f)
+            if (isHighAir)
             {
-                StartCoroutine(PerformCrossUp(CrossUpAction.Melee));
-            }
-            else if (rand < 0.70f)
-            {
-                StartCoroutine(MeleeRushRoutine());
+                StartCoroutine(PerformMeleeAttack());
             }
             else
             {
-                StartCoroutine(PerformCrossUp(CrossUpAction.Shoot));
+                if (rand < 0.35f) StartCoroutine(PerformCrossUp(CrossUpAction.Melee));
+                else if (rand < 0.70f) StartCoroutine(MeleeRushRoutine());
+                else StartCoroutine(PerformCrossUp(CrossUpAction.Shoot));
             }
         }
     }
@@ -438,7 +440,7 @@ public class SatyrEvilController : MonoBehaviour
         isAttacking = false;
     }
 
-    IEnumerator PerformCrossUp(CrossUpAction actionType)
+    IEnumerator     PerformCrossUp(CrossUpAction actionType)
     {
         isAttacking = true;
         animator.SetBool("isMoving", false);
@@ -493,10 +495,9 @@ public class SatyrEvilController : MonoBehaviour
             animator.SetTrigger("Attack");
             yield return new WaitForSeconds(0.4f);
         }
-        else
+        else 
         {
-            rb.linearVelocity = Vector2.zero;
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
             yield return StartCoroutine(ShowAlert());
 
@@ -508,7 +509,7 @@ public class SatyrEvilController : MonoBehaviour
 
             animator.SetTrigger("EndShoot");
             if (beamWeapon) beamWeapon.FinishAttack();
-            rb.bodyType = RigidbodyType2D.Dynamic;
+
 
             yield return new WaitForSeconds(2.0f);
         }

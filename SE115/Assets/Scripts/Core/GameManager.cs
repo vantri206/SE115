@@ -43,10 +43,6 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
     }
     public void SwitchScene(string sceneName, string spawnPointID)
     {
@@ -75,17 +71,26 @@ public class GameManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(nextSpawnPointID))
         {
-            PositionPlayerAtId(player, nextSpawnPointID);
-
-            UpdateCheckpoint(player.transform.position);
+            if (PositionPlayerAtId(player, nextSpawnPointID))
+            {
+                UpdateCheckpoint(player.transform.position);
+            }
         }
         else if (hasCheckpoint)
         {
             player.transform.position = lastCheckpointPos;
         }
+        else
+        {
+            UpdateCheckpoint(player.transform.position);
+        }
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            playerController.Respawn(lastCheckpointPos);
+        }
     }
-
-    void PositionPlayerAtId(GameObject player, string id)
+    private bool PositionPlayerAtId(GameObject player, string id)
     {
         SceneEntryPoint[] entries = FindObjectsByType<SceneEntryPoint>(FindObjectsSortMode.InstanceID);
 
@@ -94,10 +99,11 @@ public class GameManager : MonoBehaviour
             if (entry.entryId == id)
             {
                 player.transform.position = entry.transform.position;
-                return;
+                return true;
             }
         }
         Debug.LogWarning("Can't find spawn point has id: " + id);
+        return false;
     }
 
     private void OnDestroy()

@@ -27,8 +27,6 @@ public class EnemyMageWeapon : EnemyWeapon
 
     public override void PerformAttack()
     {
-
-        // Spawn magic orb(s)
         if (orbsPerCast == 1)
         {
             SpawnSingleOrb();
