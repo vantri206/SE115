@@ -2,12 +2,15 @@ using UnityEngine;
 
 public abstract class SkillBase : ScriptableObject
 {
-    [Header("Skill Setting")]
+    [Header("Skill Settings")]
     public string skillName;
     public float cooldownTime;
     public Sprite icon;
 
-    [Header("Animation Setting")]
+    [Header("Player State Settings")]
+    public bool usePlayerSkillState = true;
+
+    [Header("Animation Settings")]
     public string aniBoolParameterName;
     public abstract void Cast(Transform castPosition, PlayerController player);
     public abstract bool CanUse(PlayerController player);

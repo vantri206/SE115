@@ -23,24 +23,47 @@ public class PlayerSkillContainer : MonoBehaviour
             CreateSlotUI(i, playerSkill.skillsSlot[i]);
         }
 
-        playerSkill.onSkillLeared += CreateSlotUI;
-
+        playerSkill.onSkillLeared += OnSkillLearned;
+        playerSkill.onSkillRemoved += OnSkillRemoved; 
     }
+
     private void OnDisable()
     {
         if (playerSkill != null)
         {
-            playerSkill.onSkillLeared -= CreateSlotUI;
+            playerSkill.onSkillLeared -= OnSkillLearned;
+            playerSkill.onSkillRemoved -= OnSkillRemoved; 
         }
     }
+
+    private void OnSkillLearned(int index, SkillBase skillData)
+    {
+        if (index < skillSlots.Count)
+        {
+            skillSlots[index].Initialize(playerSkill, index, skillData);
+            skillSlots[index].gameObject.SetActive(true);
+        }
+        else
+        {
+            CreateSlotUI(index, skillData);
+        }
+    }
+
+    private void OnSkillRemoved(int index)
+    {
+        if (index >= 0 && index < skillSlots.Count)
+        {
+            skillSlots[index].gameObject.SetActive(false);
+            skillSlots[index].Initialize(playerSkill, index, null);
+        }
+    }
+
     private void CreateSlotUI(int index, SkillBase skillData)
     {
         GameObject newSkillSlot = Instantiate(skillSlotPrefab, this.transform);
-
         PlayerSkillDisplay newSkillUI = newSkillSlot.GetComponent<PlayerSkillDisplay>();
 
         newSkillUI.Initialize(playerSkill, index, skillData);
-
         skillSlots.Add(newSkillUI);
     }
 }

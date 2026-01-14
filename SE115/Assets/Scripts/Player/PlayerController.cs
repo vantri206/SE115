@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public bool isHurting = false;
     public bool isDashing = false;
     public bool isSliding = false;
+    public bool isShielding = false;
 
     [SerializeField] private LayerMask platformerLayer;
     [SerializeField] private LayerMask oneWayPlatformerLayer;
@@ -58,6 +59,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallRaycastTopOffset = 0.25f;
     [SerializeField] private float wallRaycastBotOffset = 0.25f;
 
+    [Header("Reflect Skill")]
+    public GameObject reflectShieldObj; 
+
     public Vector2 facingDirection;
 
     public Vector2 startDirection = Vector2.right;
@@ -68,8 +72,20 @@ public class PlayerController : MonoBehaviour
     private float dashTimer;
 
     public Action<int> onJumpLeftChanged;
+
+    public static PlayerController Instance;
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
@@ -86,7 +102,8 @@ public class PlayerController : MonoBehaviour
         health.onTakeDamage += OnTakeDamage;
         health.onDead += StartDead;
 
-        sword.gameObject.SetActive(false);
+        if (reflectShieldObj != null) reflectShieldObj.SetActive(false);
+        if(sword != null) sword.gameObject.SetActive(false);
     }
     void Start()
     {
@@ -351,8 +368,8 @@ public class PlayerController : MonoBehaviour
         Vector2 originTop = new Vector2(xPos, bounds.max.y - wallRaycastTopOffset);
         Vector2 originBot = new Vector2(xPos, bounds.min.y + wallRaycastBotOffset);
 
-        RaycastHit2D hitTop = Physics2D.Raycast(originTop, dir, wallCheckDistance, platformerLayer | wallLayer);
-        RaycastHit2D hitBot = Physics2D.Raycast(originBot, dir, wallCheckDistance, platformerLayer | wallLayer);
+        RaycastHit2D hitTop = Physics2D.Raycast(originTop, dir, wallCheckDistance, wallLayer);
+        RaycastHit2D hitBot = Physics2D.Raycast(originBot, dir, wallCheckDistance, wallLayer);
 
         return hitTop.collider != null || hitBot.collider != null;
     }
@@ -492,8 +509,6 @@ public class PlayerController : MonoBehaviour
             if (targetHurtbox != null)
             {
                 targetHurtbox.health.TakeDamage(slashDamage, (Vector2)transform.position);
-
-                Debug.Log("Slashed: " + hit.collider.name);
             }
         }
 
@@ -502,5 +517,12 @@ public class PlayerController : MonoBehaviour
             GameObject slashObj = Instantiate(slashDashPrefabs, centerPos, Quaternion.Euler(0, 0, angle));
             slashObj.transform.localScale = new Vector3(distance, 2.0f, 1f);
         }
+    }
+    public void StartShield()
+    {
+        if (isShielding) return;
+
+        isShielding = true;
+        stateManager.ChangeState(stateManager.ShieldingState);
     }
 }

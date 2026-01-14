@@ -19,6 +19,7 @@ public class PlayerSkillManager : MonoBehaviour
     public event Action<int, float, float> onCooldownChanged;
     public event Action<int, SkillBase> onSkillLeared;
     public event Action<int> onSkillUse;
+    public event Action<int> onSkillRemoved; 
 
     public bool isAniSkillFinished = false;
 
@@ -32,7 +33,7 @@ public class PlayerSkillManager : MonoBehaviour
     {
         for (int i = 0; i < skillsSlot.Count; i++)
         {
-            if (skillsCooldownTimer[i] < skillsSlot[i].cooldownTime)
+            if (skillsSlot[i] != null && skillsCooldownTimer[i] < skillsSlot[i].cooldownTime)
             {
                 skillsCooldownTimer[i] += Time.deltaTime;
 
@@ -44,6 +45,7 @@ public class PlayerSkillManager : MonoBehaviour
             }
         }
     }
+
     public void SetCurrentSkill(int index)
     {
         if (index < 0 || index >= skillsSlot.Count)
@@ -57,27 +59,31 @@ public class PlayerSkillManager : MonoBehaviour
             currentSkill = skillsSlot[index];
         }
     }
+
     public void StartSkill()
     {
         if (currentSkill != null && CanUseSkill(currentSkillIndex))
         {
             skillsCooldownTimer[currentSkillIndex] = 0.0f;
+
             onSkillUse?.Invoke(currentSkillIndex);
-            onCooldownChanged(currentSkillIndex, Mathf.Max(0.0f, 
-                        Mathf.CeilToInt(skillsSlot[currentSkillIndex].cooldownTime)), 
-                        Mathf.Max(0.0f, Mathf.CeilToInt(skillsSlot[currentSkillIndex].cooldownTime)));
+
+            float cooldown = skillsSlot[currentSkillIndex].cooldownTime;
+            onCooldownChanged?.Invoke(currentSkillIndex, cooldown, cooldown);
 
             isAniSkillFinished = false;
             currentSkill.OnSkillStart(player);
         }
     }
+
     public void TriggerSkill()
     {
         if (currentSkill != null)
         {
-            currentSkill.Cast(throwFirePoint, player);      //Co the thay doi logic nay thanh cast point rieng voi moi skill, dung offset mb
+            currentSkill.Cast(throwFirePoint, player);
         }
     }
+
     public void FinishSkill()
     {
         if (currentSkill != null)
@@ -86,11 +92,14 @@ public class PlayerSkillManager : MonoBehaviour
             SetCurrentSkill(-1);
         }
     }
+
     public bool CanUseSkill(int index)
     {
         if (index < 0 || index >= skillsSlot.Count) return false;
 
-        if (skillsCooldownTimer[index] < skillsSlot[index].cooldownTime || 
+        if (skillsSlot[index] == null) return false;
+
+        if (skillsCooldownTimer[index] < skillsSlot[index].cooldownTime ||
             !skillsSlot[index].CanUse(player))
         {
             return false;
@@ -98,37 +107,83 @@ public class PlayerSkillManager : MonoBehaviour
 
         return true;
     }
+
     public bool HasSkill(SkillBase skill)
     {
         return unlockedSkills.Contains(skill);
     }
+
     public void UnlockSkill(SkillBase skill, int index = -1)
     {
         if (!unlockedSkills.Contains(skill))
         {
             unlockedSkills.Add(skill);
+
             if (index == -1)
             {
-                index = skillsSlot.Count;
-                skillsSlot.Add(skill);
-                skillsCooldownTimer.Add(skill.cooldownTime);
+                int emptyIndex = skillsSlot.IndexOf(null);
+                if (emptyIndex != -1)
+                {
+                    index = emptyIndex;
+                    skillsSlot[index] = skill;
+                    skillsCooldownTimer[index] = skill.cooldownTime; 
+                }
+                else
+                {
+                    index = skillsSlot.Count;
+                    skillsSlot.Add(skill);
+                    skillsCooldownTimer.Add(skill.cooldownTime);
+                }
             }
             else
             {
-                skillsSlot[index] = skill;
-                skillsCooldownTimer[index] = skill.cooldownTime;
+                if (index < skillsSlot.Count)
+                {
+                    skillsSlot[index] = skill;
+                    skillsCooldownTimer[index] = skill.cooldownTime;
+                }
+                else
+                {
+                    skillsSlot.Add(skill);
+                    skillsCooldownTimer.Add(skill.cooldownTime);
+                    index = skillsSlot.Count - 1;
+                }
             }
 
             Debug.Log("Player learning: " + skill.ToString());
 
             if (ScrollMessenger.Instance != null)
             {
-                ScrollMessenger.Instance.ShowMessage("Player Learning: " + skill.ToString());
+                ScrollMessenger.Instance.ShowMessage("Player Learning: " + skill.name);
             }
 
             onSkillLeared?.Invoke(index, skill);
-
         }
     }
+    public void RemoveSkill(SkillBase skill)
+    {
+        if (unlockedSkills.Contains(skill))
+        {
+            unlockedSkills.Remove(skill);
+
+            int index = skillsSlot.IndexOf(skill);
+            if (index != -1)
+            {
+                skillsSlot[index] = null;
+
+                skillsCooldownTimer[index] = 0f;
+
+                if (currentSkill == skill)
+                {
+                    currentSkill = null;
+                    currentSkillIndex = -1;
+                }
+                onSkillRemoved?.Invoke(index);
+
+                Debug.Log("Skill Removed: " + skill.name);
+            }
+        }
+    }
+
     public void AE_FinishSkillAni() => isAniSkillFinished = true;
 }

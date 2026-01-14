@@ -23,16 +23,19 @@ public class PlayerSkillDisplay : MonoBehaviour
         this.player = playerSkill;
         this.skillIndex = index;
 
-        skill = newSkill;
-        skillIcon.sprite = newSkill.icon;
+        if (newSkill != null)
+        {
+            skill = newSkill;
+            skillIcon.sprite = newSkill.icon;
 
-        cooldownOverlay.fillAmount = 0;
-        cooldownText.text = "";
+            cooldownOverlay.fillAmount = 0;
+            cooldownText.text = "";
 
-        keyBindText.text = PlayerInput.Instance.GetKeyForSkill(index).ToString();
+            keyBindText.text = PlayerInput.Instance.GetKeyForSkill(index).ToString();
 
-        player.onCooldownChanged += UpdateSkillCooldown;
-        player.onSkillUse += UseSkill;
+            player.onCooldownChanged += UpdateSkillCooldown;
+            player.onSkillUse += UseSkill;
+        }
     }
     private void OnDestroy()
     {

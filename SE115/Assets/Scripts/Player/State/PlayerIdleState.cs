@@ -26,13 +26,22 @@ public class PlayerIdleState : PlayerBaseState
             return;
 
         int skillIndex = player.input.CheckSkillPressed();
-        if (skillIndex != -1)
+        if (player.skill.CanUseSkill(skillIndex))
         {
-            if(player.skill.CanUseSkill(skillIndex))
+            player.skill.SetCurrentSkill(skillIndex);
+
+            if (player.skill.currentSkill.usePlayerSkillState)
             {
-                player.skill.SetCurrentSkill(skillIndex);
-                stateManager.ChangeState(stateManager.SkillState);
-                return;
+                if (player.skill.CanUseSkill(skillIndex))
+                {
+                    stateManager.ChangeState(stateManager.SkillState);
+                    return;
+                }
+            }
+            else
+            {
+                player.skill.StartSkill();
+                player.skill.TriggerSkill();
             }
         }
 

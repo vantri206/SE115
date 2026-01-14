@@ -26,6 +26,21 @@ public class SatyrEvilController : MonoBehaviour
     [SerializeField] private Transform[] perchPoints;
     [SerializeField] private GameObject stunVFX;
     [SerializeField] private BossEnemyHealth health;
+    [SerializeField] private GameObject rewardInteract;
+    [SerializeField] private SatyrReward rewardInteractable;
+
+    [Header("VFX & Hazards")]
+    [SerializeField] private GameObject bloodEffectPrefab;
+    [SerializeField] private GameObject[] fireHazards;
+    [SerializeField] private GameObject alertObject;
+    [SerializeField] private float alertDelay = 0.5f;
+
+    [Header("Sniper Mode Mechanics")]
+    [SerializeField] private GameObject shieldItemPrefab;
+    [SerializeField] private Transform[] itemSpawnPoints;
+    [SerializeField] private float spawnShieldInterval = 7.5f; 
+    private GameObject currentShieldItem;
+    private Coroutine spawnItemCoroutine;
 
     [Header("Weapons")]
     [SerializeField] private EnemyMelee meleeWeapon;
@@ -47,6 +62,10 @@ public class SatyrEvilController : MonoBehaviour
 
     [Header("Combat Settings")]
     public float beamDuration = 2.0f;
+    public float meleeWindupTime = 0.4f;
+    public float groundShootWindup = 1.0f;
+    public float stunDuration = 6.0f;   
+    public float reflectDamage = 20.0f;  
 
     private Transform player;
     private BossState currentState;
@@ -80,7 +99,6 @@ public class SatyrEvilController : MonoBehaviour
 
     private void OnDisable()
     {
-        // Hủy đăng ký khi object bị tắt
         if (health != null)
         {
             health.onDead -= HandleDeath;
@@ -90,12 +108,27 @@ public class SatyrEvilController : MonoBehaviour
 
     private void Start()
     {
-        if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (health == null) health = GetComponent<BossEnemyHealth>();
+
+        if (GameplayHUDManager.Instance != null)
+            GameplayHUDManager.Instance.ShowBossHealth(health);
+
+        GameObject target = GameObject.FindGameObjectWithTag("Player");
+        if (target != null) player = target.transform;
+
+        if (stunVFX) stunVFX.SetActive(false);
+        if (alertObject) alertObject.SetActive(false);
+
+        isFacingRight = transform.localScale.x > 0;
+
+        ToggleFires(true);
+        SwitchState(BossState.Aggressive);
     }
 
     private void Update()
     {
         if (player == null) return;
+
         jumpTimer += Time.deltaTime;
         actionTimer += Time.deltaTime;
 
@@ -132,7 +165,14 @@ public class SatyrEvilController : MonoBehaviour
     public void SwitchState(BossState newState)
     {
         currentState = newState;
-        StopAllCoroutines();
+        StopAllCoroutines(); 
+
+        if (spawnItemCoroutine != null)
+        {
+            StopCoroutine(spawnItemCoroutine);
+            spawnItemCoroutine = null;
+        }
+        if (currentShieldItem != null) Destroy(currentShieldItem);
 
         if (meleeWeapon) meleeWeapon.FinishAttack();
         if (beamWeapon) beamWeapon.FinishAttack();
@@ -159,15 +199,46 @@ public class SatyrEvilController : MonoBehaviour
                 if (health) health.SetInvincible(true);
                 rb.gravityScale = 0f;
                 rb.linearVelocity = Vector2.zero;
+                spawnItemCoroutine = StartCoroutine(SpawnShieldItemRoutine());
                 StartCoroutine(SniperPattern());
                 break;
             case BossState.Stunned:
                 if (health) health.SetInvincible(false);
+                StartCoroutine(StunRoutine());
                 break;
             case BossState.Dead:
                 Die();
                 break;
         }
+    }
+    void ToggleFires(bool isActive)
+    {
+        if (fireHazards != null)
+        {
+            foreach (GameObject fire in fireHazards)
+            {
+                if (fire != null) fire.SetActive(isActive);
+            }
+        }
+    }
+
+    IEnumerator SpawnShieldItemRoutine()
+    {
+        while (currentState == BossState.SniperMode)
+        {
+            yield return new WaitForSeconds(spawnShieldInterval);
+            SpawnShieldItem();
+        }
+    }
+
+    void SpawnShieldItem()
+    {
+        if (shieldItemPrefab == null || itemSpawnPoints.Length == 0) return;
+
+        if (currentShieldItem != null) Destroy(currentShieldItem);
+
+        int index = Random.Range(0, itemSpawnPoints.Length);
+        currentShieldItem = Instantiate(shieldItemPrefab, itemSpawnPoints[index].position, Quaternion.identity);
     }
 
     void HandleAggressiveLogic()
@@ -184,64 +255,86 @@ public class SatyrEvilController : MonoBehaviour
 
         if (isAttacking) return;
 
-        float yDiff = player.position.y - transform.position.y;
-
-        if (yDiff > 2.0f || yDiff < -1.0f)
-        {
-            MoveToPlayer();
-            return;
-        }
-
         if (actionTimer <= actionCooldown)
         {
+            float xDiffWait = player.position.x - transform.position.x;
+            if (Mathf.Abs(xDiffWait) > 1.0f) CheckFacingDirection(Mathf.Sign(xDiffWait));
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            animator.SetBool("isMoving", false);
+            return;
+        }
+
+        float distanceX = Mathf.Abs(player.position.x - transform.position.x);
+        float distanceY = player.position.y - transform.position.y;
+        float rand = Random.value;
+
+        if (distanceY > 2.0f || distanceY < -1.0f)
+        {
             MoveToPlayer();
             return;
         }
 
-        float distance = Vector2.Distance(transform.position, player.position);
-        float rand = Random.value;
-
-        bool isHighUp = transform.position.y > 0.5f;
-
-        if (distance <= 1.5f)
+        if (distanceX > 4.0f)
         {
-            if (rand < 0.75f)
+            if (rand < 0.20f)
             {
-                StartCoroutine(PerformMeleeAttack());
+                StartCoroutine(PerformCrossUp(CrossUpAction.Shoot));
+            }
+            else if (rand < 0.60f)
+            {
+                StartCoroutine(PerformGroundShoot());
             }
             else
             {
-                if (isHighUp) StartCoroutine(PerformGroundShoot());
-                else StartCoroutine(PerformCrossUp(CrossUpAction.Shoot));
+                StartCoroutine(MeleeRushRoutine());
             }
         }
         else
         {
-            if (rand < 0.25f) 
+            if (rand < 0.35f)
             {
                 StartCoroutine(PerformCrossUp(CrossUpAction.Melee));
             }
-            else if (rand < 0.35f) 
+            else if (rand < 0.70f)
             {
-                if (isHighUp)
-                {
-                    StartCoroutine(PerformGroundShoot());
-                }
-                else
-                {
-                    StartCoroutine(PerformCrossUp(CrossUpAction.Shoot));
-                }
+                StartCoroutine(MeleeRushRoutine());
             }
-            else if (rand < 0.55f) 
+            else
             {
-                StartCoroutine(PerformGroundShoot());
-            }
-            else 
-            {
-                actionTimer = 0.0f;
-                MoveToPlayer();
+                StartCoroutine(PerformCrossUp(CrossUpAction.Shoot));
             }
         }
+    }
+    IEnumerator MeleeRushRoutine()
+    {
+        isAttacking = true;
+        float rushTimer = 0f;
+        float rushDuration = 3.0f;
+
+        animator.SetBool("isMoving", true);
+
+        while (rushTimer < rushDuration)
+        {
+            float distance = Mathf.Abs(player.position.x - transform.position.x);
+
+            if (distance <= dashDistanceMelee)
+            {
+                break;
+            }
+
+            float dirX = Mathf.Sign(player.position.x - transform.position.x);
+            CheckFacingDirection(dirX);
+
+            rb.linearVelocity = new Vector2(dirX * moveSpeed * 1.25f, rb.linearVelocity.y);
+
+            rushTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        rb.linearVelocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
+
+        yield return StartCoroutine(PerformMeleeAttack());
     }
 
     void MoveToPlayer()
@@ -276,15 +369,9 @@ public class SatyrEvilController : MonoBehaviour
                 if (Mathf.Abs(xDiff) > 0.5f) dropDirection = dirX;
                 else dropDirection = isFacingRight ? 1f : -1f;
 
-                float wallCheckDist = 2.0f; // Khoảng cách check tường
-                Vector2 rayOrigin = transform.position; // Hoặc groundCheck.position + Vector2.up * 0.5f
-
-                RaycastHit2D wallHit = Physics2D.Raycast(rayOrigin, Vector2.right * dropDirection, wallCheckDist, groundLayer);
-
-                if (wallHit.collider != null)
-                {
-                    dropDirection *= -1f;
-                }
+                float wallCheckDist = 2.0f;
+                RaycastHit2D wallHit = Physics2D.Raycast(transform.position, Vector2.right * dropDirection, wallCheckDist, groundLayer);
+                if (wallHit.collider != null) dropDirection *= -1f; 
             }
 
             CheckFacingDirection(dropDirection);
@@ -311,7 +398,7 @@ public class SatyrEvilController : MonoBehaviour
         }
         else if (isGrounded)
         {
-            if (Mathf.Abs(xDiff) > 1.0f)
+            if (Mathf.Abs(xDiff) > 1.0f) 
             {
                 CheckFacingDirection(dirX);
                 targetVelX = dirX * moveSpeed;
@@ -346,7 +433,7 @@ public class SatyrEvilController : MonoBehaviour
         }
 
         rb.gravityScale = 3.0f;
-        rb.linearVelocity = new Vector2(0, -5f);
+        rb.linearVelocity = new Vector2(0, -5f); 
 
         isAttacking = false;
     }
@@ -355,7 +442,7 @@ public class SatyrEvilController : MonoBehaviour
     {
         isAttacking = true;
         animator.SetBool("isMoving", false);
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero; 
 
         if (health) health.SetInvincible(true);
 
@@ -363,24 +450,21 @@ public class SatyrEvilController : MonoBehaviour
         CheckFacingDirection(dashDirection);
 
         float maxDashDist = (actionType == CrossUpAction.Melee) ? dashDistanceMelee : dashDistanceShoot;
-
         BoxCollider2D bodyCollider = GetComponent<BoxCollider2D>();
         Vector2 size = bodyCollider != null ? bodyCollider.size : new Vector2(1f, 1f);
-
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, size, 0f, Vector2.right * dashDirection, maxDashDist, groundLayer);
 
         float finalDistance = maxDashDist;
-        if (hit.collider != null)
-        {
-            finalDistance = hit.distance - size.x / 2 - 0.2f;
-            if (finalDistance < 0) finalDistance = 0;
-        }
+        if (hit.collider != null) finalDistance = hit.distance - size.x / 2 - 0.2f;
+        if (finalDistance < 0) finalDistance = 0;
 
         Vector2 startPos = rb.position;
         Vector2 targetPos = startPos + new Vector2(dashDirection * finalDistance, 0);
 
         animator.SetBool("isDashing", true);
-        animator.SetTrigger("Dash");
+
+        RigidbodyType2D originalType = rb.bodyType;
+        rb.bodyType = RigidbodyType2D.Kinematic;
 
         if (finalDistance > 0.5f)
         {
@@ -393,6 +477,7 @@ public class SatyrEvilController : MonoBehaviour
             rb.MovePosition(targetPos);
         }
 
+        rb.bodyType = originalType;
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("isDashing", false);
 
@@ -406,26 +491,35 @@ public class SatyrEvilController : MonoBehaviour
         if (actionType == CrossUpAction.Melee)
         {
             animator.SetTrigger("Attack");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
         }
         else
         {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+
+            yield return StartCoroutine(ShowAlert());
+
             animator.SetTrigger("StartShoot");
+            yield return new WaitForSeconds(groundShootWindup);
             if (beamWeapon) beamWeapon.PerformAttack();
+
             yield return new WaitForSeconds(beamDuration);
+
             animator.SetTrigger("EndShoot");
             if (beamWeapon) beamWeapon.FinishAttack();
+            rb.bodyType = RigidbodyType2D.Dynamic;
 
             yield return new WaitForSeconds(2.0f);
-
-            actionTimer = 0.0f;
-            isAttacking = false;
         }
-    }
 
+        actionTimer = 0.0f;
+        isAttacking = false;
+    }
     IEnumerator PerformMeleeAttack()
     {
-        isAttacking = true;
+        if (!isAttacking) isAttacking = true;
+
         animator.SetBool("isMoving", false);
         rb.linearVelocity = Vector2.zero;
 
@@ -433,9 +527,11 @@ public class SatyrEvilController : MonoBehaviour
         CheckFacingDirection(dirToPlayer);
 
         animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(meleeWindupTime);
 
         actionTimer = 0.0f;
+        isAttacking = false;
     }
 
     IEnumerator PerformGroundShoot()
@@ -447,14 +543,15 @@ public class SatyrEvilController : MonoBehaviour
         float dirToPlayer = (player.position.x > transform.position.x) ? 1f : -1f;
         CheckFacingDirection(dirToPlayer);
 
+        yield return StartCoroutine(ShowAlert());
+
         animator.SetTrigger("StartShoot");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(groundShootWindup);
 
         if (projectileWeapon)
             projectileWeapon.ShootStraight(isFacingRight ? 1f : -1f);
 
         animator.SetTrigger("EndShoot");
-
         yield return new WaitForSeconds(2.0f);
 
         actionTimer = 0.0f;
@@ -485,18 +582,17 @@ public class SatyrEvilController : MonoBehaviour
         CheckFacingDirection(dirToPlayer);
 
         animator.SetTrigger("StartShoot");
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(groundShootWindup);
 
-        for (int i = 0; i < 3; i++)
+        while (currentState == BossState.SniperMode)
         {
             if (projectileWeapon)
                 projectileWeapon.ShootAtTarget(player.position);
-            yield return new WaitForSeconds(0.6f);
+
+            yield return new WaitForSeconds(2.0f);
         }
-
         animator.SetTrigger("EndShoot");
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(2.0f);
         SwitchState(BossState.Aggressive);
     }
 
@@ -507,48 +603,72 @@ public class SatyrEvilController : MonoBehaviour
         if (health)
         {
             health.SetInvincible(false);
-            health.TakeDamage(50, transform.position);
+            health.TakeDamage(reflectDamage, player.position); 
         }
-        StartCoroutine(StunRoutine());
+        animator.SetTrigger("EndShoot");
+
+        SwitchState(BossState.Stunned);
     }
 
     IEnumerator StunRoutine()
     {
-        SwitchState(BossState.Stunned);
-        StopAllCoroutines();
+  
+        ToggleFires(false);
 
-        if (meleeWeapon) meleeWeapon.FinishAttack();
-        if (beamWeapon) beamWeapon.FinishAttack();
+        animator.ResetTrigger("StartShoot");
+        animator.SetTrigger("Hurt");
 
         rb.bodyType = RigidbodyType2D.Dynamic;
-        rb.gravityScale = 4f;
-        animator.SetTrigger("Hurt");
-        animator.SetBool("isFalling", true);
+        rb.gravityScale = 2.0f;
+
+        if (stunVFX) stunVFX.SetActive(true);
 
         yield return new WaitUntil(() => isGrounded);
 
-        animator.SetBool("isFalling", false);
         rb.linearVelocity = Vector2.zero;
 
-        if (stunVFX) stunVFX.SetActive(true);
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(stunDuration); 
+
         if (stunVFX) stunVFX.SetActive(false);
 
         animator.SetTrigger("Dash");
         if (health) health.SetInvincible(true);
 
-        CheckFacingDirection(1.0f);
-        rb.AddForce(new Vector2(1.0f * 25f, 0), ForceMode2D.Impulse);
+        float dashDirection = isFacingRight ? 1.0f : -1.0f;
+        rb.AddForce(new Vector2(dashDirection * 25f, 0), ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(0.3f);
         rb.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(dashStopDuration);
 
+        ToggleFires(true);
         SwitchState(BossState.Aggressive);
     }
+
+    IEnumerator ShowAlert()
+    {
+        if (alertObject != null)
+        {
+            alertObject.SetActive(true);
+            yield return new WaitForSeconds(alertDelay);
+            alertObject.SetActive(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(alertDelay);
+        }
+    }
+
     void HandleTakeDamage()
     {
         if (currentState == BossState.Dead) return;
+
+        if (bloodEffectPrefab != null)
+        {
+            Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        if (currentState == BossState.Stunned) return;
 
         if (currentThresholdIndex < phaseThresholds.Length)
         {
@@ -559,8 +679,6 @@ public class SatyrEvilController : MonoBehaviour
                 return;
             }
         }
-
-        animator.SetTrigger("Hurt");
     }
 
     void HandleDeath()
@@ -577,13 +695,18 @@ public class SatyrEvilController : MonoBehaviour
         enabled = false; 
         isAttacking = false;
 
+        ToggleFires(false);
+        if (currentShieldItem != null) Destroy(currentShieldItem);
+
         if (meleeWeapon) meleeWeapon.FinishAttack();
         if (beamWeapon) beamWeapon.FinishAttack();
         if (stunVFX) stunVFX.SetActive(false);
 
-        rb.linearVelocity = Vector2.zero;
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        rb.simulated = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.gravityScale = 3.0f; 
+        rb.linearVelocity = Vector2.zero; 
+        rb.freezeRotation = true;
+        rb.simulated = true;
 
         animator.SetBool("isMoving", false);
         animator.SetBool("isJumping", false);
@@ -591,8 +714,15 @@ public class SatyrEvilController : MonoBehaviour
         animator.SetBool("isDashing", false);
         animator.SetTrigger("Dead");
 
+        if (rewardInteract != null)
+            rewardInteract.SetActive(true);
+
+        if (rewardInteractable != null)
+            rewardInteractable.enabled = true; 
+
         Debug.Log("Mini Boss Defeated!");
     }
+
     public void CheckFacingDirection(float direction)
     {
         if (Mathf.Abs(direction) > 0.0f)
@@ -606,6 +736,7 @@ public class SatyrEvilController : MonoBehaviour
             }
         }
     }
+
     private void MeleeAttack() { if (meleeWeapon) meleeWeapon.PerformAttack(); }
     private void FinishMeleeAttack() { isAttacking = false; if (meleeWeapon) meleeWeapon.FinishAttack(); }
     public void AE_MeleeAttack() { MeleeAttack(); }

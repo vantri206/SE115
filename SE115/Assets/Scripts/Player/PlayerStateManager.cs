@@ -15,6 +15,7 @@ public class PlayerStateManager : StateManager
     public PlayerDeadState DeadState;
     public PlayerSkillState SkillState;
     public PlayerSlidingState SlidingState;
+    public PlayerShieldingState ShieldingState;
     public PlayerWallJumpState WallJumpState;
 
     public PlayerStateManager(PlayerController player)
@@ -31,6 +32,7 @@ public class PlayerStateManager : StateManager
         DeadState = new PlayerDeadState(this);
         SkillState = new PlayerSkillState(this);
         SlidingState = new PlayerSlidingState(this);
+        ShieldingState = new PlayerShieldingState(this);
         WallJumpState = new PlayerWallJumpState(this);
     }
     public void Initialize()

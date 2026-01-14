@@ -518,8 +518,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 108, y: 66}
-  m_SizeDelta: {x: 405.63, y: 73.947}
+  m_AnchoredPosition: {x: 129.21005, y: 80}
+  m_SizeDelta: {x: 448.05, y: 73.947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8762607367894616715
 MonoBehaviour:
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 48, y: 48}
+  m_CellSize: {x: 56, y: 56}
   m_Spacing: {x: 10, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthBarUI
   healthContainer: {fileID: 1324608815712931077}
   heartPrefab: {fileID: 742727770336264495, guid: 55b8fc8579ca0654b8229496b9eab287, type: 3}
-  healthPerHeart: 200
+  healthPerHeart: 100000
   manaContainer: {fileID: 9043271916974603945}
   manaOrbPrefab: {fileID: 742727770336264495, guid: c6856428316236247a5487d9ae3ed1e4, type: 3}
 --- !u!1 &3589957868685314861
@@ -664,7 +664,7 @@ RectTransform:
   m_GameObject: {fileID: 3663839592698570459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2244134240337801541}
@@ -674,7 +674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -65}
+  m_AnchoredPosition: {x: 114, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6379821749136519776
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoosHealthBarUI
   redFill: {fileID: 5140658072999741365}
   ghostFill: {fileID: 6689501746062019235}
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: 5988695538473052115}
   ghostDelay: 0.5
   ghostDuration: 0.5
   ghostEase: 6
@@ -2182,8 +2182,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 108, y: 5.2}
-  m_SizeDelta: {x: 405.63, y: 73.947}
+  m_AnchoredPosition: {x: 129.21, y: 10}
+  m_SizeDelta: {x: 448.05, y: 73.947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4591165086721307756
 MonoBehaviour:

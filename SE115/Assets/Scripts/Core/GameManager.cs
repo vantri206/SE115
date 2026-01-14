@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(nextSpawnPointID))
         {
-            PositionPlayerAtID(player, nextSpawnPointID);
+            PositionPlayerAtId(player, nextSpawnPointID);
 
             UpdateCheckpoint(player.transform.position);
         }
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void PositionPlayerAtID(GameObject player, string id)
+    void PositionPlayerAtId(GameObject player, string id)
     {
         SceneEntryPoint[] entries = FindObjectsByType<SceneEntryPoint>(FindObjectsSortMode.InstanceID);
 

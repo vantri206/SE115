@@ -4,8 +4,7 @@ public class SatyrProjectileShooter : EnemyWeapon
 {
     [Header("Projectile Settings")]
     public GameObject projectilePrefab;
-    public Transform shootPoint;     
-    public float projectileSpeed = 15f;
+    public Transform shootPoint;
 
     public override void PerformAttack() { }
     public override void FinishAttack() { }
@@ -14,27 +13,29 @@ public class SatyrProjectileShooter : EnemyWeapon
     {
         if (projectilePrefab && shootPoint)
         {
-            GameObject b = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
-            var rb = b.GetComponent<Rigidbody2D>();
-            if (rb) rb.linearVelocity = new Vector2(directionX * projectileSpeed, 0);
+            GameObject obj = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
 
-            if (directionX < 0)
-                b.transform.localScale = new Vector3(-1, 1, 1);
+            SatyrProjectile projectile = obj.GetComponent<SatyrProjectile>();
+            if (projectile != null)
+            {
+                Vector2 dir = new Vector2(directionX, 0);
+                projectile.Launch(dir);
+            }
         }
     }
+
     public void ShootAtTarget(Vector2 targetPos)
     {
         if (projectilePrefab && shootPoint)
         {
-            GameObject b = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+            GameObject obj = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
 
-            Vector2 dir = (targetPos - (Vector2)shootPoint.position).normalized;
-
-            var rb = b.GetComponent<Rigidbody2D>();
-            if (rb) rb.linearVelocity = dir * projectileSpeed;
-
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            b.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            SatyrProjectile projectile = obj.GetComponent<SatyrProjectile>();
+            if (projectile != null)
+            {
+                Vector2 dir = (targetPos - (Vector2)shootPoint.position).normalized;
+                projectile.Launch(dir);
+            }
         }
     }
 }

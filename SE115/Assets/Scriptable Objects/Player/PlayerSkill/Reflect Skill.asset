@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e908011fceaefc4aa65aecaab453b06, type: 3}
+  m_Name: Reflect Skill
+  m_EditorClassIdentifier: Assembly-CSharp::ReflectSkill
+  skillName: Reflect
+  cooldownTime: 100
+  icon: {fileID: 116074121835796943, guid: fad639e57e7b94045ac08f64898d6bd4, type: 3}
+  usePlayerSkillState: 0
+  aniBoolParameterName: isShielding

@@ -20,12 +20,12 @@ MonoBehaviour:
   maxSlideSpeed: 3
   runMaxSpeed: 8
   runAcceleration: 8
-  runAccelAmount: 75
+  runAccelAmount: 50
   runDecceleration: 8
-  runDeccelAmount: 75
+  runDeccelAmount: 50
   accelInAir: 1
   deccelInAir: 1
-  jumpCountAmount: 2
+  jumpCountAmount: 1
   jumpHeight: 6
   jumpTimeToApex: 0.45
   jumpForce: 26.666668
