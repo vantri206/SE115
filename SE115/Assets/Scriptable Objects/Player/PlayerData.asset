@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   gravityStrength: -59.259262
   gravityScale: 1.9753088
-  fallGravityScaleMulti: 2
+  fallGravityScaleMulti: 1.5
   maxFallSpeed: 18
   slideGravityScaleMulti: 0.25
   maxSlideSpeed: 3
