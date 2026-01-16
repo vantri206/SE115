@@ -265,7 +265,7 @@ MonoBehaviour:
   attackerTeam: 1
   isDestroyAfterDamage: 0
   damage: 10
-  overTime: 0.5
+  overTime: 1
 --- !u!114 &6825077597408941448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,8 +294,8 @@ GameObject:
   - component: {fileID: 8396369907237304462}
   - component: {fileID: 9184609299014955796}
   - component: {fileID: 1691362351867648944}
-  - component: {fileID: 1238060331174127361}
   - component: {fileID: 1564707947454737276}
+  - component: {fileID: 1731678319997918973}
   m_Layer: 7
   m_Name: SpikeSlug
   m_TagString: Untagged
@@ -490,26 +490,6 @@ MonoBehaviour:
   currentHealth: 40
   maxHealth: 40
   damageTeam: 1
---- !u!114 &1238060331174127361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6864618353659391067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b2f5775c998d249b9d9c73082d0559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  movementType: 0
-  enemy: {fileID: 1564707947454737276}
-  rb: {fileID: 8396369907237304462}
-  moveDirection: {x: 0, y: 0}
-  platformerLayer:
-    serializedVersion: 2
-    m_Bits: 790528
-  groundCheckPos: {fileID: 6918566347490186362}
 --- !u!114 &1564707947454737276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,11 +502,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e1a2dc7a66d8d49b97be3b54ad78bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShieldEnemyController
+  isPhase2: 0
+  minionSpawnPoints: []
   myRigidbody: {fileID: 8396369907237304462}
   animator: {fileID: 5854319516217360685}
   myCollider: {fileID: 9184609299014955796}
   health: {fileID: 1691362351867648944}
-  movement: {fileID: 1238060331174127361}
+  movement: {fileID: 1731678319997918973}
   weapons:
   - {fileID: 6825077597408941448}
   facingDirection: {x: 0, y: 0}
@@ -551,3 +533,23 @@ MonoBehaviour:
   attackTarget: {fileID: 0}
   blockEffectPrefab: {fileID: 5371214502107831917, guid: 315d737f26a7a8c46aa3a17cc64ddacb, type: 3}
   shieldBlockTime: 5
+--- !u!114 &1731678319997918973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864618353659391067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c267662bc04c864a8f06c09a3f14549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  movementType: 0
+  enemy: {fileID: 1564707947454737276}
+  rb: {fileID: 8396369907237304462}
+  moveDirection: {x: 0, y: 0}
+  platformerLayer:
+    serializedVersion: 2
+    m_Bits: 790528
+  groundCheckPos: {fileID: 7852427749952130251}

@@ -63,6 +63,6 @@ public class BateyeAttack : EnemyAttackSOBase
         }
 
         enemy.attackTarget = null;
-        enemy.attackCooldownTimer = 0;
+        enemy.attackCooldownTimer = 0f;
     }
 }

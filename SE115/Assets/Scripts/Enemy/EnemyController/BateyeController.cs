@@ -65,7 +65,11 @@ public class BateyeController : EnemyController
     {
         if (isAttacking)
         {
-            if (myCollider.IsTouchingLayers(obstacleLayer) || attackTimer >= dashAttackDuration)
+            if (myCollider.IsTouchingLayers(obstacleLayer) && attackTimer >= 0.25f)
+            {
+                FinishAttack();
+            }
+            if(attackTimer >= dashAttackDuration)
             {
                 FinishAttack();
             }
@@ -211,7 +215,7 @@ public class BateyeController : EnemyController
 
         if (hitTarget is Component targetComponent)
         {
-            if ((playerLayer.value & (1 << targetComponent.gameObject.layer)) > 0)
+            if ((playerLayer & (1 << targetComponent.gameObject.layer)) > 0)
             {
                 FinishAttack();
             }

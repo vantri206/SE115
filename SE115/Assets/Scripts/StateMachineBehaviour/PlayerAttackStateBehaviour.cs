@@ -22,6 +22,11 @@ public class PlayerAttackStateBehaviour : StateMachineBehaviour
         {
             //player.combat.FinishAttack();
         }
+        EnemyController enemy = animator.GetComponent<EnemyController>();
+        if (enemy != null)
+        {
+            enemy.AE_FinishAttack();
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

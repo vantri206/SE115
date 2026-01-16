@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthBarUI
   healthContainer: {fileID: 1324608815712931077}
   heartPrefab: {fileID: 742727770336264495, guid: 55b8fc8579ca0654b8229496b9eab287, type: 3}
-  healthPerHeart: 100000
+  healthPerHeart: 30
   manaContainer: {fileID: 9043271916974603945}
   manaOrbPrefab: {fileID: 742727770336264495, guid: c6856428316236247a5487d9ae3ed1e4, type: 3}
 --- !u!1 &3589957868685314861
@@ -788,7 +788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2277363203359111631
 RectTransform:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3812845937706732269}
   - component: {fileID: 2623452953796947786}
   - component: {fileID: 3391173668920472338}
-  - component: {fileID: 8368468692218534465}
+  - component: {fileID: 332853056700385368}
   m_Layer: 7
   m_Name: Guardian
   m_TagString: Untagged
@@ -39,6 +39,7 @@ Transform:
   - {fileID: 7783426866403143020}
   - {fileID: 6666181482275848576}
   - {fileID: 25177332678206873}
+  - {fileID: 8024602828969020730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7065742113245016837
@@ -222,11 +223,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a7afb37dab47a42babe71025206dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  isPhase2: 0
+  minionSpawnPoints: []
   myRigidbody: {fileID: 3097163513372884751}
   animator: {fileID: 872905237237304294}
   myCollider: {fileID: 3812845937706732269}
   health: {fileID: 2623452953796947786}
-  movement: {fileID: 8368468692218534465}
+  movement: {fileID: 0}
   weapons:
   - {fileID: 5420402328195234996}
   facingDirection: {x: 0, y: 0}
@@ -249,7 +252,7 @@ MonoBehaviour:
     m_Bits: 256
   playerTarget: {fileID: 0}
   attackTarget: {fileID: 0}
---- !u!114 &8368468692218534465
+--- !u!114 &332853056700385368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,7 +261,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 480251720488312558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b2f5775c998d249b9d9c73082d0559, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c267662bc04c864a8f06c09a3f14549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   movementType: 0
@@ -362,6 +365,116 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   hitboxLayerName: Hitbox
   owner: {fileID: 6018221510839819611}
+--- !u!1 &2020770830416605192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8024602828969020730}
+  - component: {fileID: 8774985965819420606}
+  - component: {fileID: 9079527726373013115}
+  - component: {fileID: 6618383724403479940}
+  m_Layer: 10
+  m_Name: TouchHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8024602828969020730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020770830416605192}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5502225667567172311}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8774985965819420606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020770830416605192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7439885585fd3488ac5a0394e3c10a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OverTimeDamage
+  attackerTeam: 1
+  isDestroyAfterDamage: 0
+  damage: 10
+  overTime: 2
+--- !u!61 &9079527726373013115
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020770830416605192}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 0eaa36c05a643854e870f70c25d5f47b, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.11767466, y: 0.8396526}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.0764347, y: 1.4049875}
+  m_EdgeRadius: 0
+--- !u!114 &6618383724403479940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020770830416605192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ebc874e6bf0da409032edbd39343d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hitbox
+  hitboxLayerName: Hitbox
+  owner: {fileID: 8774985965819420606}
 --- !u!1 &5801788842565111831
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SwordDamage
   attackerTeam: 1
   isDestroyAfterDamage: 0
-  damage: 5
+  damage: 20
   destroyer: {fileID: 0}
 --- !u!114 &5420402328195234996
 MonoBehaviour:

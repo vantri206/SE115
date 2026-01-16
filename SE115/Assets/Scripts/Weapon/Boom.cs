@@ -11,6 +11,7 @@ public class Boom : MonoBehaviour
     public Collider2D myCollider;
     public SwordDamage damage;
     public Hitbox hitbox;
+    public LayerMask groundLayer;
 
     [SerializeField] private float explosionTime = 2.0f;
     private float explosionTimer = 0.0f;
@@ -78,9 +79,9 @@ public class Boom : MonoBehaviour
         Vector2 center = new Vector2(bounds.center.x, bounds.min.y);
         Vector2 right = new Vector2(bounds.max.x - offsetX, bounds.min.y);
 
-        RaycastHit2D hitLeft = Physics2D.Raycast(left, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
-        RaycastHit2D hitCenter = Physics2D.Raycast(center, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
-        RaycastHit2D hitRight = Physics2D.Raycast(right, Vector2.down, checkDistance, LayerMask.GetMask("Platformer"));
+        RaycastHit2D hitLeft = Physics2D.Raycast(left, Vector2.down, checkDistance, groundLayer);
+        RaycastHit2D hitCenter = Physics2D.Raycast(center, Vector2.down, checkDistance, groundLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(right, Vector2.down, checkDistance, groundLayer);
 
         return hitLeft || hitCenter || hitRight;
     }
