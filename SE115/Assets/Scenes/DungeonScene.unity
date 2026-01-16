@@ -7467,7 +7467,7 @@ Tilemap:
       - {fileID: 4189171705908723841, guid: e66f885544b4c844dade0a76c04908b4, type: 3}
       - {fileID: -4633829118794991534, guid: e66f885544b4c844dade0a76c04908b4, type: 3}
       - {fileID: -8151799076995351057, guid: e66f885544b4c844dade0a76c04908b4, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -8531,13 +8531,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: PistonTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3335364510379067649, guid: 0e610b9ccfb7d574cb39f445ec50d7c3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460006060242117924, guid: 0e610b9ccfb7d574cb39f445ec50d7c3, type: 3}
+      propertyPath: stayPushTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776712046898718108, guid: 0e610b9ccfb7d574cb39f445ec50d7c3, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776712046898718108, guid: 0e610b9ccfb7d574cb39f445ec50d7c3, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9024248255699157696, guid: 0e610b9ccfb7d574cb39f445ec50d7c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 96.003
       objectReference: {fileID: 0}
     - target: {fileID: 9024248255699157696, guid: 0e610b9ccfb7d574cb39f445ec50d7c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.48
+      value: 13.02
       objectReference: {fileID: 0}
     - target: {fileID: 9024248255699157696, guid: 0e610b9ccfb7d574cb39f445ec50d7c3, type: 3}
       propertyPath: m_LocalPosition.z
