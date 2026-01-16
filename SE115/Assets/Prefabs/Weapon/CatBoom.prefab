@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ebc874e6bf0da409032edbd39343d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
+  hitboxLayerName: Hitbox
   owner: {fileID: 7876318621861224840}
 --- !u!58 &5612124047514746298
 CircleCollider2D:
@@ -97,6 +98,7 @@ GameObject:
   - component: {fileID: 1880625197460020706}
   - component: {fileID: 3964809937608163169}
   - component: {fileID: 7876318621861224840}
+  - component: {fileID: -7821947015060682484}
   m_Layer: 11
   m_Name: CatBoom
   m_TagString: Untagged
@@ -166,7 +168,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -477773231
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 500
   m_Sprite: {fileID: -5569035362507985257, guid: 7a9dcfd4269eaf941b9e98b4834cf556, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -217,6 +219,9 @@ MonoBehaviour:
   myCollider: {fileID: 3964809937608163169}
   damage: {fileID: 7876318621861224840}
   hitbox: {fileID: 8217656110763258531}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 790528
   explosionTime: 2
 --- !u!50 &1880625197460020706
 Rigidbody2D:
@@ -294,5 +299,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordDamage
   attackerTeam: 1
-  isDestroyAfterDamage: 0
-  damage: 30
+  isDestroyAfterDamage: 1
+  damage: 20
+  destroyer: {fileID: 0}
+--- !u!114 &-7821947015060682484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4814209511116948174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea056f407ca25641ae6bd9933ca0453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectDestroyer
+  isDestroyed: 1
+  lifetime: 20
+  destroyAfterTriggerObject:
+    serializedVersion: 2
+    m_Bits: 0
+  destroyEffect: {fileID: 0}

@@ -13,6 +13,10 @@ public class TreasureChest : MonoBehaviour, IInteractable
     [Header("References")]
     [SerializeField] private Animator animator;
 
+    [Header("Cues")]
+    [SerializeField] private GameObject keyObject;
+    [SerializeField] private GameObject arrowObject;
+
     [SerializeField] private GameObject openEffectPrefab;
 
     private PlayerController playerInRange;
@@ -21,6 +25,8 @@ public class TreasureChest : MonoBehaviour, IInteractable
     {
         if (animator == null)
             animator = GetComponent<Animator>();
+
+        ToggleCues(false);
     }
 
     private void Update()
@@ -39,9 +45,15 @@ public class TreasureChest : MonoBehaviour, IInteractable
     {
         isOpen = true;
 
+        ToggleCues(false);
+
         if (animator != null) animator.SetTrigger("Open");
     }
-
+    private void ToggleCues(bool isActive)
+    {
+        if (keyObject != null) keyObject.SetActive(isActive);
+        if (arrowObject != null) arrowObject.SetActive(isActive);
+    }
     public void AE_SpawnLoot()
     {
         if (openEffectPrefab != null)
@@ -69,6 +81,9 @@ public class TreasureChest : MonoBehaviour, IInteractable
     public void SetPlayerInRange(PlayerController player)
     {
         playerInRange = player;
+
+        bool shouldShow = (playerInRange != null) && !isOpen;
+        ToggleCues(shouldShow);
     }
     public void AE_ChestClosed()
     {

@@ -270,4 +270,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6354620b2ca95e04fa780737c2629321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaxHealthUP
-  healthUpAmount: 20
+  healthUpAmount: 30

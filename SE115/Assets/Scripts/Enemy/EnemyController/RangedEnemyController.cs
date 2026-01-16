@@ -26,11 +26,6 @@ public class RangedEnemyController : EnemyController
         }
 
         weapons[currentWeaponIndex].PerformAttack();
-
-        if (currentWeaponIndex >= weapons.Length)
-        {
-            currentWeaponIndex = 0;
-        }
     }
     public override void FinishAttack()
     {

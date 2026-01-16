@@ -36,7 +36,7 @@ public class EnemyAttackNormal : EnemyAttackSOBase
         base.HandleExitState();
 
         enemy.attackTarget = null;
-        enemy.attackCooldownTimer = 0;
+        enemy.attackCooldownTimer = 0f;
 
         enemy.animator.SetBool("isAttacking", false);
     }

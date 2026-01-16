@@ -211,6 +211,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 7749687368282275586}
   spawnForce: {x: 4, y: 8}
   animator: {fileID: 8000182324614215228}
+  keyObject: {fileID: 6636965810636574178}
+  arrowObject: {fileID: 2552713728172895303}
   openEffectPrefab: {fileID: 8910982273104792734, guid: 06ee0b2d6bbf26741b1c1f3f2572fbb6, type: 3}
 --- !u!1 &2128498960691653596
 GameObject:

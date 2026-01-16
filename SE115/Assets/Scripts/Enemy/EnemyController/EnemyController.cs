@@ -79,6 +79,7 @@ public class EnemyController : MonoBehaviour
         myRigidbody = gameObject.GetComponent<Rigidbody2D>();
         myCollider = gameObject.GetComponent<Collider2D>();
         health = gameObject.GetComponent<EnemyHealth>();
+        movement = gameObject.GetComponent<EnemyMovement>();
         stateManager = new EnemyStateManager(this);
 
         #region State SO Initialize
@@ -136,7 +137,6 @@ public class EnemyController : MonoBehaviour
     }
     public virtual void FinishAttack()
     {
-
         isAttacking = false;
         foreach (EnemyWeapon weapon in weapons)
             weapon.FinishAttack();
