@@ -18,10 +18,10 @@ MonoBehaviour:
   maxFallSpeed: 18
   slideGravityScaleMulti: 0.25
   maxSlideSpeed: 3
-  runMaxSpeed: 8
-  runAcceleration: 8
+  runMaxSpeed: 7
+  runAcceleration: 7
   runAccelAmount: 50
-  runDecceleration: 8
+  runDecceleration: 7
   runDeccelAmount: 50
   accelInAir: 1
   deccelInAir: 1
