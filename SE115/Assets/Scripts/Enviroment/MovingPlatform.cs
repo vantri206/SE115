@@ -3,8 +3,8 @@ using UnityEngine;
 
 public enum PlatformMode
 {
-    Loop,      
-    OneWay  
+    Loop,
+    OneWay
 }
 
 public class MovingPlatform : MonoBehaviour
@@ -14,7 +14,7 @@ public class MovingPlatform : MonoBehaviour
     public float speed = 3.0f;
 
     public Vector2[] waypointsOffset;
-    private Vector2[] waypoints;    
+    private Vector2[] waypoints;
 
     private int currentPointIndex = 0;
     private Vector2 currentPoint;
@@ -26,14 +26,22 @@ public class MovingPlatform : MonoBehaviour
     private float waitTimer;
 
     private SpriteRenderer spriteRenderer;
-    private Collider2D myCollider;
     private bool isRespawning = false;
+    private Collider2D myCollider; 
 
     private void Start()
     {
         startPosition = transform.position;
-        spriteRenderer = GetComponent<SpriteRenderer>();
         myCollider = GetComponent<Collider2D>();
+
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (waypointsOffset == null || waypointsOffset.Length == 0)
+        {
+            enabled = false; 
+            return;
+        }
 
         waypoints = new Vector2[waypointsOffset.Length + 1];
         waypoints[0] = startPosition;
@@ -91,10 +99,11 @@ public class MovingPlatform : MonoBehaviour
     {
         isRespawning = true;
 
-        if (spriteRenderer) 
+        if (spriteRenderer)
             spriteRenderer.enabled = false;
-        if (GetComponent<Collider>()) 
-            GetComponent<Collider>().enabled = false;
+
+        if (myCollider)
+            myCollider.enabled = false;
 
         foreach (Transform child in transform)
         {
@@ -107,13 +116,15 @@ public class MovingPlatform : MonoBehaviour
         currentPointIndex = 1;
         currentPoint = waypoints[1];
 
-        if (spriteRenderer) 
+        if (spriteRenderer)
             spriteRenderer.enabled = true;
-        if (GetComponent<Collider>())
-            GetComponent<Collider>().enabled = true;
+
+        if (myCollider)
+            myCollider.enabled = true;
 
         isRespawning = false;
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -129,6 +140,7 @@ public class MovingPlatform : MonoBehaviour
             collision.transform.SetParent(null);
         }
     }
+
     private void OnDrawGizmos()
     {
         if (waypointsOffset == null || waypointsOffset.Length == 0) return;

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -21,6 +22,11 @@ public class PlayerController : MonoBehaviour
     [Header("Player Data")]
     public PlayerData data;
     [SerializeField] private int onAirAttackCount = 1;
+
+    [Space(5)]
+    [Header("Invincible Settings")]
+    public float invincibleTime = 2.0f;   
+    public float blinkInterval = 0.1f;   
 
     [Space(5)]
 
@@ -102,12 +108,25 @@ public class PlayerController : MonoBehaviour
         mana = GetComponent<PlayerMana>();
         stateManager = new PlayerStateManager(this);
 
+        if (health != null)
+        {
+            health.onTakeDamage += OnTakeDamage;
+            health.onDead += StartDead;
+        }
 
-        health.onTakeDamage += OnTakeDamage;
-        health.onDead += StartDead;
+        if (reflectShieldObj != null) 
+            reflectShieldObj.SetActive(false);
 
-        if (reflectShieldObj != null) reflectShieldObj.SetActive(false);
-        if(sword != null) sword.gameObject.SetActive(false);
+        if(sword != null) 
+            sword.gameObject.SetActive(false);
+    }
+    void OnDestroy()
+    {
+        if (health != null)
+        {
+            health.onTakeDamage -= OnTakeDamage;
+            health.onDead -= StartDead;
+        }
     }
     void Start()
     {
@@ -195,15 +214,25 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (isInputLocked || (GameManager.Instance != null && GameManager.Instance.isTransitioning))
+        {
+            if (myRigidbody.bodyType == RigidbodyType2D.Dynamic)
+            {
+                myRigidbody.linearVelocity = new Vector2(0, myRigidbody.linearVelocity.y);
+            }
+            return; 
+        }
+
         stateManager.FixedUpdate();
     }
     private void StopPlayer()
     {
         if (myRigidbody.bodyType == RigidbodyType2D.Dynamic)
         {
-            myRigidbody.linearVelocity = Vector2.zero;
+            myRigidbody.linearVelocity = new Vector2(0, myRigidbody.linearVelocity.y);
         }
 
+        input.ResetAttackPressed();
         input.ResetJumpPressed();
         input.ResetDashPressed();
         input.ResetInteractPressed();
@@ -274,7 +303,35 @@ public class PlayerController : MonoBehaviour
     #region Hurt/Dead
     public void OnTakeDamage()
     {
-        isHurting = true;
+        if (isDead) return;
+
+        isHurting = true; 
+        animator.SetTrigger("Hurt");
+
+        StartCoroutine(IInvincibleRoutine());
+    }
+    private IEnumerator IInvincibleRoutine()
+    {
+        health.SetInvincible(true);
+
+        Color originalColor = spriteRenderer.color;
+        Color blinkColor = new Color(1f, 1f, 1f, 0f);
+
+        float invincibleTimer = 0f;
+
+        while (invincibleTimer < invincibleTime)
+        {
+            spriteRenderer.color = (spriteRenderer.color.a > 0.5f) ? blinkColor : originalColor;
+
+            yield return new WaitForSeconds(blinkInterval);
+
+            invincibleTimer += blinkInterval;
+        }
+
+        spriteRenderer.color = originalColor; 
+        health.SetInvincible(false);
+
+        isHurting = false;
     }
     public void StartDead()
     {
@@ -308,6 +365,10 @@ public class PlayerController : MonoBehaviour
 
         isDead = false;
         isHurting = false;
+
+        StopAllCoroutines(); 
+        health.SetInvincible(false); 
+        spriteRenderer.color = Color.white;
 
         myRigidbody.bodyType = RigidbodyType2D.Dynamic;
         myRigidbody.linearVelocity = Vector2.zero;
