@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: ede7cb248b242e24ab698c209e513e34
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8726448073918946985
+    second: NoobGodoter'sSpritesheet_0
+  - first:
+      213: -7062182244782538055
+    second: NoobGodoter'sSpritesheet_1
+  - first:
+      213: -5062143042217488091
+    second: NoobGodoter'sSpritesheet_2
+  - first:
+      213: -7339833508125685651
+    second: NoobGodoter'sSpritesheet_3
+  - first:
+      213: 6138064407463700544
+    second: NoobGodoter'sSpritesheet_4
+  - first:
+      213: -1044969581790835468
+    second: NoobGodoter'sSpritesheet_5
+  - first:
+      213: -4525622886292767264
+    second: NoobGodoter'sSpritesheet_6
+  - first:
+      213: 4858764244693485117
+    second: NoobGodoter'sSpritesheet_7
+  - first:
+      213: 8107598522267972847
+    second: NoobGodoter'sSpritesheet_8
+  - first:
+      213: 7967846255082213820
+    second: NoobGodoter'sSpritesheet_9
+  - first:
+      213: -5976642708971074305
+    second: NoobGodoter'sSpritesheet_10
+  - first:
+      213: 7962764061360098915
+    second: NoobGodoter'sSpritesheet_11
+  - first:
+      213: 4343067406437189755
+    second: NoobGodoter'sSpritesheet_12
+  - first:
+      213: -3899856010917083343
+    second: NoobGodoter'sSpritesheet_13
+  - first:
+      213: -2184748430163449309
+    second: NoobGodoter'sSpritesheet_14
+  - first:
+      213: -1670408070356535773
+    second: NoobGodoter'sSpritesheet_15
+  - first:
+      213: -4904389623810713891
+    second: NoobGodoter'sSpritesheet_16
+  - first:
+      213: -4820421941960195586
+    second: NoobGodoter'sSpritesheet_17
+  - first:
+      213: -5590462040525491119
+    second: NoobGodoter'sSpritesheet_18
+  - first:
+      213: -7524087550319682481
+    second: NoobGodoter'sSpritesheet_19
+  - first:
+      213: -104921496885899136
+    second: NoobGodoter'sSpritesheet_20
+  - first:
+      213: -6546076402526038499
+    second: NoobGodoter'sSpritesheet_21
+  - first:
+      213: 4843844482914541297
+    second: NoobGodoter'sSpritesheet_22
+  - first:
+      213: -6404748811306969873
+    second: NoobGodoter'sSpritesheet_23
+  - first:
+      213: -7765629600973231264
+    second: NoobGodoter'sSpritesheet_24
+  - first:
+      213: -4929540375557903313
+    second: NoobGodoter'sSpritesheet_25
+  - first:
+      213: 6784007200671543794
+    second: NoobGodoter'sSpritesheet_26
+  - first:
+      213: 8201176008843898584
+    second: NoobGodoter'sSpritesheet_27
+  - first:
+      213: 3360741810940320878
+    second: NoobGodoter'sSpritesheet_28
+  - first:
+      213: -7552201274834273478
+    second: NoobGodoter'sSpritesheet_29
+  - first:
+      213: -5709616405093313396
+    second: NoobGodoter'sSpritesheet_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 288
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Wisp_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6136d9dd260221340ac90b619dfed2b6
+      internalID: -159027931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c756a1a0173a55e4f9eb4dd1fecd4667
+      internalID: -1954935903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd7a246ebb0e7b6479bdc31e37d65a77
+      internalID: 1268429472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_3
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b27a0dc4038ce2f46b17d559385acff6
+      internalID: -1846775070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_4
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0741a716822b3354bbfcf3d8bedfdba5
+      internalID: 804110412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_5
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a0bd507e54a444995628de43218c4b
+      internalID: -1511404318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_6
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2552d37c538df8542a808ac133194940
+      internalID: 1380811598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_7
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3602e141ef926445977e497e1c3b14c
+      internalID: 491495336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_8
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06335a4545fea51478bf96db62be3d04
+      internalID: -1201911839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wisp_9
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 0
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3015d7909fb17a4386538f252edfc62
+      internalID: -2013462575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 614b23f89513d37448f8af06dd08f109
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":288.0,"y":288.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Wisp_0: -159027931
+      Wisp_1: -1954935903
+      Wisp_2: 1268429472
+      Wisp_3: -1846775070
+      Wisp_4: 804110412
+      Wisp_5: -1511404318
+      Wisp_6: 1380811598
+      Wisp_7: 491495336
+      Wisp_8: -1201911839
+      Wisp_9: -2013462575
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
