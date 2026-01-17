@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -60,7 +61,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallRaycastBotOffset = 0.25f;
 
     [Header("Reflect Skill")]
-    public GameObject reflectShieldObj; 
+    public GameObject reflectShieldObj;
+
+    [Header("Control Settings")]
+    public bool isInputLocked = false;
 
     public Vector2 facingDirection;
 
@@ -119,6 +123,14 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        //Lock input
+
+        if (isInputLocked || (GameManager.Instance != null && GameManager.Instance.isTransitioning))
+        {
+            StopPlayer();
+            return; 
+        }
+
         //Timer
         lastOnGroundTime -= Time.deltaTime;
         lastPressedJumpTime -= Time.deltaTime;
@@ -184,6 +196,33 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         stateManager.FixedUpdate();
+    }
+    private void StopPlayer()
+    {
+        if (myRigidbody.bodyType == RigidbodyType2D.Dynamic)
+        {
+            myRigidbody.linearVelocity = Vector2.zero;
+        }
+
+        input.ResetJumpPressed();
+        input.ResetDashPressed();
+        input.ResetInteractPressed();
+
+        if (!isDead && !isHurting)
+        {
+            animator.SetBool("isRunning", false); 
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isDashing", false);
+            animator.SetBool("isSliding", false);
+        }
+    }
+    public void LockInput(bool locked)
+    {
+        isInputLocked = locked;
+        if (locked)
+        {
+            StopPlayer();
+        }
     }
 
     #region Attack
@@ -280,6 +319,12 @@ public class PlayerController : MonoBehaviour
         if (stateManager != null)
         {
             stateManager.ChangeState(stateManager.IdleState);
+        }
+
+        CinemachineCamera vCam = FindFirstObjectByType<CinemachineCamera>();
+        if (vCam != null) 
+        {
+            vCam.OnTargetObjectWarped(transform, checkpointPosition - (Vector2)transform.position);
         }
     }
     public void RestoreStats()
