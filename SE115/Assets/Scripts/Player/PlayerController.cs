@@ -91,14 +91,13 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
     void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            Destroy(this.gameObject); 
         }
         else
         {
-            Destroy(gameObject);
+            Instance = this;
         }
 
         animator = GetComponent<Animator>();
@@ -333,7 +332,7 @@ public class PlayerController : MonoBehaviour
             invincibleTimer += blinkInterval;
         }
 
-        spriteRenderer.color = Color.white; 
+        spriteRenderer.color = Color.white;
         health.SetInvincible(false);
 
         isHurting = false;

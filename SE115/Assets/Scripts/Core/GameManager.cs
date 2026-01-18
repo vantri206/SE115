@@ -300,4 +300,29 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+    public bool HasSaveData()
+    {
+        return File.Exists(saveFilePath);
+    }
+
+    public string GetSavedSceneName()
+    {
+        GameSaveData data = LoadDataFromFile();
+        if (data != null && !string.IsNullOrEmpty(data.currentSceneName))
+        {
+            return data.currentSceneName;
+        }
+        return null;
+    }
+
+    public void DeleteSaveData()
+    {
+        if (File.Exists(saveFilePath))
+        {
+            File.Delete(saveFilePath);
+        }
+
+        lastCheckpointPos = Vector3.zero;
+        hasCheckpoint = false;
+    }
 }
