@@ -6945,11 +6945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1461638456931659465, guid: f1a9f6262828c3245a66cb8ddfc2039c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.60423
+      value: 18.53
       objectReference: {fileID: 0}
     - target: {fileID: 1461638456931659465, guid: f1a9f6262828c3245a66cb8ddfc2039c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.36274
+      value: 3.52
       objectReference: {fileID: 0}
     - target: {fileID: 1461638456931659465, guid: f1a9f6262828c3245a66cb8ddfc2039c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6984,8 +6984,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3670886840932856231, guid: f1a9f6262828c3245a66cb8ddfc2039c, type: 3}
+      propertyPath: isScrolling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670886840932856231, guid: f1a9f6262828c3245a66cb8ddfc2039c, type: 3}
       propertyPath: scrollSpeed
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3956820146718939050, guid: f1a9f6262828c3245a66cb8ddfc2039c, type: 3}
       propertyPath: m_LocalPosition.y

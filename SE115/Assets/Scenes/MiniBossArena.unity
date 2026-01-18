@@ -6271,11 +6271,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.62
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.31
+      value: -1.09
       objectReference: {fileID: 0}
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6315,7 +6315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669991668877909676, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7855584049671065995, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: maxHealth
@@ -6384,7 +6384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8311913958444784398, guid: 54ed0967236515f41820b7630d03531d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6401,11 +6401,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2563044642642414151, guid: b77555b51c1c6b24896583a95a2fbe90, type: 3}
       propertyPath: maxHealth
-      value: 450
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2563044642642414151, guid: b77555b51c1c6b24896583a95a2fbe90, type: 3}
       propertyPath: currentHealth
-      value: 450
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4939125245341072136, guid: b77555b51c1c6b24896583a95a2fbe90, type: 3}
       propertyPath: nextSceneDoor
@@ -6512,12 +6512,12 @@ SceneRoots:
   - {fileID: 3623037208550003052}
   - {fileID: 6772164420616167215}
   - {fileID: 1472898758}
-  - {fileID: 2071381858}
   - {fileID: 793696569}
   - {fileID: 493552338}
   - {fileID: 223706797}
   - {fileID: 978390417}
   - {fileID: 6374206577169376864}
+  - {fileID: 2071381858}
   - {fileID: 1027799944}
   - {fileID: 68766122}
   - {fileID: 1481198520}
