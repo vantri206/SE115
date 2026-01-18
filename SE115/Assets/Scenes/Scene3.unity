@@ -231,6 +231,57 @@ MonoBehaviour:
   enemyPrefab: {fileID: 7778764091718747473, guid: db6bcfd0e432a904a90a3f0f5ab22b6f, type: 3}
   respawnTime: 5
   fadeAppearDuration: 1.5
+--- !u!1 &187975487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3208908921453523908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+  m_PrefabInstance: {fileID: 1280597948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &187975488
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187975487}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &187975489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187975487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b890e23841a0674489faac18e811525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleSpriteLoop
+  spriteRenderer: {fileID: 187975491}
+  sprites:
+  - {fileID: 7099555123358503877, guid: 860dc355f1446cf4a8ea3c053f8e9fea, type: 3}
+  - {fileID: 431136206, guid: 860dc355f1446cf4a8ea3c053f8e9fea, type: 3}
+  - {fileID: -219314304, guid: 860dc355f1446cf4a8ea3c053f8e9fea, type: 3}
+  - {fileID: 1964552372, guid: 860dc355f1446cf4a8ea3c053f8e9fea, type: 3}
+  intervalTime: 0.25
+--- !u!212 &187975491 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1576398429582106862, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+  m_PrefabInstance: {fileID: 1280597948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &246364786
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +372,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &250465669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 250465671}
+  - component: {fileID: 250465670}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &250465670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250465669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9b241dc1121c446ab35cf9b7bdfe45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  lastCheckpointPos: {x: 0, y: 0, z: 0}
+  hasCheckpoint: 0
+  nextSpawnPointID: 
+  isTransitioning: 0
+--- !u!4 &250465671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250465669}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &304482720
 GameObject:
   m_ObjectHideFlags: 0
@@ -7622,6 +7721,114 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1280597948
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 185984827096192952, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1954193
+      objectReference: {fileID: 0}
+    - target: {fileID: 185984827096192952, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5764673
+      objectReference: {fileID: 0}
+    - target: {fileID: 185984827096192952, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.03806305
+      objectReference: {fileID: 0}
+    - target: {fileID: 185984827096192952, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.47114074
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576398429582106862, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7099555123358503877, guid: 860dc355f1446cf4a8ea3c053f8e9fea, type: 3}
+    - target: {fileID: 3208908921453523908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_Name
+      value: StairUpDoor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316471734414105669, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 187975488}
+    - target: {fileID: 5316471734414105669, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: isGoingUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316471734414105669, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: sceneToLoad
+      value: Scene4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316471734414105669, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: waitDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8331635000012147118, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3208908921453523908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 187975489}
+    - targetCorrespondingSourceObject: {fileID: 3208908921453523908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 187975488}
+  m_SourcePrefab: {fileID: 100100000, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
 --- !u!1 &1301763327
 GameObject:
   m_ObjectHideFlags: 0
@@ -8449,7 +8656,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316471734414105669, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
       propertyPath: sceneToLoad
-      value: MiniBossArea
+      value: "Scene4using UnityEngine;  public class AudioManager : MonoBehaviour
+        {     public static AudioManager Instance;      [Header(\"Components\")]    
+        public AudioSource musicSource;      [Header(\"Clips\")]     public AudioClip
+        backgroundMusic; // Nh\u1EA1c n\u1EC1n ch\xEDnh      private void Awake()    
+        {         // --- SINGLETON PATTERN ---         // Ki\u1EC3m tra xem \u0111\xE3
+        c\xF3 AudioManager n\xE0o t\u1ED3n t\u1EA1i ch\u01B0a         if (Instance
+        == null)         {             Instance = this;             DontDestroyOnLoad(gameObject);
+        // Gi\u1EEF l\u1EA1i khi sang scene kh\xE1c         }         else        
+        {             // N\u1EBFu \u0111\xE3 c\xF3 r\u1ED3i (khi quay l\u1EA1i MainMenu),
+        th\xEC h\u1EE7y c\xE1i m\u1EDBi sinh ra n\xE0y \u0111i             Destroy(gameObject);             
+        return;         }          // T\u1EF1 \u0111\u1ED9ng t\xECm AudioSource n\u1EBFu
+        qu\xEAn k\xE9o         if (musicSource == null)              musicSource
+        = GetComponent<AudioSource>();     }      private void Start()     {        
+        // Ph\xE1t nh\u1EA1c ngay khi game b\u1EAFt \u0111\u1EA7u n\u1EBFu ch\u01B0a
+        ph\xE1t         if (!musicSource.isPlaying)         {             PlayMusic(backgroundMusic);        
+        }     }      public void PlayMusic(AudioClip clip)     {         if (clip
+        == null) return;          // N\u1EBFu b\xE0i nh\u1EA1c m\u1EDBi gi\u1ED1ng
+        b\xE0i c\u0169 th\xEC kh\xF4ng c\u1EA7n ph\xE1t l\u1EA1i (\u0111\u1EC3 tr\xE1nh
+        b\u1ECB ng\u1EAFt qu\xE3ng)         if (musicSource.clip == clip && musicSource.isPlaying)
+        return;          musicSource.clip = clip;         musicSource.Play();    
+        }      public void StopMusic()     {         musicSource.Stop();     }         
+        // H\xE0m ch\u1EC9nh \xE2m l\u01B0\u1EE3ng (d\xF9ng cho Slider trong Setting
+        sau n\xE0y)     public void SetVolume(float volume)     {         musicSource.volume
+        = Mathf.Clamp01(volume);     } }"
       objectReference: {fileID: 0}
     - target: {fileID: 5316471734414105669, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
       propertyPath: waitDuration
@@ -8954,4 +9184,7 @@ SceneRoots:
   - {fileID: 1301763328}
   - {fileID: 1161591761}
   - {fileID: 1680657908}
+  - {fileID: 1280597948}
   - {fileID: 29111349}
+  - {fileID: 1506553269}
+  - {fileID: 250465671}

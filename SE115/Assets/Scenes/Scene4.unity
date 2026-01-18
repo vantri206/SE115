@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 92690357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5555573, y: 0, z: -10}
+  m_LocalPosition: {x: 3.5555573, y: 1.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1942,7 +1942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3968872475536521868, guid: 091a97c967647bd43a666521bbbda748, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6379821749136519776, guid: 091a97c967647bd43a666521bbbda748, type: 3}
       propertyPath: canvasGroup
@@ -2396,7 +2396,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 140.17316, y: 28.11214}
+  m_Offset: {x: 140.17316, y: 29.928944}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2406,7 +2406,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 303.30304, y: 72.54795}
+  m_Size: {x: 303.30304, y: 76.18156}
   m_EdgeRadius: 0
 --- !u!114 &903627595
 MonoBehaviour:
@@ -2579,7 +2579,7 @@ Transform:
   m_GameObject: {fileID: 1016575181}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5555558, y: 0.00000023841858, z: -10}
+  m_LocalPosition: {x: 3.5555558, y: 1.5000002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2629,7 +2629,7 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.6}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: -1, z: 0}
+  TargetOffset: {x: 0, y: 0.5, z: 0}
   Damping: {x: 0.3, y: 0.3, z: 0}
   Lookahead:
     Enabled: 1
@@ -5223,11 +5223,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 146.03
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 47.04
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5271,7 +5271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669991668877909676, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7855584049671065995, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: maxHealth
