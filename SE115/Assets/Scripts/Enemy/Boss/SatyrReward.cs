@@ -46,7 +46,7 @@ public class SatyrReward : MonoBehaviour, IInteractable
     {
         PlayerController player = playerInRange;
         player.unlockSlashDash = true;
-        player.data.jumpCountAmount = 2;
+        player.UnlockDoubleJump();
     }
 
     IEnumerator DestroyCorpseRoutine()

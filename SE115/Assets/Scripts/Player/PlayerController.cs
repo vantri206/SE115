@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayer;
     public GameObject slashDashPrefabs;
 
+    [Header("Sword Wave")]
+    public bool unlockSwordWave = false;
+    public GameObject swordWavePrefab;  
+    public Transform swordWaveFirePoint;        
+
     private PlayerStateManager stateManager;
     public float lastOnGroundTime { get; private set; }
     public float lastPressedJumpTime { get; private set; }
@@ -635,5 +640,29 @@ public class PlayerController : MonoBehaviour
 
         isShielding = true;
         stateManager.ChangeState(stateManager.ShieldingState);
+    }
+    public void AE_SpawnSwordWave()
+    {
+        if (!unlockSwordWave || swordWavePrefab == null) return;
+
+        Vector2 spawnPos = (swordWaveFirePoint != null) ? swordWaveFirePoint.position : transform.position;
+
+        GameObject swordWave = Instantiate(swordWavePrefab, spawnPos, Quaternion.identity);
+
+        float directionX = Mathf.Sign(transform.localScale.x);
+
+        LinearProjectiles linearProjectiles = swordWave.GetComponent<LinearProjectiles>();
+        if (linearProjectiles != null)
+        {
+            linearProjectiles.SetDirection(new Vector2(directionX, 0));
+        }
+
+        Vector3 scale = swordWave.transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * directionX * (-1);
+        swordWave.transform.localScale = scale;
+    }
+    public void UnlockDoubleJump()
+    {
+        data.jumpCountAmount = 2;
     }
 }

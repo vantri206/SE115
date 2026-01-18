@@ -237,11 +237,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62.8
+      value: -1.62
       objectReference: {fileID: 0}
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.6
+      value: -3.53
       objectReference: {fileID: 0}
     - target: {fileID: 1234064139955690421, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_LocalPosition.z
@@ -275,17 +275,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3768201445005712501, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
+      propertyPath: unlockSwordWave
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4669991668877909676, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7855584049671065995, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
-      propertyPath: maxHealth
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 7855584049671065995, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
-      propertyPath: currentHealth
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -685,6 +681,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 270769339864642674, guid: 091a97c967647bd43a666521bbbda748, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 270769339864642674, guid: 091a97c967647bd43a666521bbbda748, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 270769339864642674, guid: 091a97c967647bd43a666521bbbda748, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -41.400024
+      objectReference: {fileID: 0}
+    - target: {fileID: 270769339864642674, guid: 091a97c967647bd43a666521bbbda748, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 27.18
+      objectReference: {fileID: 0}
     - target: {fileID: 2277363203359111631, guid: 091a97c967647bd43a666521bbbda748, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -769,6 +781,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplayHUDCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3968872475536521868, guid: 091a97c967647bd43a666521bbbda748, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901279804862514501, guid: 091a97c967647bd43a666521bbbda748, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -785,6 +805,10 @@ PrefabInstance:
     - target: {fileID: 779396975280364480, guid: 6f9a77da2a0c8e044a38b5c3852bdcb2, type: 3}
       propertyPath: m_Name
       value: Zombie (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 779396975280364480, guid: 6f9a77da2a0c8e044a38b5c3852bdcb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4088961373268206322, guid: 6f9a77da2a0c8e044a38b5c3852bdcb2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1578,7 +1602,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4289,6 +4313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 779396975280364480, guid: 6f9a77da2a0c8e044a38b5c3852bdcb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4088961373268206322, guid: 6f9a77da2a0c8e044a38b5c3852bdcb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.02782
@@ -4345,6 +4373,10 @@ PrefabInstance:
     - target: {fileID: 779396975280364480, guid: 6f9a77da2a0c8e044a38b5c3852bdcb2, type: 3}
       propertyPath: m_Name
       value: Zombie (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 779396975280364480, guid: 6f9a77da2a0c8e044a38b5c3852bdcb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4088961373268206322, guid: 6f9a77da2a0c8e044a38b5c3852bdcb2, type: 3}
       propertyPath: m_LocalPosition.x

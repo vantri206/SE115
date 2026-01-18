@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e908011fceaefc4aa65aecaab453b06, type: 3}
-  m_Name: Reflect Skill
+  m_Name: ReflectSkill
   m_EditorClassIdentifier: Assembly-CSharp::ReflectSkill
   skillName: Reflect
-  cooldownTime: 100
+  cooldownTime: 2
   icon: {fileID: 116074121835796943, guid: fad639e57e7b94045ac08f64898d6bd4, type: 3}
   usePlayerSkillState: 0
+  showMessages: 1
   aniBoolParameterName: isShielding

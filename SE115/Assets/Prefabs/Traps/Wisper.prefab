@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 7866459551861120610}
   - component: {fileID: 3506491741121349940}
   - component: {fileID: 4235387884647570915}
-  - component: {fileID: 3621253918663430293}
   - component: {fileID: 3881910503741428756}
-  - component: {fileID: 693182949690388454}
   - component: {fileID: 1675175106543857957}
+  - component: {fileID: 8710379298225806594}
   m_Layer: 10
   m_Name: Wisper
   m_TagString: Untagged
@@ -176,26 +175,6 @@ MonoBehaviour:
   isDestroyAfterDamage: 0
   damage: 10
   overTime: 1
---- !u!114 &3621253918663430293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2647636343558216830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ae6cd812e04c1147853c872b1ff3c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
-  movementMode: 0
-  speed: 3
-  waypointsOffset:
-  - {x: 4, y: 0}
-  - {x: 4, y: -4}
-  - {x: 0, y: -4}
-  waitAtPoint: 0
-  respawnDelay: 0
 --- !u!114 &3881910503741428756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,19 +200,6 @@ MonoBehaviour:
   - {fileID: -1201911839, guid: ede7cb248b242e24ab698c209e513e34, type: 3}
   - {fileID: -2013462575, guid: ede7cb248b242e24ab698c209e513e34, type: 3}
   intervalTime: 0.15
---- !u!114 &693182949690388454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2647636343558216830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d4561bab8eb214ead37f846668e352, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  moveThreshold: 0.001
 --- !u!114 &1675175106543857957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,3 +214,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   hitboxLayerName: Hitbox
   owner: {fileID: 4235387884647570915}
+--- !u!114 &8710379298225806594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2647636343558216830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5661113fdd9350f4ebc265996066610c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  mode: 1
+  speed: 3
+  rotationOffset: 180
+  pathWaypointsOffset:
+  - {x: 4, y: 0}
+  - {x: 4, y: 4}
+  - {x: 0, y: 4}
+  centerOffset: {x: 0, y: -2}
+  clockwise: 0

@@ -9,7 +9,7 @@ public class SkillUnlockItem : MonoBehaviour, ICollectable
 
         if (targetSkill != null)
         {
-            targetSkill.UnlockSkill(skillUnlock);
+            targetSkill.UnlockSkill(skillUnlock, true);
             Destroy(gameObject);
         }
     }
