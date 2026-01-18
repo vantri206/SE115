@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12680a6ac66d0448b74bea8b74be87a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  sceneToLoad: MiniBossArena
+  sceneToLoad: Scene1
   spawnPointID: SpawnPoint_01
   animator: {fileID: 8331635000012147118}
   isGoingUp: 1
