@@ -91,14 +91,13 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
     void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            Destroy(this.gameObject); 
         }
         else
         {
-            Destroy(gameObject);
+            Instance = this;
         }
 
         animator = GetComponent<Animator>();
@@ -320,21 +319,20 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitUntil(() => !isHurting);
 
-        Color originalColor = spriteRenderer.color;
         Color blinkColor = new Color(1f, 1f, 1f, 0f);
 
         float invincibleTimer = 0f;
 
         while (invincibleTimer < invincibleTime)
         {
-            spriteRenderer.color = (spriteRenderer.color.a > 0.5f) ? blinkColor : originalColor;
+            spriteRenderer.color = (spriteRenderer.color.a > 0.5f) ? blinkColor : Color.white;
 
             yield return new WaitForSeconds(blinkInterval);
 
             invincibleTimer += blinkInterval;
         }
 
-        spriteRenderer.color = originalColor; 
+        spriteRenderer.color = Color.white;
         health.SetInvincible(false);
 
         isHurting = false;
