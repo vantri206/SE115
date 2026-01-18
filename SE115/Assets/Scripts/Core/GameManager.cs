@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     {
         lastCheckpointPos = position;
         hasCheckpoint = true;
-        nextSpawnPointID = "";
+
         SaveGame();
     }
 
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator TransitionRoutine(string sceneName, string spawnPointID)
     {
         isTransitioning = true;
-        nextSpawnPointID = spawnPointID;
+        nextSpawnPointID = spawnPointID; 
         SetPlayerInputLocked(true);
 
         if (SceneFader.Instance != null) yield return SceneFader.Instance.FadeOut();
@@ -98,24 +98,45 @@ public class GameManager : MonoBehaviour
         if (player == null) return;
 
         PlayerController playerController = player.GetComponent<PlayerController>();
+
         Vector3 spawnPos = player.transform.position;
-        bool shouldLoadStats = false;
+
+        bool isSpawnedByTransition = false; 
+        bool shouldLoadStats = false;      
 
         if (!string.IsNullOrEmpty(nextSpawnPointID))
         {
             SceneEntryPoint entry = FindSpawnPoint(nextSpawnPointID);
+
             if (entry != null)
             {
                 spawnPos = entry.transform.position;
+
                 UpdateCheckpoint(spawnPos);
+
+                isSpawnedByTransition = true;
+                shouldLoadStats = true; 
+            }
+            else
+            {
+                Debug.LogWarning($"Cant find SpawnPoint ID '{nextSpawnPointID}' in scene '{scene.name}'");
+                isSpawnedByTransition = true;
+            }
+
+            nextSpawnPointID = "";
+        }
+
+        if (!isSpawnedByTransition)
+        {
+            if (hasCheckpoint && lastCheckpointPos != Vector3.zero)
+            {
+                spawnPos = lastCheckpointPos;
                 shouldLoadStats = true;
             }
-        }
-        else
-        {
-            if (File.Exists(saveFilePath))
+            else if (File.Exists(saveFilePath))
             {
                 GameSaveData data = LoadDataFromFile();
+
                 if (data != null && data.hasCheckpoint && data.currentSceneName == scene.name)
                 {
                     spawnPos = data.checkpointPos;
@@ -126,21 +147,17 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     SceneEntryPoint defaultEntry = FindFirstObjectByType<SceneEntryPoint>();
-                    if (defaultEntry != null)
-                    {
-                        spawnPos = defaultEntry.transform.position;
-                    }
+                    if (defaultEntry != null) spawnPos = defaultEntry.transform.position;
+
                     UpdateCheckpoint(spawnPos);
-                    shouldLoadStats = true;
+                    shouldLoadStats = true; 
                 }
             }
             else
             {
                 SceneEntryPoint defaultEntry = FindFirstObjectByType<SceneEntryPoint>();
-                if (defaultEntry != null)
-                {
-                    spawnPos = defaultEntry.transform.position;
-                }
+                if (defaultEntry != null) spawnPos = defaultEntry.transform.position;
+
                 UpdateCheckpoint(spawnPos);
             }
         }
@@ -159,7 +176,6 @@ public class GameManager : MonoBehaviour
                         playerController.health.maxHealth = data.maxHealth;
                         playerController.health.currentHealth = data.currentHealth;
                     }
-
                     if (playerController.mana != null)
                     {
                         playerController.mana.maxMana = data.maxMana;
@@ -168,11 +184,8 @@ public class GameManager : MonoBehaviour
 
                     playerController.unlockSlashDash = data.unlockSlashDash;
                     playerController.unlockSwordWave = data.unlockSwordWave;
-
                     if (playerController.data != null)
-                    {
                         playerController.data.jumpCountAmount = data.jumpCountAmount;
-                    }
                 }
             }
         }
@@ -218,16 +231,13 @@ public class GameManager : MonoBehaviour
                 data.currentHealth = player.health.currentHealth;
                 data.maxHealth = player.health.maxHealth;
             }
-
             if (player.mana != null)
             {
                 data.currentMana = player.mana.currentMana;
                 data.maxMana = player.mana.maxMana;
             }
-
             data.unlockSlashDash = player.unlockSlashDash;
             data.unlockSwordWave = player.unlockSwordWave;
-
             if (player.data != null)
             {
                 data.jumpCountAmount = player.data.jumpCountAmount;
@@ -239,10 +249,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (SkillBase skill in skillManager.unlockedSkills)
             {
-                if (skill != null)
-                {
-                    data.unlockedSkillFileNames.Add(skill.name);
-                }
+                if (skill != null) data.unlockedSkillFileNames.Add(skill.name);
             }
         }
 
@@ -258,28 +265,19 @@ public class GameManager : MonoBehaviour
             string json = File.ReadAllText(saveFilePath);
             return JsonUtility.FromJson<GameSaveData>(json);
         }
-        catch
-        {
-            return null;
-        }
+        catch { return null; }
     }
 
     private void LoadSkillsForPlayer(PlayerSkillManager manager)
     {
         GameSaveData data = LoadDataFromFile();
         if (data == null) return;
-
         manager.unlockedSkills.Clear();
         manager.skillsSlot.Clear();
-
         foreach (string fileName in data.unlockedSkillFileNames)
         {
             SkillBase loadedSkill = Resources.Load<SkillBase>(SKILL_RESOURCE_PATH + fileName);
-
-            if (loadedSkill != null)
-            {
-                manager.UnlockSkill(loadedSkill, false);
-            }
+            if (loadedSkill != null) manager.UnlockSkill(loadedSkill, false);
         }
     }
 
@@ -296,10 +294,7 @@ public class GameManager : MonoBehaviour
     private void SetPlayerInputLocked(bool locked)
     {
         PlayerController player = FindFirstObjectByType<PlayerController>();
-        if (player != null)
-        {
-            player.LockInput(locked);
-        }
+        if (player != null) player.LockInput(locked);
     }
 
     private void OnDestroy()

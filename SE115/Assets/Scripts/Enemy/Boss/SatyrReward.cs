@@ -5,7 +5,8 @@ public class SatyrReward : MonoBehaviour, IInteractable
 {
     [Header("Settings")]
     [SerializeField] private float destroyDelay = 1.0f;
-    [SerializeField] private GameObject absorbEffectPrefab; 
+    [SerializeField] private GameObject absorbEffectPrefab;
+    [SerializeField] private GameObject nextSceneDoor;
 
     private PlayerController playerInRange;
     private bool isAbsorbed = false;
@@ -13,6 +14,8 @@ public class SatyrReward : MonoBehaviour, IInteractable
     private void Start()
     {
         this.enabled = false;
+
+        nextSceneDoor.SetActive(false);
     }
 
     private void Update()
@@ -38,6 +41,8 @@ public class SatyrReward : MonoBehaviour, IInteractable
                 "Now your dash can resist damage and deal damage to enemy");
 
         ReceiveReward();
+
+        nextSceneDoor.SetActive(true);
 
         StartCoroutine(DestroyCorpseRoutine());
     }

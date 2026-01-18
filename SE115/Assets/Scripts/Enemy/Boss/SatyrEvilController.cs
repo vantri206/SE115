@@ -743,7 +743,7 @@ public class SatyrEvilController : MonoBehaviour
             rewardInteract.SetActive(true);
 
         if (rewardInteractable != null)
-            rewardInteractable.enabled = true; 
+            rewardInteractable.enabled = true;
 
         Debug.Log("Mini Boss Defeated!");
     }
