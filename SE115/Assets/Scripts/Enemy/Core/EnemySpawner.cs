@@ -85,4 +85,26 @@ public class EnemySpawner : MonoBehaviour
             collider.enabled = false;
         }
     }
+    private void OnDrawGizmos()
+    {
+        if (enemyPrefab == null)
+        {
+            Gizmos.color = Color.gray;
+            Gizmos.DrawSphere(transform.position, 0.3f);
+            return;
+        }
+        SpriteRenderer sr = enemyPrefab.GetComponentInChildren<SpriteRenderer>();
+        if (sr != null && sr.sprite != null)
+        {
+            Gizmos.color = new Color(1, 0, 0, 0.3f);
+            Gizmos.DrawCube(transform.position, sr.sprite.bounds.size);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(transform.position, sr.sprite.bounds.size);
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(transform.position, 0.3f);
+        }
+    }
 }

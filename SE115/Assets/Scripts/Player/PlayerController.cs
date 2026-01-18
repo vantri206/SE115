@@ -311,13 +311,14 @@ public class PlayerController : MonoBehaviour
         if (isDead) return;
 
         isHurting = true; 
-        animator.SetTrigger("Hurt");
 
         StartCoroutine(IInvincibleRoutine());
     }
     private IEnumerator IInvincibleRoutine()
     {
         health.SetInvincible(true);
+
+        yield return new WaitUntil(() => !isHurting);
 
         Color originalColor = spriteRenderer.color;
         Color blinkColor = new Color(1f, 1f, 1f, 0f);
