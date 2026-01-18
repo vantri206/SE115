@@ -113,7 +113,7 @@ public class PlayerSkillManager : MonoBehaviour
         return unlockedSkills.Contains(skill);
     }
 
-    public void UnlockSkill(SkillBase skill, int index = -1)
+    public void UnlockSkill(SkillBase skill, bool shouldMessages, int index = -1)
     {
         if (!unlockedSkills.Contains(skill))
         {
@@ -152,7 +152,8 @@ public class PlayerSkillManager : MonoBehaviour
 
             Debug.Log("Player learning: " + skill.ToString());
 
-            if (ScrollMessenger.Instance != null)
+            if (shouldMessages)
+                if(ScrollMessenger.Instance != null)
             {
                 ScrollMessenger.Instance.ShowMessage("Player Learning: " + skill.name);
             }

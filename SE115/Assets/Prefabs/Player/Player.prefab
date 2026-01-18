@@ -355,6 +355,7 @@ Transform:
   - {fileID: 417237786832929624}
   - {fileID: 3533727925878424826}
   - {fileID: 5363594457458079326}
+  - {fileID: 7029454752261821771}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4452060896539224551
@@ -404,7 +405,7 @@ SpriteRenderer:
   m_SortingLayerID: -460861613
   m_SortingLayer: 1
   m_SortingOrder: 100
-  m_Sprite: {fileID: 2743055858919256353, guid: 31de58d95c426724da1df149c9120d14, type: 3}
+  m_Sprite: {fileID: -1567127412090216577, guid: 2430ab2e8c6cb4c43bb11c202e4e16da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -501,8 +502,8 @@ BoxCollider2D:
   m_Offset: {x: -0.0023078918, y: 0.026795045}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.25, y: 0.5}
+    oldSize: {x: 2, y: 1}
     newSize: {x: 0.13, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -535,6 +536,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4452060896539224551}
   data: {fileID: 11400000, guid: 13159af1b8d3d6c4a83b304e4550cd18, type: 2}
   onAirAttackCount: 1
+  invincibleTime: 2
+  blinkInterval: 0.1
   sword: {fileID: 4145310855971449813}
   unlockSlashDash: 0
   slashDamage: 20
@@ -542,6 +545,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   slashDashPrefabs: {fileID: 1098174893293856353, guid: bc206c8c5557e6649b7ea6c4c26eaebc, type: 3}
+  unlockSwordWave: 1
+  swordWavePrefab: {fileID: 4245107863030089537, guid: bbb7a09ddfb23084ab5a41a5184d2b30, type: 3}
+  swordWaveFirePoint: {fileID: 7029454752261821771}
   isJumping: 0
   isAttacking: 0
   isDead: 0
@@ -564,6 +570,7 @@ MonoBehaviour:
   wallRaycastTopOffset: 0.55
   wallRaycastBotOffset: 0.3
   reflectShieldObj: {fileID: 8017839642429625222}
+  isInputLocked: 0
   facingDirection: {x: 1, y: 0}
   startDirection: {x: 1, y: 0}
 --- !u!114 &4316399340554492009
@@ -582,7 +589,7 @@ MonoBehaviour:
     jump: 122
     dash: 99
     attack: 120
-    skillsKey: 610000007300000064000000
+    skillsKey: 61000000730000006400000077000000
     interact: 102
     close: 27
   skillInputBufferTime: 0.2
@@ -684,6 +691,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMana
   maxManaStart: 3
+--- !u!1 &4914758697066061949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7029454752261821771}
+  m_Layer: 8
+  m_Name: SwordWaveFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7029454752261821771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914758697066061949}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.135, y: -0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1234064139955690421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6896860828072474829
 GameObject:
   m_ObjectHideFlags: 0
