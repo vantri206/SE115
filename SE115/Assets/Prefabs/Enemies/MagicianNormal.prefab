@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 895220057150217216}
   - component: {fileID: 4462738025017457429}
   - component: {fileID: 4460718604393193999}
-  - component: {fileID: 1933195184293315867}
+  - component: {fileID: 4628108384402527404}
   m_Layer: 7
   m_Name: MagicianNormal
   m_TagString: Untagged
@@ -85,7 +85,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.755, y: -0.187, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6012688859079405441}
@@ -238,7 +238,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.15, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.15, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -274,18 +274,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a7afb37dab47a42babe71025206dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  isPhase2: 0
+  minionSpawnPoints: []
   myRigidbody: {fileID: 3635020802863841820}
   animator: {fileID: 8365475283356377235}
   myCollider: {fileID: 895220057150217216}
   health: {fileID: 4462738025017457429}
-  movement: {fileID: 1933195184293315867}
+  movement: {fileID: 0}
   weapons:
   - {fileID: 1387513166772210407}
   facingDirection: {x: 0, y: 0}
   startDirection: {x: 1, y: 0}
   attackRange: 20
-  attackCooldown: 2
   aggroTriggerRange: 25
+  detectionHeightRange: 5
+  attackHeightRange: 5
+  attackCooldown: 2
   enemyIdleBase: {fileID: 11400000, guid: 8443a38e1d8c9e44e95a8b395f4f719a, type: 2}
   enemyChaseBase: {fileID: 11400000, guid: 62c63e780e063fe4c88f79c8006e788a, type: 2}
   enemyAttackBase: {fileID: 11400000, guid: e8afdcb777021214e8374c81292f8895, type: 2}
@@ -299,7 +303,7 @@ MonoBehaviour:
     m_Bits: 256
   playerTarget: {fileID: 0}
   attackTarget: {fileID: 0}
---- !u!114 &1933195184293315867
+--- !u!114 &4628108384402527404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,9 +312,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4123436592423332072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b2f5775c998d249b9d9c73082d0559, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c267662bc04c864a8f06c09a3f14549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  movementType: 0
   enemy: {fileID: 4460718604393193999}
   rb: {fileID: 3635020802863841820}
   moveDirection: {x: 0, y: 0}
@@ -318,8 +323,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 266240
   groundCheckPos: {fileID: 1142012734458993754}
-  canMoveContinous: 0
-  canAirMoving: 0
 --- !u!1 &6548896849304201486
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,6 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bd6fe1c66428642b987f87c317e45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hurtbox
+  hurtboxLayerName: Hurtbox
 --- !u!1 &7777465929269930645
 GameObject:
   m_ObjectHideFlags: 0
