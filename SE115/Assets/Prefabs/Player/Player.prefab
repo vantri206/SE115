@@ -545,7 +545,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   slashDashPrefabs: {fileID: 1098174893293856353, guid: bc206c8c5557e6649b7ea6c4c26eaebc, type: 3}
-  unlockSwordWave: 1
+  unlockSwordWave: 0
   swordWavePrefab: {fileID: 4245107863030089537, guid: bbb7a09ddfb23084ab5a41a5184d2b30, type: 3}
   swordWaveFirePoint: {fileID: 7029454752261821771}
   isJumping: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   myRigidbody: {fileID: 1666842953352199239}
-  currentHealth: 30
+  currentHealth: 60
   maxHealth: 60
   damageTeam: 0
   isInvincible: 0

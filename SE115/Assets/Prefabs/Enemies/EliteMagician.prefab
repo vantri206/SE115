@@ -355,7 +355,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -7888028530163978307, guid: cf1711e361d0a69469b324667e1fa596, type: 3}
-  m_Color: {r: 1, g: 0.5442262, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -473,8 +473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   myRigidbody: {fileID: 9117518278842227362}
-  currentHealth: 500
-  maxHealth: 500
+  currentHealth: 50
+  maxHealth: 50
   damageTeam: 1
 --- !u!114 &5030656811139626696
 MonoBehaviour:

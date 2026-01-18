@@ -16,5 +16,5 @@ MonoBehaviour:
   cooldownTime: 2
   icon: {fileID: 116074121835796943, guid: fad639e57e7b94045ac08f64898d6bd4, type: 3}
   usePlayerSkillState: 0
-  showMessages: 1
+  showMessages: 0
   aniBoolParameterName: isShielding

@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SwordDamage
   attackerTeam: 1
   isDestroyAfterDamage: 1
-  damage: 20
+  damage: 15
   destroyer: {fileID: 0}
 --- !u!114 &-7821947015060682484
 MonoBehaviour:

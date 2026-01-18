@@ -167,5 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OverTimeDamage
   attackerTeam: 1
   isDestroyAfterDamage: 0
-  damage: 20
+  damage: 5
   overTime: 0.5

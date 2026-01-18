@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SwordDamage
   attackerTeam: 1
   isDestroyAfterDamage: 0
-  damage: 20
+  damage: 10
   destroyer: {fileID: 0}
 --- !u!114 &6776715749832020361
 MonoBehaviour:
@@ -597,8 +597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bff1ce5e638d7944a86fdb30a122b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossEnemyHealth
-  currentHealth: 10
-  maxHealth: 10
+  currentHealth: 400
+  maxHealth: 400
   damageTeam: 1
   isInvincible: 0
 --- !u!114 &4939125245341072136

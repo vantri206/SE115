@@ -124,12 +124,12 @@ TextureImporter:
       name: portal_void_effect_anim_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 28
-        width: 40
-        height: 9
+        x: 0
+        y: 0
+        width: 48
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,12 +146,12 @@ TextureImporter:
       name: portal_void_effect_anim_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 28
-        width: 40
-        height: 9
+        x: 48
+        y: 0
+        width: 48
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: portal_void_effect_anim_2
       rect:
         serializedVersion: 2
-        x: 100
-        y: 28
-        width: 41
-        height: 9
+        x: 96
+        y: 0
+        width: 48
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: portal_void_effect_anim_3
       rect:
         serializedVersion: 2
-        x: 148
-        y: 28
-        width: 40
-        height: 9
+        x: 144
+        y: 0
+        width: 48
+        height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -208,99 +208,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: portal_void_effect_anim_4
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 0
-        width: 42
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1a5d39b6b826fc740800000000000000
-      internalID: 5174462847816816033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: portal_void_effect_anim_5
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 42
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 695540d85fab31de0800000000000000
-      internalID: -1363540698367502954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: portal_void_effect_anim_6
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 0
-        width: 42
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b756bda43bcb34170800000000000000
-      internalID: 8161574427966530939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: portal_void_effect_anim_7
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 0
-        width: 42
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 71ba6d654b95a4af0800000000000000
-      internalID: -411417784865084649
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1f2e18bb2cfa64848aac7dc2753443aa
     internalID: 0
     vertices: []
     indices: 
@@ -308,16 +220,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       portal_void_effect_anim_0: 1200534952692068574
       portal_void_effect_anim_1: 2161872477755054135
       portal_void_effect_anim_2: -1200237517222560644
       portal_void_effect_anim_3: 8363572332498728840
-      portal_void_effect_anim_4: 5174462847816816033
-      portal_void_effect_anim_5: -1363540698367502954
-      portal_void_effect_anim_6: 8161574427966530939
-      portal_void_effect_anim_7: -411417784865084649
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

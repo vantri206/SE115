@@ -76,12 +76,4 @@ public class FallingTrap : TriggerReceiver
         isFalling = false;
         isActivated = false;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<PlayerHealth>()?.SetCurrentHeal(0.0f);
-        }
-    }
 }

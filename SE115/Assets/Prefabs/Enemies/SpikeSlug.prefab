@@ -487,8 +487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   myRigidbody: {fileID: 8396369907237304462}
-  currentHealth: 40
-  maxHealth: 40
+  currentHealth: 50
+  maxHealth: 50
   damageTeam: 1
 --- !u!114 &1564707947454737276
 MonoBehaviour:

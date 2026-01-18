@@ -3,6 +3,7 @@ using System.Collections;
 
 public enum BossState
 {
+    Waiting,
     Aggressive,
     MovingToPerch,
     SniperMode,
@@ -121,16 +122,19 @@ public class SatyrEvilController : MonoBehaviour
 
         isFacingRight = transform.localScale.x > 0;
 
-        ToggleFires(true);
-        SwitchState(BossState.Aggressive);
+        ToggleFires(false); 
+        SwitchState(BossState.Waiting);
     }
 
     private void Update()
     {
         if (player == null) return;
 
-        jumpTimer += Time.deltaTime;
-        actionTimer += Time.deltaTime;
+        if (currentState != BossState.Waiting)
+        {
+            jumpTimer += Time.deltaTime;
+            actionTimer += Time.deltaTime;
+        }
 
         if (health.isDead || currentState == BossState.Dead)
         {
@@ -186,6 +190,10 @@ public class SatyrEvilController : MonoBehaviour
 
         switch (currentState)
         {
+            case BossState.Waiting:
+                rb.linearVelocity = Vector2.zero;
+                if (health) health.SetInvincible(false);
+                break;
             case BossState.Aggressive:
                 if (health) health.SetInvincible(false);
                 rb.gravityScale = 3.0f;
@@ -240,7 +248,17 @@ public class SatyrEvilController : MonoBehaviour
         int index = Random.Range(0, itemSpawnPoints.Length);
         currentShieldItem = Instantiate(shieldItemPrefab, itemSpawnPoints[index].position, Quaternion.identity);
     }
+    void HandleWaitingLogic()
+    {
+        rb.linearVelocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
 
+        if (player != null)
+        {
+            float dirX = Mathf.Sign(player.position.x - transform.position.x);
+            CheckFacingDirection(dirX);
+        }
+    }
     void HandleAggressiveLogic()
     {
         if (health != null && currentThresholdIndex < phaseThresholds.Length)
@@ -663,6 +681,12 @@ public class SatyrEvilController : MonoBehaviour
     void HandleTakeDamage()
     {
         if (currentState == BossState.Dead) return;
+
+        if (currentState == BossState.Waiting)
+        {
+            ToggleFires(true); 
+            SwitchState(BossState.Aggressive);
+        }
 
         if (bloodEffectPrefab != null)
         {
