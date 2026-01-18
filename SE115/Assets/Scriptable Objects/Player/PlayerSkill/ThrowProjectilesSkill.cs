@@ -18,23 +18,11 @@ public class ThrowProjectilesSkill : SkillBase
     public override void Cast(Transform castPosition, PlayerController player)
     {
         GameObject axe = Instantiate(projectilesPrefab, castPosition.position, Quaternion.identity, ProjectilesPool.Instance);
-        BoomerangProjectiles boomerangProjectiles = axe.GetComponent<BoomerangProjectiles>();
+        LinearProjectiles linearProjectiles = axe.GetComponent<LinearProjectiles>();
 
-        if (boomerangProjectiles != null)
+        if (linearProjectiles != null)
         {
-            isHasAxe = false;
-
-            boomerangProjectiles.Initialize(player.transform, player.facingDirection, 
-            () =>
-            {
-                SwordDamage damage = boomerangProjectiles.GetComponent<SwordDamage>();
-                if(damage != null)
-                {
-                    damage.ResetHitList();
-                }
-            },
-            () => 
-            isHasAxe = true);
+            linearProjectiles.SetDirectionX(new Vector2(player.facingDirection.x, 0f));
         }
 
     }

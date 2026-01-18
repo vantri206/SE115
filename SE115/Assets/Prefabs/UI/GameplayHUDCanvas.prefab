@@ -369,8 +369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 132.90503, y: 71.61159}
-  m_SizeDelta: {x: 493.8101, y: 182.577}
+  m_AnchoredPosition: {x: 226.91, y: 71.61159}
+  m_SizeDelta: {x: 681.8201, y: 182.577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8027747373500566219
 CanvasRenderer:
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthBarUI
   healthContainer: {fileID: 1324608815712931077}
   heartPrefab: {fileID: 742727770336264495, guid: 55b8fc8579ca0654b8229496b9eab287, type: 3}
-  healthPerHeart: 30
+  healthPerHeart: 60
   manaContainer: {fileID: 9043271916974603945}
   manaOrbPrefab: {fileID: 742727770336264495, guid: c6856428316236247a5487d9ae3ed1e4, type: 3}
 --- !u!1 &3589957868685314861
@@ -905,7 +905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 540}
+  m_AnchoredPosition: {x: 1088.3, y: 540}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &5988695538473052115
@@ -1029,7 +1029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7784010906852098257
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1393,7 +1393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6701790162560340569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1902,7 +1902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1480885306949531077
 RectTransform:
   m_ObjectHideFlags: 0

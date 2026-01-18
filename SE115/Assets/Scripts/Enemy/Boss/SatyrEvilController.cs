@@ -29,6 +29,7 @@ public class SatyrEvilController : MonoBehaviour
     [SerializeField] private BossEnemyHealth health;
     [SerializeField] private GameObject rewardInteract;
     [SerializeField] private SatyrReward rewardInteractable;
+    [SerializeField] private GameObject tooltipObject;
 
     [Header("VFX & Hazards")]
     [SerializeField] private GameObject bloodEffectPrefab;
@@ -118,6 +119,7 @@ public class SatyrEvilController : MonoBehaviour
         if (target != null) player = target.transform;
 
         if (stunVFX) stunVFX.SetActive(false);
+        if (tooltipObject) tooltipObject.SetActive(false);
         if (alertObject) alertObject.SetActive(false);
 
         isFacingRight = transform.localScale.x > 0;
@@ -188,6 +190,8 @@ public class SatyrEvilController : MonoBehaviour
         animator.SetBool("isFalling", false);
         animator.SetBool("isDashing", false);
 
+        if (tooltipObject) tooltipObject.SetActive(false);
+
         switch (currentState)
         {
             case BossState.Waiting:
@@ -204,6 +208,7 @@ public class SatyrEvilController : MonoBehaviour
                 StartCoroutine(MoveToPerchRoutine());
                 break;
             case BossState.SniperMode:
+                if (tooltipObject) tooltipObject.SetActive(true);
                 if (health) health.SetInvincible(true);
                 rb.gravityScale = 0f;
                 rb.linearVelocity = Vector2.zero;
@@ -726,6 +731,7 @@ public class SatyrEvilController : MonoBehaviour
         if (meleeWeapon) meleeWeapon.FinishAttack();
         if (beamWeapon) beamWeapon.FinishAttack();
         if (stunVFX) stunVFX.SetActive(false);
+        if (tooltipObject) tooltipObject.SetActive(false);
 
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 3.0f; 
@@ -739,13 +745,9 @@ public class SatyrEvilController : MonoBehaviour
         animator.SetBool("isDashing", false);
         animator.SetTrigger("Dead");
 
-        if (rewardInteract != null)
-            rewardInteract.SetActive(true);
-
-        if (rewardInteractable != null)
-            rewardInteractable.enabled = true;
-
         Debug.Log("Mini Boss Defeated!");
+
+        ScrollMessenger.Instance.ShowMessage("VICTORY!!!\nYOU DEFEATED BOSS!");
     }
 
     public void CheckFacingDirection(float direction)

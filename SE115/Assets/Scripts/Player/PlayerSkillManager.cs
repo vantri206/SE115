@@ -154,9 +154,10 @@ public class PlayerSkillManager : MonoBehaviour
 
             if (shouldMessages)
                 if(ScrollMessenger.Instance != null)
-            {
-                ScrollMessenger.Instance.ShowMessage("Player Learning: " + skill.name);
-            }
+                {
+                    ScrollMessenger.Instance.ShowMessage("Player Learning: " + skill.skillName);
+
+                }
 
             onSkillLeared?.Invoke(index, skill);
         }
