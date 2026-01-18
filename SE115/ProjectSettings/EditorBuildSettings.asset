@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniBossArena.unity
     guid: d66d07ad7d2e72f42aab6318f773417b
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: 2c397ba5b7f6f4a499047afa5255d96d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

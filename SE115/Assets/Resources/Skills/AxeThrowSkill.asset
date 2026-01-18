@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed00fac82950be4ea88faa1c7ab7833, type: 3}
   m_Name: AxeThrowSkill
   m_EditorClassIdentifier: Assembly-CSharp::AxeThrowSkill
-  skillName: Axe Throw
+  skillName: Axe Throw. Press skill button to throw a axe ahead, deal damage to enemy.
   cooldownTime: 2
   icon: {fileID: 2002039616, guid: 302f4217bb8d3c843b6c8cf0c2c5764e, type: 3}
   usePlayerSkillState: 1

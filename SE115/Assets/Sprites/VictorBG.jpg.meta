@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: fe2a913ffce66db4ba5486407b9dafab
+guid: 26f2ce3c3703f02479344def2472a4f2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7002535594149538402
-    second: StunEffect_0
-  - first:
-      213: -4192062109184254458
-    second: StunEffect_1
+      213: -8202598491875113836
+    second: VictorBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -49,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StunEffect_0
+      name: VictorBG_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 73
-        width: 42
-        height: 27
+        x: 0
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9510b76afef1de90800000000000000
-      internalID: -7002535594149538402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StunEffect_1
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 82
-        width: 19
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 60e92b1e8bdc2d5c0800000000000000
-      internalID: -4192062109184254458
+      spriteID: 49401a081248a2e80800000000000000
+      internalID: -8202598491875113836
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      StunEffect_0: -7002535594149538402
-      StunEffect_1: -4192062109184254458
+      VictorBG_0: -8202598491875113836
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

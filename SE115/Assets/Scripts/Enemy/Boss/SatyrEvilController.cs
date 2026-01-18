@@ -748,8 +748,30 @@ public class SatyrEvilController : MonoBehaviour
         Debug.Log("Mini Boss Defeated!");
 
         ScrollMessenger.Instance.ShowMessage("VICTORY!!!\nYOU DEFEATED BOSS!");
-    }
 
+        StartCoroutine(VictoryTransitionRoutine());
+    }
+    IEnumerator VictoryTransitionRoutine()
+    {
+        yield return new WaitForSeconds(3.0f);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.DeleteSaveData();
+            Debug.Log("Save Data Deleted!");
+        }
+
+        if (SceneFader.Instance != null)
+        {
+            yield return SceneFader.Instance.FadeOut();
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScene");
+
+        if (SceneFader.Instance != null)
+        {
+            yield return SceneFader.Instance.FadeIn();
+        }
+    }
     public void CheckFacingDirection(float direction)
     {
         if (Mathf.Abs(direction) > 0.0f)

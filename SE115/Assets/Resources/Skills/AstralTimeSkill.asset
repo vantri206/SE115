@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049cbd2e800d45541a0dac49b273ba48, type: 3}
   m_Name: AstralTimeSkill
   m_EditorClassIdentifier: Assembly-CSharp::AstralTimeSkill
-  skillName: Astral Time
+  skillName: Astral Time. Press the skill button to create a clone and reduce your
+    own health for 5 seconds. If you take damage or the duration expires, you will
+    return to the clone's location.
   cooldownTime: 6
   icon: {fileID: 7575143585989488181, guid: 88ab7b9d2ea6ab947ba6017f85d486e9, type: 3}
+  usePlayerSkillState: 1
+  showMessages: 1
   aniBoolParameterName: isThrowing
   duration: 5
   manaCost: 1

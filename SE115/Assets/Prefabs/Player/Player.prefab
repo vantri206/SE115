@@ -586,10 +586,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
   keys:
-    jump: 122
-    dash: 99
-    attack: 120
-    skillsKey: 61000000730000006400000077000000
+    jump: 107
+    dash: 108
+    attack: 106
+    skillsKey: 75000000690000006f00000068000000
     interact: 102
     close: 27
   skillInputBufferTime: 0.2
@@ -620,8 +620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   myRigidbody: {fileID: 1666842953352199239}
-  currentHealth: 60
-  maxHealth: 60
+  currentHealth: 120
+  maxHealth: 120
   damageTeam: 0
   isInvincible: 0
 --- !u!114 &7008392826992818957

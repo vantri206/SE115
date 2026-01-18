@@ -1,8 +1,9 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.Cinemachine;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Checkpoint System")]
     public Vector3 lastCheckpointPos;
     public bool hasCheckpoint = false;
+    public GameObject playerPrefab;
 
     [Header("Scene Transition System")]
     public string nextSpawnPointID;
@@ -77,54 +79,61 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator TransitionRoutine(string sceneName, string spawnPointID)
     {
+        SaveGame();
+
         isTransitioning = true;
-        nextSpawnPointID = spawnPointID; 
+        nextSpawnPointID = spawnPointID;
         SetPlayerInputLocked(true);
 
-        if (SceneFader.Instance != null) yield return SceneFader.Instance.FadeOut();
+        if (SceneFader.Instance != null) 
+            yield return SceneFader.Instance.FadeOut();
 
         yield return SceneManager.LoadSceneAsync(sceneName);
 
-        if (SceneFader.Instance != null) yield return SceneFader.Instance.FadeIn();
+        if (SceneFader.Instance != null) 
+            yield return SceneFader.Instance.FadeIn();
 
         isTransitioning = false;
         SetPlayerInputLocked(false);
     }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "MainMenu" || scene.name == "VictoryScene") return;
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return;
+        if (player == null)
+        {
+            if (playerPrefab != null)
+                player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            else
+                return;
+        }
 
         PlayerController playerController = player.GetComponent<PlayerController>();
-
         Vector3 spawnPos = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
 
         bool shouldLoadStats = false;
-
         bool foundTransitionPoint = false;
+
         if (!string.IsNullOrEmpty(nextSpawnPointID))
         {
             SceneEntryPoint entry = FindSpawnPoint(nextSpawnPointID);
-
             if (entry != null)
             {
                 spawnPos = new Vector3(entry.transform.position.x, entry.transform.position.y, 0f);
-
-                UpdateCheckpoint(spawnPos);
-
-                foundTransitionPoint = true; 
-                shouldLoadStats = true;
+                lastCheckpointPos = spawnPos;
+                hasCheckpoint = true;
+                foundTransitionPoint = true;
+                shouldLoadStats = true; 
             }
             else
             {
-                Debug.LogWarning($"Cant find SpawnPoint ID '{nextSpawnPointID}' in scene '{scene.name}'"); 
                 foundTransitionPoint = true;
             }
-
             nextSpawnPointID = "";
         }
-        if (!foundTransitionPoint) 
+
+        if (!foundTransitionPoint)
         {
             if (hasCheckpoint && lastCheckpointPos != Vector3.zero)
             {
@@ -134,7 +143,6 @@ public class GameManager : MonoBehaviour
             else if (File.Exists(saveFilePath))
             {
                 GameSaveData data = LoadDataFromFile();
-
                 if (data != null && data.hasCheckpoint && data.currentSceneName == scene.name)
                 {
                     spawnPos = new Vector3(data.checkpointPos.x, data.checkpointPos.y, 0f);
@@ -148,8 +156,9 @@ public class GameManager : MonoBehaviour
                     if (defaultEntry != null)
                         spawnPos = new Vector3(defaultEntry.transform.position.x, defaultEntry.transform.position.y, 0f);
 
-                    UpdateCheckpoint(spawnPos);
-                    shouldLoadStats = true;
+                    lastCheckpointPos = spawnPos;
+                    hasCheckpoint = true;
+                    if (playerController != null) playerController.RestoreStats();
                 }
             }
             else
@@ -158,7 +167,12 @@ public class GameManager : MonoBehaviour
                 if (defaultEntry != null)
                     spawnPos = new Vector3(defaultEntry.transform.position.x, defaultEntry.transform.position.y, 0f);
 
-                UpdateCheckpoint(spawnPos);
+                lastCheckpointPos = spawnPos;
+                hasCheckpoint = true;
+
+                if (playerController != null) playerController.RestoreStats();
+
+                SaveGame();
             }
         }
         if (playerController != null)
@@ -180,7 +194,6 @@ public class GameManager : MonoBehaviour
                         playerController.mana.maxMana = data.maxMana;
                         playerController.mana.currentMana = data.currentMana;
                     }
-
                     playerController.unlockSlashDash = data.unlockSlashDash;
                     playerController.unlockSwordWave = data.unlockSwordWave;
                     if (playerController.data != null)
@@ -190,10 +203,11 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerSkillManager skillManager = player.GetComponentInChildren<PlayerSkillManager>();
-        if (skillManager != null)
-        {
-            LoadSkillsForPlayer(skillManager);
-        }
+        if (skillManager != null) LoadSkillsForPlayer(skillManager);
+
+        CinemachineCamera vCam = FindFirstObjectByType<CinemachineCamera>();
+        if (vCam != null) { vCam.Follow = player.transform; vCam.OnTargetObjectWarped(player.transform, Vector3.zero); }
+        if (GameplayHUDManager.Instance != null) GameplayHUDManager.Instance.AssignPlayer(playerController);
     }
 
     [System.Serializable]
