@@ -1494,7 +1494,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
@@ -1538,9 +1538,47 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 597927652}
+    m_ColliderPaths:
+    - - X: 770000000
+        Y: 95000000
+      - X: 740000000
+        Y: 95000000
+      - X: 740000000
+        Y: 90000000
+      - X: 770000000
+        Y: 90000000
+    - - X: 790000000
+        Y: 65000000
+      - X: 770000000
+        Y: 65000000
+      - X: 770000000
+        Y: 60000000
+      - X: 790000000
+        Y: 60000000
+    - - X: 820000000
+        Y: 55000000
+      - X: 790000000
+        Y: 55000000
+      - X: 790000000
+        Y: 50000000
+      - X: 820000000
+        Y: 50000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 76.99997, y: 9}
+      - {x: 76.99997, y: 9.5}
+      - {x: 74, y: 9.49997}
+      - {x: 74.00003, y: 9}
+    - - {x: 78.99997, y: 6}
+      - {x: 78.99997, y: 6.5}
+      - {x: 77, y: 6.499971}
+      - {x: 77.00003, y: 6}
+    - - {x: 81.99997, y: 5}
+      - {x: 81.99997, y: 5.5}
+      - {x: 79, y: 5.499971}
+      - {x: 79.00003, y: 5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -6603,37 +6641,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc5ced21cd822694689f00b886267f9c, type: 3}
---- !u!1 &1142394771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1142394772}
-  m_Layer: 0
-  m_Name: PerchPoint_02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1142394772
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1142394771}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.82, y: 8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1766278589}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1163643007
 GameObject:
   m_ObjectHideFlags: 0
@@ -47077,7 +47084,7 @@ Tilemap:
       - {fileID: -1595149589981090891, guid: 56e49c46db106e549b983cf11867bcb1, type: 3}
       - {fileID: 682990348, guid: 56e49c46db106e549b983cf11867bcb1, type: 3}
       - {fileID: -2040253426, guid: 56e49c46db106e549b983cf11867bcb1, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 105, y: 20, z: 0}
@@ -47256,39 +47263,6 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2443624386035546403, guid: 34a98c60c7de414489a3554a9c0cb572, type: 3}
   respawnTime: 5
   fadeAppearDuration: 1.5
---- !u!1 &1766278588
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1766278589}
-  m_Layer: 0
-  m_Name: PerchPoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1766278589
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766278588}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1892814004}
-  - {fileID: 1142394772}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1770268914
 GameObject:
   m_ObjectHideFlags: 0
@@ -47676,37 +47650,6 @@ PrefabInstance:
       addedObject: {fileID: 146242450}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48d014c228752a5478fb812c9e773e68, type: 3}
---- !u!1 &1892814003
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1892814004}
-  m_Layer: 0
-  m_Name: PerchPoint_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1892814004
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892814003}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.91, y: 8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1766278589}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1894802335
 GameObject:
   m_ObjectHideFlags: 0
@@ -48067,7 +48010,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 850801082}
-  - {fileID: 1766278589}
   - {fileID: 65517837}
   - {fileID: 491777109}
   - {fileID: 1770268917}
