@@ -875,6 +875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StairUpDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 5316471734414105669, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
+      propertyPath: sceneToLoad
+      value: MiniBossArea
+      objectReference: {fileID: 0}
     - target: {fileID: 8685161749968275908, guid: 0b0eacb198918dc46adb69988e7abdb3, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.117
@@ -2392,7 +2396,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 55.8231, y: 5.0322533}
+  m_Offset: {x: 140.17316, y: 28.11214}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2402,7 +2406,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 127.99439, y: 44.23127}
+  m_Size: {x: 303.30304, y: 72.54795}
   m_EdgeRadius: 0
 --- !u!114 &903627595
 MonoBehaviour:
@@ -5267,7 +5271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4669991668877909676, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7855584049671065995, guid: e9873c20d07d7b94c93974befe423a19, type: 3}
       propertyPath: maxHealth
