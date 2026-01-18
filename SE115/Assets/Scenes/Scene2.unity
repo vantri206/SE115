@@ -607,7 +607,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   followSpeed: 10
   snapBackSpeed: 5
-  mapBounds: {fileID: 0}
+  mapBounds: {fileID: 1281510262}
 --- !u!4 &384776127
 Transform:
   m_ObjectHideFlags: 0

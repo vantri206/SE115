@@ -151,7 +151,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   followSpeed: 10
   snapBackSpeed: 5
-  mapBounds: {fileID: 0}
+  mapBounds: {fileID: 938274987}
 --- !u!4 &65517837
 Transform:
   m_ObjectHideFlags: 0
@@ -1881,7 +1881,7 @@ Transform:
   m_GameObject: {fileID: 690203208}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5555558, y: 2.0000002, z: -10}
+  m_LocalPosition: {x: 3.5555573, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6815,7 +6815,7 @@ Transform:
   m_GameObject: {fileID: 1265422909}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5555558, y: 2.0000002, z: -10}
+  m_LocalPosition: {x: 3.5555558, y: 1.0000002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6865,7 +6865,7 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.6}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 1, z: 0}
+  TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 0.3, y: 0.3, z: 0}
   Lookahead:
     Enabled: 1
@@ -47095,7 +47095,7 @@ Tilemap:
       - {fileID: -1595149589981090891, guid: 56e49c46db106e549b983cf11867bcb1, type: 3}
       - {fileID: 682990348, guid: 56e49c46db106e549b983cf11867bcb1, type: 3}
       - {fileID: -2040253426, guid: 56e49c46db106e549b983cf11867bcb1, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 113, y: 20, z: 0}

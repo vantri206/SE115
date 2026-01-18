@@ -367,32 +367,29 @@ public class PlayerController : MonoBehaviour
     }
     public void Respawn(Vector2 checkpointPosition)
     {
-        transform.position = checkpointPosition;
+        transform.position = new Vector3(checkpointPosition.x, checkpointPosition.y, 0f);
 
         isDead = false;
         isHurting = false;
+        isInputLocked = false;
 
-        StopAllCoroutines(); 
-        health.SetInvincible(false); 
-        spriteRenderer.color = Color.white;
+        StopAllCoroutines();
+        if (health) health.SetInvincible(false);
+        if (spriteRenderer)
+        {
+            spriteRenderer.color = Color.white;
+            spriteRenderer.enabled = true;
+        }
 
         myRigidbody.bodyType = RigidbodyType2D.Dynamic;
+        myRigidbody.gravityScale = data.gravityScale; 
         myRigidbody.linearVelocity = Vector2.zero;
-        myCollider.enabled = true;
-        spriteRenderer.enabled = true;
+        if (myCollider) myCollider.enabled = true;
+
+        if (stateManager != null) 
+            stateManager.ChangeState(stateManager.IdleState);
 
         RestoreStats();
-        
-        if (stateManager != null)
-        {
-            stateManager.ChangeState(stateManager.IdleState);
-        }
-
-        CinemachineCamera vCam = FindFirstObjectByType<CinemachineCamera>();
-        if (vCam != null) 
-        {
-            vCam.OnTargetObjectWarped(transform, checkpointPosition - (Vector2)transform.position);
-        }
     }
     public void RestoreStats()
     {

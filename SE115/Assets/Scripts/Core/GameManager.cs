@@ -37,9 +37,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateCheckpoint(Vector3 position)
     {
-        lastCheckpointPos = position;
+        lastCheckpointPos = new Vector3(position.x, position.y, 0f);
         hasCheckpoint = true;
-
         SaveGame();
     }
 
@@ -99,38 +98,37 @@ public class GameManager : MonoBehaviour
 
         PlayerController playerController = player.GetComponent<PlayerController>();
 
-        Vector3 spawnPos = player.transform.position;
+        Vector3 spawnPos = new Vector3(player.transform.position.x, player.transform.position.y, 0f);
 
-        bool isSpawnedByTransition = false; 
-        bool shouldLoadStats = false;      
+        bool shouldLoadStats = false;
 
+        bool foundTransitionPoint = false;
         if (!string.IsNullOrEmpty(nextSpawnPointID))
         {
             SceneEntryPoint entry = FindSpawnPoint(nextSpawnPointID);
 
             if (entry != null)
             {
-                spawnPos = entry.transform.position;
+                spawnPos = new Vector3(entry.transform.position.x, entry.transform.position.y, 0f);
 
                 UpdateCheckpoint(spawnPos);
 
-                isSpawnedByTransition = true;
-                shouldLoadStats = true; 
+                foundTransitionPoint = true; 
+                shouldLoadStats = true;
             }
             else
             {
-                Debug.LogWarning($"Cant find SpawnPoint ID '{nextSpawnPointID}' in scene '{scene.name}'");
-                isSpawnedByTransition = true;
+                Debug.LogWarning($"Cant find SpawnPoint ID '{nextSpawnPointID}' in scene '{scene.name}'"); 
+                foundTransitionPoint = true;
             }
 
             nextSpawnPointID = "";
         }
-
-        if (!isSpawnedByTransition)
+        if (!foundTransitionPoint) 
         {
             if (hasCheckpoint && lastCheckpointPos != Vector3.zero)
             {
-                spawnPos = lastCheckpointPos;
+                spawnPos = new Vector3(lastCheckpointPos.x, lastCheckpointPos.y, 0f);
                 shouldLoadStats = true;
             }
             else if (File.Exists(saveFilePath))
@@ -139,29 +137,30 @@ public class GameManager : MonoBehaviour
 
                 if (data != null && data.hasCheckpoint && data.currentSceneName == scene.name)
                 {
-                    spawnPos = data.checkpointPos;
-                    lastCheckpointPos = data.checkpointPos;
+                    spawnPos = new Vector3(data.checkpointPos.x, data.checkpointPos.y, 0f);
+                    lastCheckpointPos = spawnPos;
                     hasCheckpoint = true;
                     shouldLoadStats = true;
                 }
                 else
                 {
                     SceneEntryPoint defaultEntry = FindFirstObjectByType<SceneEntryPoint>();
-                    if (defaultEntry != null) spawnPos = defaultEntry.transform.position;
+                    if (defaultEntry != null)
+                        spawnPos = new Vector3(defaultEntry.transform.position.x, defaultEntry.transform.position.y, 0f);
 
                     UpdateCheckpoint(spawnPos);
-                    shouldLoadStats = true; 
+                    shouldLoadStats = true;
                 }
             }
             else
             {
                 SceneEntryPoint defaultEntry = FindFirstObjectByType<SceneEntryPoint>();
-                if (defaultEntry != null) spawnPos = defaultEntry.transform.position;
+                if (defaultEntry != null)
+                    spawnPos = new Vector3(defaultEntry.transform.position.x, defaultEntry.transform.position.y, 0f);
 
                 UpdateCheckpoint(spawnPos);
             }
         }
-
         if (playerController != null)
         {
             playerController.Respawn(spawnPos);
